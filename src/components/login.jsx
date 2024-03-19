@@ -44,6 +44,7 @@ const Login = () => {
                     Iniciar sesión
                   </button>
                 </Link>
+          luis es gay  
 
                 <Link to="/registro" className="register-buttom">
                   <button >
