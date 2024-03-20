@@ -45,7 +45,7 @@ const Login = () => {
                   </button>
                 </Link>
           luis es gay  
-
+            diana se la come
                 <Link to="/registro" className="register-buttom">
                   <button >
                     Registrar
