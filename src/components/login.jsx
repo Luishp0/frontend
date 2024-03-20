@@ -46,6 +46,7 @@ const Login = () => {
                 </Link>
           luis es gay  
             diana se la come
+                carlos prueba
                 <Link to="/registro" className="register-buttom">
                   <button >
                     Registrar
