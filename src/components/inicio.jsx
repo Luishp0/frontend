@@ -12,7 +12,7 @@ const Inicio = () =>{
         
     )
 }
-
+//hola carlos
 
 
 export default Inicio
