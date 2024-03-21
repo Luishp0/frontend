@@ -1,18 +1,18 @@
 import React from "react";
 import Navbar from "./navbar";
-import Slider from '../exports/slider'
-
+import Portada from './portada';
 
 const Inicio = () =>{
     return(
         <div>
             <Navbar></Navbar>
-            <Slider></Slider>
+            <Portada></Portada>
         </div>
         
     )
 }
-
+//hola carlos
 
 
 export default Inicio
+
