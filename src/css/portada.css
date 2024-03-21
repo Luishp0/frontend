@@ -4,3 +4,7 @@
     padding: 20px;
   }
   
+  .portada-container img {
+    border-radius: 10px; /* Redondear las imágenes */
+  }
+  

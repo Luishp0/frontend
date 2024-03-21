@@ -1,6 +1,6 @@
 /* Navbar Styles */
 .navbar {
-  background-color: white; /* Cambiado a blanco */
+  background-color: #de0909; /* Cambiado a gris claro en formato hexadecimal */
   padding: 10px;
   display: flex;
   justify-content: space-between;
