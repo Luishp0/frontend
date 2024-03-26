@@ -5,7 +5,7 @@ import "../css/portada.css";
 
 const Portada = () => {
   const titulo = "AcuaCode";
-  const titulo2 = " "; // Texto del título
+  
   const textoDerecha = "Este es el texto a la derecha. Lorem ipsum dolor sit amet, consectetur adipiscing elit."; // Texto que irá a la derecha
 
   return (

@@ -5,24 +5,21 @@ import Login from './components/login.jsx'
 import Registro from './components/registro.jsx'
 import Navbar from './components/navbar.jsx';
 import RecuperacionC from './components/recuperacionC.jsx'
+import TablaUsuarios from './components/tablaUsuarios.jsx';  // Cambia la importación aquí
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-        <Route path='/' Component={Login}/>
-        <Route path='/registro' Component={Registro}/>
-        <Route path='/inicio' Component={Inicio}/>
-        <Route path='/navbar' Component={Navbar}/>
-        <Route path='/recuperacionC' Component={RecuperacionC}/>
-    
+        <Route path='/' element={<Login />} />
+        <Route path='/registro' element={<Registro />} />
+        <Route path='/inicio' element={<Inicio />} />
+        <Route path='/navbar' element={<Navbar />} />
+        <Route path='/recuperacionC' element={<RecuperacionC />} />
+        <Route path='/tablaUsuarios' element={<TablaUsuarios />} />  
       </Routes>
     </BrowserRouter>
-    
   );
 }
-
-
 
 export default App;
