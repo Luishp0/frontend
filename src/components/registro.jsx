@@ -1,10 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/registro.css";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const Registro = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values, { setErrors }) => {
+    try {
+      const response = await fetch('http://localhost:8000/usuario', {  // Ruta correcta para el registro de usuario
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          roles_idroles: 1,
+          nombre: values.username,
+          fechaNacimiento: values.fechaN,
+          correo: values.email,
+          contrasena: values.password,
+          telefono: values.telefono,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Redirige al usuario a la página de éxito
+        navigate('/');
+      } else {
+        // Muestra los errores del backend en el formulario
+        setErrors(data.errors);
+      }
+    } catch (error) {
+      console.error('Error al registrar:', error);
+    }
+  };
+
   return (
     <div className="body1">
       <div className="container">
@@ -16,7 +49,7 @@ const Registro = () => {
             email: '',
             password: '',
             confirmPassword: '',
-            telefono: '', // Agregamos el campo telefono
+            telefono: '',
           }}
           validationSchema={Yup.object({
             username: Yup.string()
@@ -29,11 +62,9 @@ const Registro = () => {
             telefono: Yup.string()
               .matches(/^\d+$/, 'Ingrese solo números')
               .max(10, 'Máximo 10 caracteres')
-              .required('*Campo requerido'), // Validación para el campo telefono
+              .required('*Campo requerido'),
           })}
-          onSubmit={(values, { setErrors }) => {
-            console.log(values);
-          }}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
             <Form>
@@ -61,12 +92,13 @@ const Registro = () => {
               <Field type="text" id="telefono" name="telefono" maxLength="10" />
               <ErrorMessage name="telefono" component="div" className="error-message" />
 
-              <Link to={"/"}>
-                <button type="submit">Registrarse</button>
-              </Link>
+              <button type="submit">Registrarse</button>
             </Form>
           )}
         </Formik>
+        <Link to={"/"}>
+          <button>Volver</button>
+        </Link>
       </div>
     </div>
   );
