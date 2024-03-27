@@ -1,7 +1,7 @@
 import React from 'react';
 import "../css/portada.css";
 import foto1 from "../img/foto1.png"; // Importa la imagen que deseas mostrar dentro del círculo
-
+//hola
 const Portada = () => {
   const titulo = "AcuaCode";
   const textoDerecha = "Este es el texto a la derecha. Lorem ipsum dolor sit amet, consectetur adipiscing elit."; // Texto que irá a la derecha
