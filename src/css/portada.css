@@ -1,10 +1,29 @@
-/* portada.css */
 .portada-container {
-    background-color: #ffffff; /* Gris claro */
-    padding: 20px;
-  }
-  
-  .portada-container img {
-    border-radius: 10px; /* Redondear las imágenes */
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.outer-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
