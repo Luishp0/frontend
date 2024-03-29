@@ -89,19 +89,19 @@
 
 .botones-container {
   text-align: center;
-  margin-top: 20px; /* Ajusta el espacio entre el texto y los botones */
+  margin-top: 20px;
 }
 
-.boton {
-  padding: 15px 20px;
-  border-radius: 20px; /* Redondea los bordes del botón */
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color del texto del botón */
+.boton.leer-mas {
+  padding: 15px 30px;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
   border: none;
   cursor: pointer;
-  margin: 0 10px; /* Ajusta el espacio entre los botones */
+  margin: 0;
 }
 
-.boton:hover {
-  background-color: #0056b3; /* Cambia el color de fondo del botón al pasar el ratón */
+.boton.leer-mas:hover {
+  background-color: #0056b3;
 }

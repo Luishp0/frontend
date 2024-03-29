@@ -9,10 +9,7 @@ const Portada = () => {
         <div className="center-content">
           <h2 className="titulo">AcuaCode</h2>
           <p className="texto">AcuaCode es un software que maneja en su totalidad la pecera y ver el estado de salud de los peces</p>
-          <div className="botones-container">
-            <button className="boton">Registrarse</button>
-            <button className="boton">Iniciar Sesión</button>
-          </div>
+          <button className="boton leer-mas">Leer más</button>
         </div>
         <div className="circles-container">
           <div className="circle-wrapper">
