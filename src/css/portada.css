@@ -19,7 +19,7 @@
 .titulo {
   margin-bottom: 20px;
   font-size: 48px; /* Aumenta el tamaño del título */
-  color: white; /* Cambia el color del título a blanco */
+  color: rgb(0, 0, 0); /* Cambia el color del título a blanco */
 }
 
 
