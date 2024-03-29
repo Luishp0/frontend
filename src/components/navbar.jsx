@@ -1,38 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/navbar.css';
 import { Link } from 'react-router-dom';
 import logo from "../img/logo.jpg";
 
 const Navbar = () => {
+  const [navbarBackground, setNavbarBackground] = useState('transparent');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 0) {
+        setNavbarBackground('#ffffff'); // Cambia el fondo a blanco cuando se desplaza hacia abajo
+      } else {
+        setNavbarBackground('transparent'); // Mantiene el fondo transparente cuando está en la parte superior
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar" style={{ backgroundColor: 'transparent', padding: '10px', fontFamily: 'Arial, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div className="logo-acuacode-container" style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="logo">
-          <img src={logo} alt="" style={{ marginRight: '10px', width: '30px', height: '30px' }} />
+    <nav className={`navbar ${navbarBackground !== 'transparent' ? 'fixed' : ''}`}>
+      <div className="navbar-content">
+        <div className="logo-acuacode-container">
+          <div className="logo">
+            <img src={logo} alt="Logo" style={{ width: '30px', height: '30px' }} />
+          </div>
+          <div className="acuacode">
+            <span>ACUACODE</span>
+          </div>
         </div>
-        <div className="acuacode">
-          <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'black' }}>ACUACODE</span>
+        <div className="nav-links">
+          <ul className="nav-list">
+            <li className="nav-item-with-dropdown">
+              Información
+              <div className="dropdown-content">
+                <Link to={"/info1"} className="dropdown-link">Opción 1</Link>
+                <Link to={"/info2"} className="dropdown-link">Opción 2</Link>
+              </div>
+            </li>
+            <li>
+              <Link to={"/descarga"} className="nav-item">Descarga</Link>
+            </li>
+            <li>
+              <Link to={"/contacto"} className="nav-item">Contacto</Link>
+            </li>
+          </ul>
+          <ul className="nav-list">
+            <li>
+              <Link to={"/inicio-sesion"} className="nav-item">Iniciar Sesión</Link>
+            </li>
+            <li>
+              <Link to={"/comenzar"} className="nav-item">Comenzar</Link>
+            </li>
+          </ul>
         </div>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-        <ul className="nav-list" style={{ textAlign: 'center' }}>
-          <li className="nav-item-with-dropdown">
-            Información
-            <div className="dropdown-content">
-              <Link to={"/info1"} className="dropdown-link">Opción 1</Link>
-              <Link to={"/info2"} className="dropdown-link">Opción 2</Link>
-            </div>
-          </li>
-          <li>
-            Descarga
-          </li>
-          <li>Contacto</li>
-        </ul>
-      </div>
-      <ul className="nav-list">
-        <li className="nav-item">Iniciar Sesión</li>
-        <li className="nav-item">Comenzar</li>
-      </ul>
     </nav>
   );
 }
