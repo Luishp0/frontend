@@ -22,7 +22,6 @@
   color: rgb(0, 0, 0); /* Cambia el color del título a blanco */
 }
 
-
 .texto {
   margin-top: 20px;
   font-size: 28px; /* Aumenta el tamaño del texto */
@@ -32,7 +31,7 @@
   display: flex;
   align-items: center;
   flex: 1;
-  margin-left: 20%; /* Ajusta el margen izquierdo para mover los círculos hacia la derecha */
+  margin-left: 5%; /* Ajusta el margen izquierdo para mover los círculos hacia la izquierda */
 }
 
 .circle-wrapper {
@@ -104,4 +103,350 @@
 
 .boton.leer-mas:hover {
   background-color: #0056b3;
+}
+
+.titulo-container {
+  text-align: center;
+  margin-top: 20px; /* Ajusta el margen superior */
+  margin-bottom: 20px; /* Ajusta el margen inferior */
+}
+
+.titulo-rectangulos {
+  font-size: 28px;
+  color: #000;
+}
+
+/* Resto de estilos CSS */
+
+.rectangulos-container {
+  display: flex;
+  justify-content: center; /* Centra los rectángulos horizontalmente */
+  background-image: url('../img/fondo2.png'); /* Ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  padding: 3cm 0; /* Mismo margen que el de arriba */
+  margin-bottom: 3cm; /* Margen de 5cm debajo de los rectángulos */
+}
+
+/* Resto de estilos CSS */  
+
+.columna {
+  display: flex;
+  flex-direction: column;
+}
+
+.rectangulo {
+  width: 500px; /* Ancho del rectángulo */
+  height: 180px; /* Altura del rectángulo */
+  background-color: #fff; /* Color blanco */
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Contorno gris */
+  border-radius: 20px; /* Borde redondeado */
+  margin-bottom: 10px; /* Espacio entre rectángulos */
+  margin-top: 1cm; /* Margen de altura con lo de arriba */
+  padding: 20px; /* Espacio dentro del rectángulo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center; /* Centro de texto */
+}
+
+
+.titulo-rectangulo {
+  margin-bottom: 10px;
+  text-align: center; /* Centra el texto */
+}
+
+.texto-rectangulo {
+  margin-top: 10px;
+  font-size: 18px; /* Tamaño de fuente del texto */
+}
+
+.columna:not(:last-child) {
+  margin-right: 10px; /* Espacio entre columnas */
+}
+
+.columna:first-child .rectangulo {
+  order: 2; /* Cambia el orden de los rectángulos en la primera columna */
+}
+
+.columna:last-child .rectangulo {
+  order: 1; /* Cambia el orden de los rectángulos en la segunda columna */
+}
+
+/* Resto de estilos CSS */
+
+.contenido-exterior {
+  /* Mantén los estilos anteriores */
+  position: relative; /* Añade posición relativa para contener el carrusel */
+}
+
+.imagen-izquierda {
+  /* Mantén los estilos anteriores */
+  display: none; /* Oculta las imágenes individuales en el carrusel */
+}
+
+.slick-slider {
+  width: 40%; /* Ancho máximo del carrusel */
+  margin: 0 100px; /* Centra el carrusel */
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  white-space: nowrap; /* Evita que los elementos se envuelvan */
+}
+
+.slick-slide {
+  display: inline-block; /* Muestra las diapositivas en línea */
+  vertical-align: top; /* Alinea las diapositivas en la parte superior */
+  margin-right: 20px; /* Establece la distancia entre las diapositivas */
+}
+
+.imagen-abajo {
+  width: 500px; /* Ancho máximo de las imágenes */
+  height: 420px; /* Altura fija de las imágenes */
+  object-fit: cover; /* Escalar las imágenes para que cubran todo el contenedor */
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.carrusel-container {
+  display: flex;
+  align-items: center;
+}
+
+.contenido-adicional {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px; /* Ajusta el margen izquierdo para separar el contenido adicional del carrusel */
+}
+
+.contenido-adicional h3 {
+  font-size: 36px; /* Tamaño del título más grande */
+}
+
+.contenido-adicional p {
+  font-size: 24px; /* Tamaño del texto más grande */
+}
+
+/* Estilos para los botones prev y next del carrusel */
+/* Estilos para los botones de navegación del carrusel */
+.anterior,
+.siguiente {
+  position: absolute; /* Posición absoluta para ajustar la ubicación */
+  bottom: 10px; /* Espacio desde la parte inferior */
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo negro con opacidad */
+  width: 40px; /* Ancho de los botones */
+  height: 40px; /* Altura de los botones */
+  border-radius: 50%; /* Botones redondeados */
+  border: none; /* Elimina el borde */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  z-index: 1000; /* Asegura que estén sobre el carrusel */
+  display: flex; /* Para centrar el icono horizontalmente */
+  justify-content: center; /* Para centrar el icono horizontalmente */
+  align-items: center; /* Para centrar el icono verticalmente */
+  color: #000000; /* Color del ícono */
+}
+
+/* Estilos para los íconos de los botones de navegación */
+.anterior::before,
+.siguiente::before {
+  content: "\2190"; /* Flecha hacia la izquierda */
+  font-size: 20px; 
+}
+
+.siguiente::before {
+  content: "\2192"; /* Flecha hacia la derecha */
+}
+
+/* Estilos para los botones de navegación al pasar el mouse */
+.anterior:hover,
+.siguiente:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Color de fondo al pasar el mouse */
+}
+
+.texto-lateral {
+  flex: 1;
+  padding: 0 5%;
+  text-align: center;
+}
+
+.titulo-lateral {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.texto-lateral {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.boton-carrusel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 100; /* Asegura que estén por encima del carrusel */
+}
+
+.anterior {
+  left: 10px; /* Ajusta la posición izquierda */
+}
+
+.siguiente {
+  right: 10px; /* Ajusta la posición derecha */
+}
+
+.adelante {
+  margin-right: 20px; /* Espacio entre los rectángulos */
+}
+
+.imagen-rectangulo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rectangulos-verticales {
+  display: flex;
+  justify-content: flex-end; /* Alinea los rectángulos a la derecha */
+  margin-top: 3cm; /* Margen superior de 3 cm */
+  margin-right: 100px; /* Ajusta el margen derecho para mover los rectángulos hacia la izquierda */
+}
+ 
+
+.rectangulo-vertical {
+  width: 300px; /* Ancho del rectángulo vertical */
+  height: 550px; /* Altura del rectángulo vertical */
+  background-color: #fff; /* Color blanco */
+  border: 1px solid rgba(187, 185, 185, 0.523); /* Contorno gris */
+  border-radius: 0px 0px 0 0; /* Borde redondeado con esquinas superiores redondeadas */
+  position: relative; /* Añade posición relativa para el z-index */
+  z-index: 1; /* Asegura que el primer rectángulo esté delante del segundo */
+  margin-top: 3cm; /* Ajusta la posición vertical del primer rectángulo */
+  transform: rotate(-10deg) skew(10deg); /* Aplica rotación y sesgado */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 100%, 10% 100%, 0% 90%); /* Define una forma de corte para simular la forma de un celular */
+}
+
+.rectangulo-vertical.atras {
+  width: 300px; /* Ancho del segundo rectángulo */
+  height: 600px; /* Altura del segundo rectángulo */
+  margin-top: 20px; /* Margen superior para separar los rectángulos */
+  transform: rotate(10deg) skew(-10deg); /* Aplica rotación y sesgado */
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10%, 10% 0%); /* Define una forma de corte para simular la forma de un celular */
+}
+
+.titulo-texto-container {
+  flex: 1; /* Ajusta el tamaño del contenedor para ocupar el espacio restante */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea el contenido horizontalmente */
+  justify-content: center; /* Alinea el contenido verticalmente */
+  margin-right: 20px; /* Ajusta el margen derecho para separar del contenido anterior */
+}
+
+.titulo-texto-container h3 {
+  font-size: 24px; /* Tamaño del título */
+  margin-bottom: 10px; /* Espacio inferior del título */
+}
+
+.titulo-texto-container p {
+  font-size: 18px; /* Tamaño del texto */
+  text-align: center; /* Alineación del texto */
+}
+
+.pagina-container {
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  bottom: 20px; /* Coloca el logo en la esquina inferior izquierda */
+  left: 20px; /* Coloca el logo en la esquina inferior izquierda */
+  width: 50px; /* Ajusta el tamaño del logo según sea necesario */
+}
+
+/* Resto de estilos CSS */
+
+.footer {
+  background-color: white;
+  color: black;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 100px; /* Añade un margen superior de 50px */
+  border-top: 2px solid #ccc; /* Añade una línea superior */
+}
+
+.footer {
+  background-color: white;
+  color: black;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px; /* Añade un margen superior de 50px */
+  border-top: 2px solid #ccc; /* Añade una línea superior */
+}
+
+.footer h3 {
+  margin-bottom: 15px; /* Aumenta el margen inferior de los títulos */
+  font-size: 24px; /* Aumenta el tamaño de los títulos */
+  color: #333; /* Cambia el color de los títulos */
+}
+
+.footer p {
+  margin-bottom: 10px; /* Aumenta el margen inferior de los párrafos */
+  font-size: 18px; /* Aumenta el tamaño de los párrafos */
+}
+
+.contacto,
+.horas-servicio,
+.lenguaje,
+.subscripciones,
+.productos {
+  flex: 1;
+  margin-right: 20px;
+  margin-top: 20px; /* Aumenta el margen superior de las secciones */
+  font-size: 18px; /* Aumenta el tamaño del texto dentro de las secciones */
+}
+
+.subscripciones input {
+  width: calc(100% - 20px); /* Ajusta el ancho del input */
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc; /* Añade un borde al input */
+  font-size: 16px; /* Aumenta el tamaño del texto dentro del input */
+}
+
+.subscripciones button {
+  width: calc(100% - 20px); /* Ajusta el ancho del botón */
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Aumenta el tamaño del texto dentro del botón */
+}
+
+.subscripciones button:hover {
+  background-color: #45a049;
+}
+
+.productos ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.productos li {
+  margin-bottom: 5px;
+  font-size: 18px; /* Aumenta el tamaño del texto dentro de la lista */
 }
