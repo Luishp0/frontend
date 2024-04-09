@@ -55,10 +55,20 @@ const Registro = () => {
             username: Yup.string()
               .matches(/^[A-Za-z\s]+$/, 'Ingrese solo letras')
               .required('*Campo requerido'),
-            fechaN: Yup.date().required('*Campo requerido'),
-            email: Yup.string().email('Correo no valido').required('*Campo requerido'),
-            password: Yup.string().required('*Campo requerido').min(8, 'La contraseña debe tener al menos 8 caracteres'),
-            confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir').required('*Campo requerido'),
+            fechaN: Yup.date()
+              .required('*Campo requerido'),
+            email: Yup.string()
+              .email('Correo no valido')
+              .required('*Campo requerido'),
+            password: Yup.string()
+              .required('*Campo requerido')
+              .min(8, 'La contraseña debe tener al menos 8 caracteres')
+              .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "La contraseña debe contener al menos un carácter en mayúscula y minúscula")
+              .matches(/\d/, "La contraseña debe contener al menos un número")
+              .matches(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, "La contraseña debe contener al menos un carácter especial"),
+            confirmPassword: Yup.string()
+              .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+              .required('*Campo requerido'),
             telefono: Yup.string()
               .matches(/^\d+$/, 'Ingrese solo números')
               .max(10, 'Máximo 10 caracteres')
