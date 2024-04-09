@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/navbar.css';
 import { Link } from 'react-router-dom';
-import logo from "../img/logo.jpg";
+import logo from "../img/logotra.png";
 
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState('transparent');

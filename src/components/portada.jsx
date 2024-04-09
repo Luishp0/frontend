@@ -1,27 +1,11 @@
 import React from 'react';
-import Slider from 'react-slick';
 import "../css/portada.css";
 import foto1 from "../img/foto1.png";
-import carrucel from "../img/carrucel.jpg";
-import carrucel1 from "../img/carrucel1.jpg";
-import carrucel2 from "../img/carrucel2.jpg";
-import carrucel3 from "../img/carrucel3.jpg";
+import foto2 from "../img/peceramadera.png";
 import cel3 from "../img/cel3.jpg";
 import cel4 from "../img/cel4.jpg";
-import logo from "../img/logo.jpg";
 
 const Portada = () => {
-  const settings = {
-    infinite: true,
-    speed: 2500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    prevArrow: <button className="boton-carrusel anterior">Anterior</button>,
-    nextArrow: <button className="boton-carrusel siguiente">Siguiente</button>,
-  };
-  
   return (
     <div className="pagina-container">
       <div className="portada-container">
@@ -41,13 +25,13 @@ const Portada = () => {
           <div className="second-circle-wrapper">
             <div className="outer-circle second-circle">
               <div className="inner-circle">
-                {/* Aquí puedes agregar la imagen del segundo círculo si lo deseas */}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="content-wrapper">
+        <h3 className="titulo-servicios">Servicios</h3>
         <div className="rectangulos-container">
           <div className="columna">
             <div className="rectangulo">
@@ -70,35 +54,17 @@ const Portada = () => {
             </div>
           </div>
         </div>
-        <div className="carrusel-container">
-          <Slider {...settings}>
-            {carrucel && (
-              <div className="imagen-izquierda">
-                <img src={carrucel} alt="Imagen" className="imagen-abajo" />
-              </div>
-            )}
-            {carrucel1 && (
-              <div className="imagen-izquierda">
-                <img src={carrucel1} alt="Imagen" className="imagen-abajo" />
-              </div>
-            )}
-            {carrucel2 && (
-              <div className="imagen-izquierda">
-                <img src={carrucel2} alt="Imagen" className="imagen-abajo" />
-              </div>
-            )}
-            {carrucel3 && (
-              <div className="imagen-izquierda">
-                <img src={carrucel3} alt="Imagen" className="imagen-abajo" />
-              </div>
-            )}
-          </Slider>
-          <div className="contenido-adicional">
-            <h3>Título Adicional</h3>
-            <p>Texto adicional explicativo.</p>
-          </div>
+      </div>
+      <div className="contenido-adicional">
+        <div className="imagen-izquierda-contenedor">
+          <img src={foto2} alt="Imagen izquierda" className="contenido-imagen" />
+        </div>
+        <div className="contenido-texto">
+          <h3 className="titulo-adicional">Título Adicional</h3>
+          <p className="texto-adicional">Texto adicional explicativo.</p>
         </div>
       </div>
+
       <div className="rectangulos-verticales">
         <div className="titulo-texto-container">
           <h3>Título Derecha</h3>
@@ -112,7 +78,6 @@ const Portada = () => {
         </div>
       </div>
       <footer className="footer">
-        <img src={logo} alt="Logo" className="logo logo-footer" />
         <div className="contacto">
           <h3>Contacto</h3>
           <p>Correo: ejemplo@acuacode.com</p>
