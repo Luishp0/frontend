@@ -105,44 +105,38 @@
   background-color: #0056b3;
 }
 
-.titulo-container {
-  text-align: center;
-  margin-top: 20px; /* Ajusta el margen superior */
-  margin-bottom: 20px; /* Ajusta el margen inferior */
+.columna {
+  width: 50%;
+  float: left;
 }
 
-.titulo-rectangulos {
-  font-size: 28px;
-  color: #000;
+.columna:first-child {
+  margin-right: 10px; /* Agrega un margen derecho para separar las columnas */
 }
 
-/* Resto de estilos CSS */
+.columna:last-child {
+  margin-left: 10px; /* Agrega un margen izquierdo para separar las columnas */
+}
+
+
 
 .rectangulos-container {
   display: flex;
   justify-content: center; /* Centra los rectángulos horizontalmente */
-  background-image: url('../img/fondo2.png'); /* Ruta de la imagen de fondo */
-  background-size: cover;
-  background-position: center;
-  padding: 3cm 0; /* Mismo margen que el de arriba */
-  margin-bottom: 3cm; /* Margen de 5cm debajo de los rectángulos */
-}
-
-/* Resto de estilos CSS */  
-
-.columna {
-  display: flex;
-  flex-direction: column;
+  background-image: url('../img/frond.png'); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Ajusta el tamaño de la imagen para que cubra todo el contenedor */
+  background-position: center; /* Centra la imagen de fondo */
+  padding: 3cm; /* Añade un espacio de 3cm alrededor de los rectángulos */
+  margin-bottom: 3cm; /* Margen de 3cm debajo de los rectángulos */
 }
 
 .rectangulo {
   width: 500px; /* Ancho del rectángulo */
   height: 180px; /* Altura del rectángulo */
-  background-color: #fff; /* Color blanco */
-  border: 1px solid rgba(0, 0, 0, 0.5); /* Contorno gris */
-  border-radius: 20px; /* Borde redondeado */
-  margin-bottom: 10px; /* Espacio entre rectángulos */
-  margin-top: 1cm; /* Margen de altura con lo de arriba */
+  background-color: rgba(235, 235, 235, 0.038); /* Fondo transparente para permitir que se vea la imagen detrás */
+  border: 1px solid rgba(235, 235, 235, 0.721); /* Borde blanco con opacidad del 50% */
+  border-radius: 30px; /* Borde redondeado */
+  margin-bottom: 20px; /* Espacio entre rectángulos */
   padding: 20px; /* Espacio dentro del rectángulo */
   display: flex;
   flex-direction: column;
@@ -150,6 +144,34 @@
   text-align: center; /* Centro de texto */
 }
 
+.rectangulo:hover {
+  background-color: #add8e6; /* Cambia el color de fondo al azul claro cuando se pasa el cursor */
+}
+
+.rectangulo-horizontal {
+  width: 500px; /* Ancho del rectángulo horizontal */
+  height: 180px; /* Altura del rectángulo horizontal */
+  background-color: rgba(235, 235, 235, 0.262); /* Fondo transparente para permitir que se vea la imagen detrás */
+  border: 1px solid rgb(235, 235, 235, 0.262); /* Borde blanco con opacidad del 50% */
+  border-radius: 30px; /* Borde redondeado */
+  margin-bottom: 20px; /* Espacio entre rectángulos */
+  padding: 20px; /* Espacio dentro del rectángulo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center; /* Centro de texto */
+}
+
+.rectangulo-horizontal:hover {
+  background-color: #add8e6; /* Cambia el color de fondo al azul claro cuando se pasa el cursor */
+}
+
+
+.titulo-servicios {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 50px;
+}
 
 .titulo-rectangulo {
   margin-bottom: 10px;
@@ -159,6 +181,13 @@
 .texto-rectangulo {
   margin-top: 10px;
   font-size: 18px; /* Tamaño de fuente del texto */
+}
+
+.titulo-container {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+  margin-bottom: 20px; /* Espacio inferior */
 }
 
 .columna:not(:last-child) {
@@ -173,6 +202,10 @@
   order: 1; /* Cambia el orden de los rectángulos en la segunda columna */
 }
 
+.rectangulo:hover {
+  background-color: #09b5ee4a; /* Cambia el color de fondo al azul claro cuando se pasa el cursor */
+}
+
 /* Resto de estilos CSS */
 
 .contenido-exterior {
@@ -183,129 +216,6 @@
 .imagen-izquierda {
   /* Mantén los estilos anteriores */
   display: none; /* Oculta las imágenes individuales en el carrusel */
-}
-
-.slick-slider {
-  width: 40%; /* Ancho máximo del carrusel */
-  margin: 0 100px; /* Centra el carrusel */
-  overflow-x: auto; /* Permite el desplazamiento horizontal */
-  white-space: nowrap; /* Evita que los elementos se envuelvan */
-}
-
-.slick-slide {
-  display: inline-block; /* Muestra las diapositivas en línea */
-  vertical-align: top; /* Alinea las diapositivas en la parte superior */
-  margin-right: 20px; /* Establece la distancia entre las diapositivas */
-}
-
-.imagen-abajo {
-  width: 500px; /* Ancho máximo de las imágenes */
-  height: 420px; /* Altura fija de las imágenes */
-  object-fit: cover; /* Escalar las imágenes para que cubran todo el contenedor */
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.carrusel-container {
-  display: flex;
-  align-items: center;
-}
-
-.contenido-adicional {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 20px; /* Ajusta el margen izquierdo para separar el contenido adicional del carrusel */
-}
-
-.contenido-adicional h3 {
-  font-size: 36px; /* Tamaño del título más grande */
-}
-
-.contenido-adicional p {
-  font-size: 24px; /* Tamaño del texto más grande */
-}
-
-/* Estilos para los botones prev y next del carrusel */
-/* Estilos para los botones de navegación del carrusel */
-.anterior,
-.siguiente {
-  position: absolute; /* Posición absoluta para ajustar la ubicación */
-  bottom: 10px; /* Espacio desde la parte inferior */
-  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo negro con opacidad */
-  width: 40px; /* Ancho de los botones */
-  height: 40px; /* Altura de los botones */
-  border-radius: 50%; /* Botones redondeados */
-  border: none; /* Elimina el borde */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  z-index: 1000; /* Asegura que estén sobre el carrusel */
-  display: flex; /* Para centrar el icono horizontalmente */
-  justify-content: center; /* Para centrar el icono horizontalmente */
-  align-items: center; /* Para centrar el icono verticalmente */
-  color: #000000; /* Color del ícono */
-}
-
-/* Estilos para los íconos de los botones de navegación */
-.anterior::before,
-.siguiente::before {
-  content: "\2190"; /* Flecha hacia la izquierda */
-  font-size: 20px; 
-}
-
-.siguiente::before {
-  content: "\2192"; /* Flecha hacia la derecha */
-}
-
-/* Estilos para los botones de navegación al pasar el mouse */
-.anterior:hover,
-.siguiente:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Color de fondo al pasar el mouse */
-}
-
-.texto-lateral {
-  flex: 1;
-  padding: 0 5%;
-  text-align: center;
-}
-
-.titulo-lateral {
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.texto-lateral {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.boton-carrusel {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  z-index: 100; /* Asegura que estén por encima del carrusel */
-}
-
-.anterior {
-  left: 10px; /* Ajusta la posición izquierda */
-}
-
-.siguiente {
-  right: 10px; /* Ajusta la posición derecha */
-}
-
-.adelante {
-  margin-right: 20px; /* Espacio entre los rectángulos */
 }
 
 .imagen-rectangulo {
@@ -364,13 +274,6 @@
 
 .pagina-container {
   position: relative;
-}
-
-.logo {
-  position: absolute;
-  bottom: 20px; /* Coloca el logo en la esquina inferior izquierda */
-  left: 20px; /* Coloca el logo en la esquina inferior izquierda */
-  width: 50px; /* Ajusta el tamaño del logo según sea necesario */
 }
 
 /* Resto de estilos CSS */
@@ -450,3 +353,59 @@
   margin-bottom: 5px;
   font-size: 18px; /* Aumenta el tamaño del texto dentro de la lista */
 }
+
+
+.contenido-adicional {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.imagen-izquierda-contenedor {
+  width: 500px;
+  height: 250px;
+  float: right; /* Cambia de left a right para que la imagen esté en el lado derecho */
+  /* Ajusta el margen izquierdo para mover la imagen hacia la derecha */
+  margin-left: 100px;
+  height: 10%;
+}
+
+/* Estilos para la imagen en la sección de contenido adicional */
+/* Estilos para la imagen en la sección de contenido adicional */
+.contenido-imagen {
+  width: 70%; /* Cambia el ancho de la imagen */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  /* Otros estilos si los hay */
+}
+
+.contenido-texto {
+  width: 50%;
+  float: left;
+}
+
+.contenido-adicional img {
+  /* Ajusta el ancho de la imagen para que sea más alargada horizontalmente */
+  width: 100%;
+  height: auto;
+  max-width: auto; /* Puedes ajustar este valor según tus necesidades */
+}
+
+
+.contenido-texto {
+  width: 50%;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.titulo-adicional {
+  font-size: 24px; /* Tamaño del título */
+  text-align: center; /* Centra el título horizontalmente */
+}
+
+.texto-adicional {
+  font-size: 18px; /* Tamaño del texto */
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+/* Estilos para el carrusel */
