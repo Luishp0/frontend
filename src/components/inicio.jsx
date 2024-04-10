@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./navbar";
+import Navbar from "./barraLateral";
 import Portada from './portada';
 
 const Inicio = () =>{
