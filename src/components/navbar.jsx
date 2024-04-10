@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../css/navbar.css';
 import { Link } from 'react-router-dom';
 import logo from "../img/logotra.png";
 
@@ -10,9 +9,9 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > 0) {
-        setNavbarBackground('#ffffff'); // Cambia el fondo a blanco cuando se desplaza hacia abajo
+        setNavbarBackground('bg-white'); // Cambia el fondo a blanco cuando se desplaza hacia abajo
       } else {
-        setNavbarBackground('transparent'); // Mantiene el fondo transparente cuando está en la parte superior
+        setNavbarBackground('bg-transparent'); // Mantiene el fondo transparente cuando está en la parte superior
       }
     };
 
@@ -22,24 +21,20 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${navbarBackground !== 'transparent' ? 'fixed' : ''}`}>
-      <div className="navbar-content">
-        <div className="logo-acuacode-container">
+    <nav className={`navbar ${navbarBackground} fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out flex items-center justify-center`}>
+      <div className="navbar-content flex justify-between items-center container mx-auto px-4">
+        <div className="logo-acuacode-container flex items-center text-lg font-semibold">
           <div className="logo">
             <img src={logo} alt="Logo" style={{ width: '30px', height: '30px' }} />
           </div>
-          <div className="acuacode">
+          <div className="acuacode ml-2">
             <span>ACUACODE</span>
           </div>
         </div>
         <div className="nav-links">
-          <ul className="nav-list">
-            <li className="nav-item-with-dropdown">
-              Información
-              <div className="dropdown-content">
-                <Link to={"/info1"} className="dropdown-link">Opción 1</Link>
-                <Link to={"/info2"} className="dropdown-link">Opción 2</Link>
-              </div>
+          <ul className="nav-list flex gap-8 items-center">
+          <li>
+              <Link to={"/Información"} className="nav-item">Información</Link>
             </li>
             <li>
               <Link to={"/descarga"} className="nav-item">Descarga</Link>
@@ -47,8 +42,6 @@ const Navbar = () => {
             <li>
               <Link to={"/contacto"} className="nav-item">Contacto</Link>
             </li>
-          </ul>
-          <ul className="nav-list">
             <li>
               <Link to={"/inicio-sesion"} className="nav-item">Iniciar Sesión</Link>
             </li>

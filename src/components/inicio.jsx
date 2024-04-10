@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./navbar";
-import Portada from './portada';
+import Portada from "./portada"
 
 const Inicio = () =>{
     return(
