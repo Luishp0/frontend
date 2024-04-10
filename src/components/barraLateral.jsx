@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleRight, faChartPie, faBell, faUsers, faDatabase } from '@fortawesome/free-solid-svg-icons';
-import TargetaUsuario from './targetaUsuario.jsx';
+import TargetaUsuario from './tarjetaUsuario.jsx';
 
 const BarraLateral = () => {
   const [analisisOpen, setAnalisisOpen] = useState(false);
@@ -11,11 +11,11 @@ const BarraLateral = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-64 min-h-screen flex flex-col"> {/* Cambios aquí */}
+    <div className="bg-gray-800 text-white w-64 min-h-screen flex flex-col"> 
       <div className="p-4">
         <h1 className="text-2xl font-bold">AcuaCode</h1>
       </div>
-      <ul className="flex-1"> {/* Cambios aquí */}
+      <ul className="flex-1"> 
         
         <li 
           className="px-4 py-2 cursor-pointer" 
@@ -66,7 +66,11 @@ const BarraLateral = () => {
         </li>
 
       </ul>
+      <div >
       <TargetaUsuario/>
+
+      </div>
+      
     </div>
     
   );
