@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const UserProfileCard = ({ user }) => {
   return (
@@ -10,10 +10,10 @@ const UserProfileCard = ({ user }) => {
           <FontAwesomeIcon icon={faUser} className="text-blue-500 mr-2" />
           <span className="text-gray-700">{user.name}</span>
         </div>
-        <FontAwesomeIcon icon={faEdit} className="text-gray-500 cursor-pointer hover:text-blue-500" />
+        <FontAwesomeIcon icon={faEdit} className="text-gray-500 cursor-pointer hover:text-blue-500 ml-6" />
       </div>
       <div className="flex items-center mb-4">
-        <FontAwesomeIcon icon={faEnvelope} className="text-blue-500 mr-2" />
+        
         <span className="text-gray-700">{user.email}</span>
       </div>
       

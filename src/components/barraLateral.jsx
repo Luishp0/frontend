@@ -11,11 +11,11 @@ const BarraLateral = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-56 min-h-screen">
+    <div className="bg-gray-800 text-white w-64 min-h-screen flex flex-col"> {/* Cambios aquí */}
       <div className="p-4">
         <h1 className="text-2xl font-bold">AcuaCode</h1>
       </div>
-      <ul>
+      <ul className="flex-1"> {/* Cambios aquí */}
         
         <li 
           className="px-4 py-2 cursor-pointer" 
