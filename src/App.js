@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './components/login.jsx'
 import InicioAdministrador from './components/inicioAdministrador.jsx';
 import TablaUsuarios from './components/tablaUsuarios.jsx'; 
-import Navbar from './components/navbar.jsx'; 
+import Inicio from './components/inicio.jsx'; 
+
 
 function App() {
   return (
@@ -11,8 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/inicioAdministrador' element={<InicioAdministrador/>}/>
-        <Route path='/navbar' element={<Navbar/>}/>
-
+        <Route path='/inicio' element={<Inicio/>}/>
         <Route path='/tablaUsuarios' element={<TablaUsuarios />} />  
       </Routes>
     </BrowserRouter>

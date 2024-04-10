@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "./barraLateral";
-import Portada from './portada';
+import Navbar from "./navbar";
 
 const Inicio = () =>{
     return(
         <div>
             <Navbar></Navbar>
-            <Portada></Portada>
         </div>
         
     )
