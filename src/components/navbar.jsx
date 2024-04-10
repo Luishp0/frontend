@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${navbarBackground} fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out`}>
+    <nav className={`navbar ${navbarBackground} fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out flex items-center justify-center`}>
       <div className="navbar-content flex justify-between items-center container mx-auto px-4">
         <div className="logo-acuacode-container flex items-center text-lg font-semibold">
           <div className="logo">
@@ -32,13 +32,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-links">
-          <ul className="nav-list flex gap-8">
-            <li className="nav-item-with-dropdown relative">
-              Información
-              <div className="dropdown-content absolute bg-gray-100 shadow-md rounded-md hidden min-w-max">
-                <Link to={"/info1"} className="dropdown-link block px-4 py-2">Opción 1</Link>
-                <Link to={"/info2"} className="dropdown-link block px-4 py-2">Opción 2</Link>
-              </div>
+          <ul className="nav-list flex gap-8 items-center">
+          <li>
+              <Link to={"/Información"} className="nav-item">Información</Link>
             </li>
             <li>
               <Link to={"/descarga"} className="nav-item">Descarga</Link>
@@ -46,8 +42,6 @@ const Navbar = () => {
             <li>
               <Link to={"/contacto"} className="nav-item">Contacto</Link>
             </li>
-          </ul>
-          <ul className="nav-list flex gap-8">
             <li>
               <Link to={"/inicio-sesion"} className="nav-item">Iniciar Sesión</Link>
             </li>
