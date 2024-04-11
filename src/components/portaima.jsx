@@ -9,7 +9,7 @@ const ContenidoAdicional = () => {
         <p className="texto-adicional text-lg text-justify">El cuidado de los peces en una pecera requiere de un monitoreo constante y preciso de múltiples factores ambientales y de alimentación para garantizar su salud y bienestar. La falta de un sistema integral para controlar y mantener estos parámetros puede resultar en condiciones adversas para los peces, como desequilibrios químicos en el agua o problemas de mantenimiento.</p>
       </div>
       <div className="imagen-izquierda-contenedor ml-10 relative">
-        <img src={foto2} alt="Imagen izquierda" className="contenido-imagen w-3/4 h-auto transform hover:rotate-12 hover:scale-95 hover:translate-y-10 transition-transform duration-500 ease-in-out" />
+        <img src={foto2} alt="Imagen izquierda" className="contenido-imagen w-3/4 h-auto" />
       </div>
     </div>
   );

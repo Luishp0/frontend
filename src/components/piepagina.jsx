@@ -21,7 +21,6 @@ const Footer = () => {
       <div className="subscripciones flex-1 mr-4">
         <h3 className="mb-4 text-xl">Subscripciones</h3>
         <p>¡Subscríbete para recibir nuestras últimas noticias!</p>
-        <input type="email" placeholder="Correo electrónico" className="w-full mb-2 px-4 py-2 border border-gray-300 rounded-md" />
         <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Subscribirse</button>
       </div>
       <div className="productos flex-1">
