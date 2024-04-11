@@ -68,19 +68,19 @@ const Login = () => {
             {({ errors, touched }) => (
               <Form>
                 <div className="mb-4">
-                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded-lg">
+                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
                     <FaRegEnvelope className="mr-2 text-gray-400" />
                     <Field type="email" name="email" placeholder="Correo electrónico" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
                   </div>
-                  <ErrorMessage name="email" component="div" className="mt-1 text-sm font-medium text-red-500 error-message" />
+                  <ErrorMessage name="email" component="div" className="mt-1 text-xs text-red-500 error-message" />
                 </div>
 
                 <div className="mb-5">
-                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded-lg">
+                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
                     <MdLockOutline className="mr-2 text-gray-400" />
                     <Field type="password" name="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
                   </div>
-                  <ErrorMessage name="password" component="div" className="mt-1 text-sm font-medium text-red-500 error-message" />
+                  <ErrorMessage name="password" component="div" className="mt-1 text-xs text-red-500 error-message" />
                 </div>
 
                 {error && <div className="text-sm error-message">{error}</div>}
@@ -93,7 +93,7 @@ const Login = () => {
                   <Link to="/forgot-password" className='text-xs text-nowrap sm:text-sm text-customBlue hover:underline'>¿Olvidaste la contraseña?</Link>
                 </div>
 
-                <button type="submit" className="w-full py-3 mb-4 text-sm font-bold text-white transition-colors rounded-lg bg-gradient-to-r from-customBlue to-customTurquoise">
+                <button type="submit" className="w-full py-3 mb-4 text-sm font-bold text-white transition-colors rounded bg-gradient-to-r from-customBlue to-customTurquoise">
                   Ingresar
                 </button>
 
@@ -111,10 +111,10 @@ const Login = () => {
                 </div>
 
                 <div className="flex justify-center mb-3">
-                  <button className="flex items-center justify-center w-40 h-10 mr-2 transition-colors duration-300 bg-gray-100 rounded-lg hover:bg-gray-200">
+                  <button className="flex items-center justify-center w-40 h-10 mr-2 transition-colors duration-300 bg-gray-100 rounded hover:bg-gray-200">
                     <FaApple className="text-2xl text-black" />
                   </button>
-                  <button className="flex items-center justify-center w-40 h-10 ml-4 transition-colors duration-300 bg-gray-100 rounded-lg hover:bg-gray-200">
+                  <button className="flex items-center justify-center w-40 h-10 ml-4 transition-colors duration-300 bg-gray-100 rounded hover:bg-gray-200">
                     <FcGoogle className="text-2xl text-gray-600" />
                   </button>
                 </div>
