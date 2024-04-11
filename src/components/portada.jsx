@@ -1,5 +1,5 @@
 import React from 'react';
-import foto1 from "../img/carrucel3.jpg";
+import foto1 from "../img/foto1.png";
 import backgroundImage from "../img/fondoportada.png"; // Ruta de la imagen de fondo
 
 const Portada = () => {
@@ -21,7 +21,7 @@ const Portada = () => {
         </div>
         <div className="circles-container relative">
           <div className="circle-wrapper relative">
-            <div className="outer-circle w-96 h-96 bg-blue-500 flex justify-center items-center rounded-full relative shadow-2xl border-8 border-blue-200">
+            <div className="outer-circle w-80 h-80 bg-blue-500 flex justify-center items-center rounded-full relative shadow-2xl border-8 border-blue-200"> {/* Ajusta el tamaño del círculo azul */}
               <div className="circle-gray w-72 h-72 bg-white rounded-full flex justify-center items-center">
                 <div className="inner-circle w-64 h-64 overflow-hidden rounded-full flex justify-center items-center">
                   <img src={foto1} alt="Imagen" className="circle-image object-cover w-full h-full rounded-full" />
