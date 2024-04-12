@@ -25,7 +25,6 @@ const Inicio = () =>{
         </>
     )
 }
-//hola carlosokoko
 
 
 export default Inicio

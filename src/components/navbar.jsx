@@ -63,7 +63,7 @@ const Navbar = () => {
               <Link to={"/contacto"} className="nav-item">Contacto</Link>
             </li>
             <li>
-              <Link to={"/inicio-sesion"} className="nav-item">Iniciar Sesión</Link>
+              <Link to={"/login"} className="nav-item">Iniciar Sesión</Link>
             </li>
             <li>
               <Link to={"/comenzar"} className="nav-item">Comenzar</Link>

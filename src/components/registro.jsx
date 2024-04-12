@@ -149,7 +149,7 @@ const Registro = () => {
 
                 <p className="text-sm text-center text-gray-600">
                   ¿Ya tienes una cuenta?{' '}
-                  <Link to="/" className="text-sm text-customBlue hover:underline">
+                  <Link to="/login" className="text-sm text-customBlue hover:underline">
                     Iniciar Sesión
                   </Link>
                 </p>               
