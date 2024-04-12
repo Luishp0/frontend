@@ -1,6 +1,6 @@
-// src/components/UsersTable.js
 
 import React, { useState, useEffect } from 'react';
+import BarraLateral from './barraLateral';
 
 const TablaUsuarios = () => {
   const [usuarios, setUsers] = useState([]);
@@ -20,9 +20,11 @@ const TablaUsuarios = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className='flex h-screen'>
+      <BarraLateral/>
+    <div className="container px-4 py-8">
       <h1 className="text-2xl mb-4">Lista de Usuarios</h1>
-      <table className="min-w-full leading-normal">
+      <table className="w-full leading-normal">
         <thead>
           <tr>
             <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -59,6 +61,7 @@ const TablaUsuarios = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

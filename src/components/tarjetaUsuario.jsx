@@ -4,7 +4,7 @@ import { faUser, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const UserProfileCard = ({ user }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-62">
+    <div className="bg-white shadow-md rounded-lg p-6 w-full">
       <div className="flex items-center mb-4">
         <div className="flex items-center">
           <FontAwesomeIcon icon={faUser} className="text-blue-500 mr-2" />
@@ -28,7 +28,7 @@ const TargetaUsuario = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center">
       <UserProfileCard user={user} />
       
     </div>
