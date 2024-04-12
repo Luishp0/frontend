@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BarraLateral from './barraLateral';
-import HistorialRespaldo from './historialRespaldo';
 
 const Respaldo = () => {
   const [selectedTime, setSelectedTime] = useState('00:00');
-  const [intervalTime, setIntervalTime] = useState(60); // en minutos
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [backupHistory, setBackupHistory] = useState(() => {
     const history = localStorage.getItem('backupHistory');
@@ -40,9 +38,7 @@ const Respaldo = () => {
     setTimeLeft(calculateTimeLeft());
   };
 
-  const handleIntervalChange = (e) => {
-    setIntervalTime(e.target.value);
-  };
+
 
   const handleBackup = () => {
     // Lógica para respaldar la base de datos
@@ -98,8 +94,18 @@ const Respaldo = () => {
               </p>
             </div>
           </div>
-          <HistorialRespaldo backupHistory={backupHistory} />
+          <div className="bg-white rounded-lg shadow-lg p-4">
+                  <h2 className="text-lg font-bold mb-2">Historial de Respaldos</h2>
+                  <ul className="list-disc list-inside text-sm">
+                  {backupHistory.map((backup, index) => (
+                  <li key={index} className="mb-1">
+                  <span className="font-bold">{backup.date}</span> - Hora: {backup.time}
+                  </li>
+                  ))}
+                </ul>
+          </div>
         </div>
+        
       </div>
     </div>
   );

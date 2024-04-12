@@ -19,6 +19,14 @@ const TablaUsuarios = () => {
     }
   };
 
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className='flex h-screen'>
       <BarraLateral/>
@@ -53,7 +61,7 @@ const TablaUsuarios = () => {
                 {user.correo}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                {user.fechaNacimiento}
+                {formatDate(user.fechaNacimiento)}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 {user.telefono}
