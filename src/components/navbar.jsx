@@ -4,14 +4,15 @@ import logo from "../img/logotra.png";
 
 const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState('transparent');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > 0) {
-        setNavbarBackground('bg-white'); // Cambia el fondo a blanco cuando se desplaza hacia abajo
+        setNavbarBackground('bg-white');
       } else {
-        setNavbarBackground('bg-transparent'); // Mantiene el fondo transparente cuando está en la parte superior
+        setNavbarBackground('bg-transparent');
       }
     };
 
@@ -32,8 +33,27 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-links">
-          <ul className="nav-list flex gap-8 items-center">
-          <li>
+          <button
+            className="block lg:hidden focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+              ></path>
+            </svg>
+          </button>
+          <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
+            <li>
               <Link to={"/Información"} className="nav-item">Información</Link>
             </li>
             <li>
