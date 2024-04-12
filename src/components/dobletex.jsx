@@ -28,7 +28,7 @@ const Team = () => {
           />
           <TeamCard
             name="Diana Lucia"
-            profession="Desarrollador web Front end"
+            profession="Desarrollador web, Front end"
             imageSrc="https://i.ibb.co/8P6cvVy/image-01-1.jpg"
           />
           <TeamCard
