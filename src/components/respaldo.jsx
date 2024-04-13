@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import BarraLateral from './barraLateral';
 
 const Respaldo = () => {
-  const [selectedTime, setSelectedTime] = useState('00:00');
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [selectedTime] = useState('00:00');
   const [backupHistory, setBackupHistory] = useState(() => {
     const history = localStorage.getItem('backupHistory');
     return history ? JSON.parse(history) : [];
   });
 
-  function calculateTimeLeft() {
+  const calculateTimeLeft = useCallback(() => {
     const now = new Date();
     const selectedHour = new Date(now);
     const [hours, minutes] = selectedTime.split(':');
@@ -23,7 +22,9 @@ const Respaldo = () => {
     }
 
     return diff;
-  }
+  }, [selectedTime]);
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,22 +32,14 @@ const Respaldo = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft]);
-
-  const handleTimeChange = (e) => {
-    setSelectedTime(e.target.value);
-    setTimeLeft(calculateTimeLeft());
-  };
+  }, [timeLeft, calculateTimeLeft]);
 
   const handleBackup = async () => {
     try {
-      // Realizar el respaldo
       const response = await fetch('http://localhost:8000/respaldo');
       const data = await response.json();
   
       if (response.ok) {
-        console.log(data.message);
-  
         const now = new Date();
         const formattedDate = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
         const formattedTime = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
@@ -56,8 +49,7 @@ const Respaldo = () => {
           time: formattedTime,
         };
   
-        // Almacenar en localStorage
-        const updatedHistory = [newBackup, ...backupHistory];  // Agregar el nuevo respaldo al principio
+        const updatedHistory = [newBackup, ...backupHistory];
         setBackupHistory(updatedHistory);
         localStorage.setItem('backupHistory', JSON.stringify(updatedHistory));
       } else {
@@ -68,7 +60,6 @@ const Respaldo = () => {
     }
   };
     
-
   useEffect(() => {
     const fetchBackupHistory = async () => {
       try {
@@ -103,7 +94,6 @@ const Respaldo = () => {
             >
               Realizar Respaldo
             </button>
-            
           </div>
           <div className="bg-white rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
             <h2 className="text-lg font-bold mb-2">Historial de Respaldos</h2>
