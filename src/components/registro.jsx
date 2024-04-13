@@ -31,7 +31,7 @@ const Registro = () => {
 
       if (response.ok) {
         // Redirige al usuario a la página de éxito
-        navigate('/');
+        navigate('/login');
       } else {
         // Muestra los errores del backend en el formulario
         setErrors(data.errors);
@@ -98,7 +98,7 @@ const Registro = () => {
                 <div className="mb-2">
                   <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
                     <FaPhone className="mr-2 text-gray-400" />
-                    <Field type="tel" id="telefono" name="telefono" placeholder="Teléfono" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <Field type="tel" id="telefono" name="telefono" placeholder="Teléfono"  maxLength={10} className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
                   </div>
                   <ErrorMessage name="telefono" component="div" className="mt-1 text-xs text-red-500 error-message" />
                 </div>
@@ -149,7 +149,7 @@ const Registro = () => {
 
                 <p className="text-sm text-center text-gray-600">
                   ¿Ya tienes una cuenta?{' '}
-                  <Link to="/" className="text-sm text-customBlue hover:underline">
+                  <Link to="/login" className="text-sm text-customBlue hover:underline">
                     Iniciar Sesión
                   </Link>
                 </p>               

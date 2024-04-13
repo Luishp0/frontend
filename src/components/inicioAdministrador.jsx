@@ -24,6 +24,7 @@ const InicioAdministrador = () => {
                     
                 </div>
             </div>
+            
         </div>
     )
 }

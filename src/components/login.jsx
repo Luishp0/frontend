@@ -32,7 +32,7 @@ const Login = () => {
         // Guardar el token de autenticación en el local storage o en una cookie
         localStorage.setItem('token', data.token);
         // Redirigir al usuario a la página de inicio o dashboard
-        navigate('/inicio');
+        navigate('/inicioadministrador');
       } else {
         setError(data.message);
       }

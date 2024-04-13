@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleRight, faChartPie, faBell, faUsers, faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleRight, faChartPie, faGear, faUsers, faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import TargetaUsuario from './tarjetaUsuario.jsx';
 
 const BarraLateral = () => {
@@ -11,29 +12,43 @@ const BarraLateral = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-64 min-h-screen flex flex-col"> 
+    <div className="bg-gray-800 text-white w-64  flex flex-col justify-between"> 
       <div className="p-4">
-        <h1 className="text-2xl font-bold">AcuaCode</h1>
+        <Link to="/inicioadministrador">
+          <h1 className="text-2xl font-bold">AcuaCode</h1>
+        </Link>
+        
       </div>
       <ul className="flex-1"> 
         
         <li 
-          className="px-4 py-2 cursor-pointer" 
+          className="cursor-pointer" 
           onClick={toggleAnalisis}
         >
-          <div className="py-2 cursor-pointer relative flex items-center w-full hover:bg-gray-700">
+          <div className="flex items-center px-4 py-2 hover:bg-gray-700 cursor-pointer">
             <FontAwesomeIcon 
               icon={faChartPie}
             />
-           <span className='ml-6'></span> Análisis
+           <span className='ml-6'> Análisis</span> 
+
+             
+            
             <FontAwesomeIcon 
               icon={analisisOpen ? faAngleDown : faAngleRight} className="px-5"
             />
           </div>
           {analisisOpen && (
             <ul className="ml-4">
-              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">Todos los Análisis</li>
-              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">Favoritos</li>
+              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+                <Link to="/analisis/todos" className="text-white">
+                  Todos los Análisis
+                </Link>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+                <Link to="/analisis/favoritos" className="text-white">
+                  Favoritos
+                </Link>
+              </li>
             </ul>
           )}
         </li>
@@ -43,7 +58,11 @@ const BarraLateral = () => {
         >
           <div className="flex items-center w-full">
             <FontAwesomeIcon icon={faUsers} />
-            <span className='ml-6'>Usuarios</span>
+            <span className='ml-6'>
+              <Link to="/tablausuarios" className="text-white">
+                Usuarios
+              </Link>
+            </span>
           </div>
         </li>
 
@@ -52,7 +71,11 @@ const BarraLateral = () => {
         >
           <div className="flex items-center w-full">
             <FontAwesomeIcon icon={faDatabase} />
-            <span className='ml-6'>Relpadar</span>
+            <span className='ml-6'>
+              <Link to="/respaldo" className="text-white">
+                Respaldo
+              </Link>
+            </span>
           </div>
         </li>
 
@@ -60,8 +83,12 @@ const BarraLateral = () => {
           className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
         >
           <div className="flex items-center w-full">
-            <FontAwesomeIcon icon={faBell}  />
-            <span className='ml-6'>Notificaciones</span>
+          <FontAwesomeIcon icon={faGear} />
+            <span className='ml-6'>
+              <Link to="/notificaciones" className="text-white">
+                Ajustes
+              </Link>
+            </span>
           </div>
         </li>
 
