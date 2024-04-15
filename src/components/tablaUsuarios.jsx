@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import BarraLateral from './barraLateral';
+import Buscardor from './buscador';
 
 const TablaUsuarios = () => {
   const [usuarios, setUsers] = useState([]);
@@ -19,10 +19,20 @@ const TablaUsuarios = () => {
     }
   };
 
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className='flex h-screen'>
       <BarraLateral/>
+        
     <div className="container px-4 py-8">
+    <Buscardor/>
       <h1 className="text-2xl mb-4">Lista de Usuarios</h1>
       <table className="w-full leading-normal">
         <thead>
@@ -51,7 +61,7 @@ const TablaUsuarios = () => {
                 {user.correo}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                {user.fechaNacimiento}
+                {formatDate(user.fechaNacimiento)}
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 {user.telefono}

@@ -54,19 +54,19 @@ const Navbar = () => {
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
             <li>
-              <Link to={"/Información"} className="nav-item">Información</Link>
+              <Link to={"/"} className="nav-item">Información</Link>
             </li>
             <li>
-              <Link to={"/descarga"} className="nav-item">Descarga</Link>
+              <Link to={"/"} className="nav-item">Descarga</Link>
             </li>
             <li>
-              <Link to={"/contacto"} className="nav-item">Contacto</Link>
+              <Link to={"/"} className="nav-item">Contacto</Link>
             </li>
             <li>
-              <Link to={"/inicio-sesion"} className="nav-item">Iniciar Sesión</Link>
+              <Link to={"/login"} className="nav-item">Iniciar Sesión</Link>
             </li>
             <li>
-              <Link to={"/comenzar"} className="nav-item">Comenzar</Link>
+              <Link to={"/Compras"} className="nav-item">Comprar</Link>
             </li>
           </ul>
         </div>
