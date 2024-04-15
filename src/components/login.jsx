@@ -90,7 +90,7 @@ const Login = () => {
                     <input type='checkbox' name='remember' className='bg-gray-100 form-checkbox ' />
                     <span className='text-nowrap sm:text-sm text-customBlue'>Recordar</span>
                   </label>
-                  <Link to="/forgot-password" className='text-xs text-nowrap sm:text-sm text-customBlue hover:underline'>¿Olvidaste la contraseña?</Link>
+                  <Link to="/recuperacion" className='text-xs text-nowrap sm:text-sm text-customBlue hover:underline'>¿Olvidaste la contraseña?</Link>
                 </div>
 
                 <button type="submit" className="w-full py-3 mb-4 text-sm font-bold text-white transition-colors rounded bg-gradient-to-r from-customBlue to-customTurquoise">
