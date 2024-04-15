@@ -6,7 +6,6 @@ import Portaima from "./portaima";
 import Informacion from "./informacion";
 import Dobletex from "./dobletex";
 import Comentarios from "./comentarios";
-import Piepagina from "./piepagina";
  
 const Inicio = () =>{
     return(
@@ -19,7 +18,6 @@ const Inicio = () =>{
             <Informacion></Informacion>
             <Dobletex></Dobletex>
             <Comentarios></Comentarios>
-            <Piepagina></Piepagina>
 
         </div>
         </>
