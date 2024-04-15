@@ -6,6 +6,7 @@ import TablaUsuarios from './components/tablaUsuarios.jsx';
 import Inicio from './components/inicio.jsx'; 
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
+import Recuperacion from './components/PasswordRecovery.jsx'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Inicio/>}/>
         <Route path='/tablausuarios' element={<TablaUsuarios />} />  
         <Route path='/respaldo' element={<Respaldo/>}/>
+        <Route path='/recuperacion' element={<Recuperacion/>}/>
       </Routes>
     </BrowserRouter>
   );
