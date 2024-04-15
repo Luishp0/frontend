@@ -3,7 +3,7 @@ import React from "react";
 const Team = () => {
   return (
     <section className="pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
-      <div className="container mx-auto">
+      <div className="container mx-auto" style={{ marginTop: '-3cm' }}>
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
@@ -237,3 +237,4 @@ const TeamCard = ({ imageSrc, name, profession }) => {
     </>
   );
 };
+
