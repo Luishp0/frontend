@@ -1,14 +1,33 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { FaRegEnvelope } from 'react-icons/fa'
-import logotra from '../img/logotra.png'
+import { FaRegEnvelope } from 'react-icons/fa';
+import logotra from '../img/logotra.png';
 
 const PasswordRecovery = () => {
-  const handleSubmit = (values, actions) => {
-    // Lógica para manejar el envío del formulario
-    console.log(values);
-    actions.setSubmitting(false);
+  const handleSubmit = async (values, actions) => {
+    try {
+      const response = await fetch('http://localhost:8000/usuario/correo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo: values.email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
+        actions.setSubmitting(false);
+      } else {
+        console.error('Error al enviar el correo:', data.error);
+        actions.setSubmitting(false);
+      }
+    } catch (error) {
+      console.error('Error al enviar el correo:', error);
+      actions.setSubmitting(false);
+    }
   };
 
   const validationSchema = Yup.object().shape({
