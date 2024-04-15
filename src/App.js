@@ -8,6 +8,7 @@ import Compras from './components/compras.jsx';
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
 import Recuperacion from './components/PasswordRecovery.jsx'
+import ActualizarContrasena from './components/ResetPasswordScreen.jsx'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/tablausuarios' element={<TablaUsuarios />} />  
         <Route path='/respaldo' element={<Respaldo/>}/>
         <Route path='/recuperacion' element={<Recuperacion/>}/>
+        <Route path='/actualizar' element={<ActualizarContrasena/>}/>
       </Routes>
     </BrowserRouter>
   );
