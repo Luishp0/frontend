@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import BarraLateral from './barraLateral';
 
 const Respaldo = () => {
-  const [selectedTime, setSelectedTime] = useState('00:00');
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [selectedTime] = useState('00:00');
   const [backupHistory, setBackupHistory] = useState(() => {
     const history = localStorage.getItem('backupHistory');
     return history ? JSON.parse(history) : [];
   });
 
-  function calculateTimeLeft() {
+  const calculateTimeLeft = useCallback(() => {
     const now = new Date();
     const selectedHour = new Date(now);
     const [hours, minutes] = selectedTime.split(':');
@@ -23,7 +22,9 @@ const Respaldo = () => {
     }
 
     return diff;
-  }
+  }, [selectedTime]);
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,33 +32,53 @@ const Respaldo = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft]);
+  }, [timeLeft, calculateTimeLeft]);
 
-  const handleTimeChange = (e) => {
-    setSelectedTime(e.target.value);
-    setTimeLeft(calculateTimeLeft());
+  const handleBackup = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/respaldo');
+      const data = await response.json();
+  
+      if (response.ok) {
+        const now = new Date();
+        const formattedDate = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+        const formattedTime = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+  
+        const newBackup = {
+          date: formattedDate,
+          time: formattedTime,
+        };
+  
+        const updatedHistory = [newBackup, ...backupHistory];
+        setBackupHistory(updatedHistory);
+        localStorage.setItem('backupHistory', JSON.stringify(updatedHistory));
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.error(`Error al realizar el respaldo: ${error}`);
+    }
   };
-
-
-
-  const handleBackup = () => {
-    // Lógica para respaldar la base de datos
-    console.log('Respaldo de la base de datos realizado');
-
-    const now = new Date();
-    const formattedDate = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
-
-    const newBackup = {
-      date: formattedDate,
-      time: selectedTime,
+    
+  useEffect(() => {
+    const fetchBackupHistory = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/respaldo/historial');
+        const data = await response.json();
+        
+        if (response.ok) {
+          setBackupHistory(data.historial);
+          localStorage.setItem('backupHistory', JSON.stringify(data.historial));
+        } else {
+          throw new Error(data.message);
+        }
+      } catch (error) {
+        console.error(`Error al obtener el historial de respaldos: ${error}`);
+      }
     };
-
-    const updatedHistory = [...backupHistory, newBackup];
-    setBackupHistory(updatedHistory);
-
-    // Almacenar en localStorage
-    localStorage.setItem('backupHistory', JSON.stringify(updatedHistory));
-  };
+  
+    fetchBackupHistory();
+  }, []);
 
   return (
     <div className="flex">
@@ -67,45 +88,24 @@ const Respaldo = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white rounded-lg shadow-lg p-4">
             <h1 className="text-2xl mb-4">Respaldo de Base de Datos</h1>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="backupTime">
-                Hora de Respaldo:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="backupTime"
-                type="time"
-                value={selectedTime}
-                onChange={handleTimeChange}
-              />
-            </div>
-
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleBackup}
             >
               Realizar Respaldo
             </button>
-            <div className="mt-4">
-              <p className="text-gray-700">
-                Tiempo restante para el próximo respaldo: {Math.floor(timeLeft / (1000 * 60 * 60))} horas{' '}
-                {Math.floor((timeLeft / (1000 * 60)) % 60)} minutos{' '}
-                {Math.floor((timeLeft / 1000) % 60)} segundos
-              </p>
-            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-4">
-                  <h2 className="text-lg font-bold mb-2">Historial de Respaldos</h2>
-                  <ul className="list-disc list-inside text-sm">
-                  {backupHistory.map((backup, index) => (
-                  <li key={index} className="mb-1">
+          <div className="bg-white rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
+            <h2 className="text-lg font-bold mb-2">Historial de Respaldos</h2>
+            <ul className="list-disc list-inside text-sm">
+              {backupHistory.map((backup, index) => (
+                <li key={index} className="mb-1">
                   <span className="font-bold">{backup.date}</span> - Hora: {backup.time}
-                  </li>
-                  ))}
-                </ul>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        
       </div>
     </div>
   );
