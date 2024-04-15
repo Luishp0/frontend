@@ -2,15 +2,9 @@ import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline';
 
 export default function Example() {
   return (
-<<<<<<< HEAD
-    <div className="relative isolate overflow-hidden bg-gradient-to-tr from-gray-900/95 to-gray-900/95 py-8 sm:py-12 lg:py-16 mt-8" style={{ background: '#47466D', marginTop: '-1cm' }}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-=======
     <div className="relative py-16 mt-8 mb-0 overflow-hidden bg-gray-900 isolate sm:py-24 lg:py-32" style={{ marginTop: '3cm' }}>
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
->>>>>>> 345c705b4c505eef5dd43dd7e58d8998fb36ca92
           <div className="max-w-xl lg:max-w-lg">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Suscríbete a nuestras notificaciones.</h2>
             <p className="mt-4 text-lg leading-8 text-gray-300">
@@ -39,13 +33,8 @@ export default function Example() {
           </div>
           <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
             <div className="flex flex-col items-start">
-<<<<<<< HEAD
-              <div className="rounded-md bg-white/20 p-2 ring-1 ring-white/40">
-                <CalendarDaysIcon className="h-6 w-6 text-white" aria-hidden="true" />
-=======
               <div className="p-2 rounded-md bg-white/5 ring-1 ring-white/10">
                 <CalendarDaysIcon className="w-6 h-6 text-white" aria-hidden="true" />
->>>>>>> 345c705b4c505eef5dd43dd7e58d8998fb36ca92
               </div>
               <dt className="mt-4 font-semibold text-white">Actualizaciones semanales</dt>
               <dd className="mt-2 leading-7 text-gray-400">
@@ -53,13 +42,8 @@ export default function Example() {
               </dd>
             </div>
             <div className="flex flex-col items-start">
-<<<<<<< HEAD
-              <div className="rounded-md bg-white/20 p-2 ring-1 ring-white/40">
-                <HandRaisedIcon className="h-6 w-6 text-white" aria-hidden="true" />
-=======
               <div className="p-2 rounded-md bg-white/5 ring-1 ring-white/10">
                 <HandRaisedIcon className="w-6 h-6 text-white" aria-hidden="true" />
->>>>>>> 345c705b4c505eef5dd43dd7e58d8998fb36ca92
               </div>
               <dt className="mt-4 font-semibold text-white">No es basura</dt>
               <dd className="mt-2 leading-7 text-gray-400">
