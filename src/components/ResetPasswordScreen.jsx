@@ -1,75 +1,93 @@
-import React, { useState } from 'react';
-import { FaCheck } from 'react-icons/fa';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import logotra from '../img/logotra.png'
+import { MdLockOutline } from 'react-icons/md';
 
-const PasswordRequirement = ({ label, isValid }) => (
-  <div className="flex items-center">
-    <div
-      className={`w-6 h-6 rounded-full mr-2 flex items-center justify-center ${
-        isValid ? 'bg-blue-500' : 'bg-gray-400'
-      }`}
-    >
-      {isValid ? <FaCheck className="text-white" /> : <FaCheck className="text-gray-700" />}
-    </div>
-    <span className="text-gray-600">{label}</span>
-  </div>
-);
+const NewPasswordForm = () => {
 
-const ResetPasswordScreen = () => {
-  const [password, setPassword] = useState('');
-  const [isAtLeast6Chars, setIsAtLeast6Chars] = useState(false);
-  const [hasNumber, setHasNumber] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica para restablecer la contraseña
-    console.log('Nueva contraseña:', password);
-  };
-
-  const validatePassword = () => {
-    const hasMinLength = password.length >= 6;
-    const hasNumericChar = /\d/.test(password);
-    setIsAtLeast6Chars(hasMinLength);
-    setHasNumber(hasNumericChar);
+  const handleSubmit = (values, { setSubmitting }) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+    }, 400);
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        <h2 className="mb-6 text-2xl font-bold">Restablecer Contraseña</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-           
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                validatePassword();
-              }}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-500"
-              placeholder="Ingrese su nueva contraseña"
-            />
-
-            <label htmlFor="password" className="block mb-2 font-bold text-gray-700">
-              Su contraseña debe contener:
-            </label>
-
-             <div className="flex flex-col space-y-2">
-              <PasswordRequirement label="Al menos 6 caracteres" isValid={isAtLeast6Chars} />
-              <PasswordRequirement label="Un número" isValid={hasNumber} />
-            </div>
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+          <div className="flex justify-center mb-1">
+            <img src={logotra} alt="Logo" className="w-20 h-20" />
+            <h2 className="mt-6 text-xl font-bold text-center text-gray-600">AcuaCode</h2>
           </div>
-          <button
-            type="submit"
-            className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-700"
-          >
-            Continuar
-          </button>
-        </form>
+    
+          <h2 className="mt-1 text-xl font-bold text-center text-gray-900">Ingresar Nueva Contraseña</h2>
+
+          <p className="mt-3 text-sm text-center text-gray-600">
+          Su nueva contraseña debe ser diferente de la contraseña utilizada anteriormente.
+        </p>
+        
+        <Formik
+          initialValues={{ password: '', confirmPassword: '' }}
+          validationSchema={Yup.object({
+            password: Yup.string()
+            .required('*Campo requerido')
+            .min(8, 'La contraseña debe tener al menos 8 caracteres')
+            .matches(/^(?=.*[a-z])(?=.*[A-Z])/, "La contraseña debe contener al menos un carácter en mayúscula y minúscula")
+            .matches(/\d/, "La contraseña debe contener al menos un número")
+            .matches(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, "La contraseña debe contener al menos un carácter especial"),
+          confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+            .required('*Campo requerido'),
+          })}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting }) => (
+            <Form className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
+                
+              <div className="mb-4">
+                <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
+                  <MdLockOutline className="mr-2 text-gray-400" />
+                  <Field
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    className="flex-1 text-sm text-gray-600 bg-transparent outline-none"
+                    placeholder="Contraseña"
+                  />
+                </div>
+                  <ErrorMessage name="password" component="div" className="mt-1 text-xs text-red-500" />
+              </div>
+              
+              <div className="mb-4">
+                <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
+                  <MdLockOutline className="mr-2 text-gray-400" />
+                  <Field
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    autoComplete="current-password"
+                    className="flex-1 text-sm text-gray-600 bg-transparent outline-none"
+                    placeholder="Confirmar Contraseña"
+                  />
+                  </div>
+                  <ErrorMessage name="confirmPassword" component="div" className="mt-1 text-xs text-red-500" />
+              </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex justify-center w-full py-3 mb-4 text-sm font-bold text-white transition-colors rounded bg-gradient-to-r from-customBlue to-customTurquoise"
+                >
+                  Ingresar
+                </button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );
 };
 
-export default ResetPasswordScreen;
+export default NewPasswordForm;
