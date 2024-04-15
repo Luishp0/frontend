@@ -4,6 +4,8 @@ import Productcompra from "./productcompra"
 import Informacompras from "./informacompras"
 import Coment from "./coment"
 import Piepaginacomprar from "./piepaginacomprar"
+import { Transition } from '@headlessui/react';
+
 
 const Compras = () =>{
     return(

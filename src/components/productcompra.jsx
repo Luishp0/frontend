@@ -1,6 +1,7 @@
+import React from 'react';
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
-import { RadioGroup } from '@headlessui/react'
+
 import venta1 from "../img/venta1.jpg";
 import venta2 from "../img/venta2.jpg";
 import venta3 from "../img/venta3.jpg";
