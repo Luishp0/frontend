@@ -5,12 +5,12 @@ import logotra from '../img/logotra.png';
 import { MdLockOutline } from 'react-icons/md';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-const NewPasswordForm = () => {
+const RestablecerContrasena = () => {
   const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false); // Estado para la alerta de éxito
   const navigate = useNavigate();
   const location = useLocation();
   const correo = location.state?.correo || ''; // Obtén el correo electrónico del estado de ubicación
-
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -30,14 +30,17 @@ const NewPasswordForm = () => {
 
       if (data.success) {
         setMessage(data.message);
+        setSuccess(true); // Establecer el estado de éxito a true
         setTimeout(() => {
           navigate('/login'); // Redirige al usuario al inicio después de restablecer la contraseña
         }, 1000); // Redirige al usuario al inicio después de 2 segundos
       } else {
         setMessage(data.error);
+        setSuccess(false); // Establecer el estado de éxito a false
       }
     } catch (error) {
       setMessage('Error al restablecer la contraseña.');
+      setSuccess(false); // Establecer el estado de éxito a false
     } finally {
       setSubmitting(false);
     }
@@ -115,7 +118,11 @@ const NewPasswordForm = () => {
           )}
         </Formik>
 
-        {message && <p className="text-center text-red-500">{message}</p>}
+        {message && (
+          <p className={`text-center ${success ? 'text-green-500' : 'text-red-500'}`}>
+            {message}
+          </p>
+        )}
 
         <div className="text-center mt-4">
           <Link to="/login" className="text-customBlue hover:underline">
@@ -127,4 +134,4 @@ const NewPasswordForm = () => {
   );
 };
 
-export default NewPasswordForm;
+export default RestablecerContrasena;

@@ -9,7 +9,7 @@ import Infoma from './components/infoma.jsx';
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
 import Recuperacion from './components/enviarCorreoRecuperacion.jsx'
-import ResetPasswordScreen from './components/ResetPasswordScreen.jsx'
+import ResetPasswordScreen from './components/restablecerContrasena.jsx'
 import CodigoVerificacion from './components/verificarCodigoRecuperacion.jsx'
 
 function App() {

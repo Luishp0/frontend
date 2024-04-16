@@ -5,7 +5,7 @@ import { FaRegEnvelope } from 'react-icons/fa';
 import logotra from '../img/logotra.png';
 import { Link, useNavigate } from 'react-router-dom';
 
-const PasswordRecovery = () => {
+const EnviarCorreoRecuperacion = () => {
   const navigate = useNavigate();
   const timerRef = useRef(null);
   const [alert, setAlert] = React.useState(null);
@@ -105,4 +105,4 @@ const PasswordRecovery = () => {
   );
 };
 
-export default PasswordRecovery;
+export default EnviarCorreoRecuperacion;

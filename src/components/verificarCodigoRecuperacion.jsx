@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import logotra from '../img/logotra.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const VerificationCodeInterface = () => {
+const VerificarCodigoRecuperacion = () => {
   const [verificationCode, setVerificationCode] = useState(['', '', '', '']);
   const [timeRemaining, setTimeRemaining] = useState(120); // Cambiado a 180 segundos (3 minutos)
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -168,4 +168,4 @@ const VerificationCodeInterface = () => {
   );
 };
 
-export default VerificationCodeInterface;
+export default VerificarCodigoRecuperacion;
