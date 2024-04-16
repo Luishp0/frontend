@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleRight, faChartPie, faGear, faUsers, faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleRight, faChartPie, faUsers, faDatabase, faRightFromBracket,faFishFins } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import TargetaUsuario from './tarjetaUsuario.jsx';
 
@@ -40,12 +40,12 @@ const BarraLateral = () => {
           {analisisOpen && (
             <ul className="ml-4">
               <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                <Link to="/analisis/todos" className="text-white">
+                <Link to="/todasgraficas" className="text-white">
                   Todos los Análisis
                 </Link>
               </li>
               <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                <Link to="/analisis/favoritos" className="text-white">
+                <Link to="/graficasfavoritas" className="text-white">
                   Favoritos
                 </Link>
               </li>
@@ -65,6 +65,18 @@ const BarraLateral = () => {
             </span>
           </div>
         </li>
+        <li 
+          className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+        >
+          <div className="flex items-center w-full">
+          <FontAwesomeIcon icon={faFishFins} />
+            <span className='ml-6'>
+              <Link to="/tablapeceras" className="text-white">
+                Peceras
+              </Link>
+            </span>
+          </div>
+        </li>
 
         <li 
           className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
@@ -79,14 +91,13 @@ const BarraLateral = () => {
           </div>
         </li>
 
-        <li 
-          className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-        >
+        
+        <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
           <div className="flex items-center w-full">
-          <FontAwesomeIcon icon={faGear} />
+          <FontAwesomeIcon icon={faRightFromBracket} />          
             <span className='ml-6'>
-              <Link to="/notificaciones" className="text-white">
-                Ajustes
+              <Link to="/login" className="text-white">
+                Cerrar Sesión
               </Link>
             </span>
           </div>
