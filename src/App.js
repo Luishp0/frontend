@@ -6,6 +6,7 @@ import TablaUsuarios from './components/tablaUsuarios.jsx';
 import Inicio from './components/inicio.jsx'; 
 import Compras from './components/compras.jsx'; 
 import Infoma from './components/infoma.jsx'; 
+import Filtros from './components/filtros.jsx'; 
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
 import Recuperacion from './components/PasswordRecovery.jsx'
@@ -21,6 +22,7 @@ function App() {
         <Route path='/inicio' element={<Inicio/>}/>
         <Route path='/compras' element={<Compras/>}/>
         <Route path='/infoma' element={<Infoma/>}/>
+        <Route path='/filtros' element={<Filtros/>}/>
         <Route path='/' element={<Inicio/>}/>
         <Route path='/tablausuarios' element={<TablaUsuarios />} />  
         <Route path='/respaldo' element={<Respaldo/>}/>

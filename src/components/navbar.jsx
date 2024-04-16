@@ -54,7 +54,7 @@ const Navbar = () => {
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
             <li>
-              <Link to={"/"} className="nav-item">Información</Link>
+              <Link to={"/infoma"} className="nav-item">Información</Link>
             </li>
             <li>
               <Link to={"/"} className="nav-item">Descarga</Link>
