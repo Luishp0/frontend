@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logotra from '../img/logotra.png';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const VerificationCodeInterface = () => {
   const [verificationCode, setVerificationCode] = useState(['', '', '', '']);
-  const [timeRemaining, setTimeRemaining] = useState(180); // Cambiado a 180 segundos (3 minutos)
+  const [timeRemaining, setTimeRemaining] = useState(120); // Cambiado a 180 segundos (3 minutos)
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isIncorrect, setIsIncorrect] = useState(false); // Estado para controlar si el código es incorrecto
   const [isEmpty, setIsEmpty] = useState(false); // Estado para controlar si el código está vacío
   const inputRefs = useRef([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const correo = location.state?.correo || ''; // Obtén el correo electrónico del estado de ubicación
 
   useEffect(() => {
     let interval;
@@ -44,7 +48,7 @@ const VerificationCodeInterface = () => {
     setIsIncorrect(false);
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     // Verificar si el código está vacío
     if (verificationCode.some(digit => digit === '')) {
       setIsEmpty(true);
@@ -55,33 +59,65 @@ const VerificationCodeInterface = () => {
 
     // Aquí iría la lógica para verificar el código
     const enteredCode = verificationCode.join('');
-    const correctCode = '1234'; // Código de ejemplo, sustituir por el código real
-    if (enteredCode === correctCode) {
-      setIsSubmitted(true);
-      setTimeRemaining(0); // Detener el tiempo de caducidad después de la verificación
-    } else {
-      setIsIncorrect(true); // Establecer estado de código incorrecto
-      setVerificationCode(['', '', '', '']); // Limpiar el código ingresado
-      inputRefs.current[0].focus(); // Poner el foco en el primer input
+
+    try {
+      const response = await fetch('http://localhost:8000/usuario/verificarcodigo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo, codigoVerificacion: enteredCode }), // Utiliza el correo electrónico obtenido del estado de ubicación
+      });
+
+      const data = await response.json();
+
+      if (data.message === 'Código de verificación válido.') {
+        setIsSubmitted(true);
+        setTimeRemaining(0); // Detener el tiempo de caducidad después de la verificación
+        navigate(`/reset-contrasena`, { state: { correo } }); // Redirige al usuario a la actualización de contraseña
+      } else {
+        setIsIncorrect(true); // Establecer estado de código incorrecto
+        setVerificationCode(['', '', '', '']); // Limpiar el código ingresado
+        inputRefs.current[0].focus(); // Poner el foco en el primer input
+      }
+    } catch (error) {
+      console.error('Error al verificar el código:', error);
     }
   };
 
-  const handleResendCode = () => {
-    // Aquí iría la lógica para volver a enviar el código
-    console.log('Enviando código de verificación de nuevo');
-    setTimeRemaining(180); // Reiniciar el tiempo de caducidad a 3 minutos
-    setIsSubmitted(false);
-    setVerificationCode(['', '', '', '']);
-    setIsIncorrect(false); // Reiniciar el estado de código incorrecto
-    inputRefs.current[0].focus(); // Poner el foco en el primer input
+  const handleResendCode = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/usuario/reenviarcodigo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ correo }), // Utiliza el correo electrónico obtenido del estado de ubicación
+      });
+  
+      const data = await response.json();
+  
+      if (data.message === 'Correo de verificación reenviado con éxito') {
+        setTimeRemaining(90); // Reiniciar el tiempo de caducidad a 3 minutos
+        setIsSubmitted(false);
+        setVerificationCode(['', '', '', '']);
+        setIsIncorrect(false); // Reiniciar el estado de código incorrecto
+        inputRefs.current[0].focus(); // Poner el foco en el primer input
+      } else {
+        console.error('Error al volver a enviar el código:', data.error);
+      }
+    } catch (error) {
+      console.error('Error al volver a enviar el código:', error);
+    }
   };
+  
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
         <div className="flex justify-center mb-1 space-x-1">
-            <img src={logotra} alt="Logo" className="w-20 h-20" />
-            <h2 className="mt-6 text-xl font-bold text-center text-gray-600">AcuaCode</h2>
+          <img src={logotra} alt="Logo" className="w-20 h-20" />
+          <h2 className="mt-6 text-xl font-bold text-center text-gray-600">AcuaCode</h2>
         </div>
         <h2 className="mb-1 text-xl font-bold text-center text-gray-900">Código de verificación</h2>
         <p className="mt-2 mb-4 text-sm text-center text-gray-600">Le hemos enviado un código para verificar su dirección de correo electrónico.</p>

@@ -8,8 +8,9 @@ import Compras from './components/compras.jsx';
 import Infoma from './components/infoma.jsx'; 
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
-import Recuperacion from './components/PasswordRecovery.jsx'
-import ActualizarContrasena from './components/ResetPasswordScreen.jsx'
+import Recuperacion from './components/enviarCorreoRecuperacion.jsx'
+import ResetPasswordScreen from './components/ResetPasswordScreen.jsx'
+import CodigoVerificacion from './components/verificarCodigoRecuperacion.jsx'
 
 function App() {
   return (
@@ -24,8 +25,12 @@ function App() {
         <Route path='/' element={<Inicio/>}/>
         <Route path='/tablausuarios' element={<TablaUsuarios />} />  
         <Route path='/respaldo' element={<Respaldo/>}/>
+        
         <Route path='/recuperacion' element={<Recuperacion/>}/>
-        <Route path='/actualizar' element={<ActualizarContrasena/>}/>
+        <Route path='/codigo' element={<CodigoVerificacion/>}/>
+        <Route path='/reset-contrasena' element={<ResetPasswordScreen/>}/>
+        
+
       </Routes>
     </BrowserRouter>
   );
