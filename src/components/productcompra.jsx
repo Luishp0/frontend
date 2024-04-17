@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 
 import venta1 from "../img/venta1.jpg";
@@ -51,13 +50,12 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const [selectedColor, setSelectedColor] = useState(null)
 
   return (
     <div className="bg-white">
        <div className="pt-6" style={{ marginTop: '1cm' }}>
         <nav aria-label="Breadcrumb">
-          <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <ol  className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
@@ -176,7 +174,7 @@ export default function Example() {
               <h3 className="text-sm font-medium text-gray-900">Características </h3>
 
               <div className="mt-4">
-                <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                <ul className="list-disc space-y-2 pl-4 text-sm">
                   {product.highlights.map((highlight) => (
                     <li key={highlight} className="text-gray-400">
                       <span className="text-gray-600">{highlight}</span>
