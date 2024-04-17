@@ -36,7 +36,7 @@ const Login = () => {
         if (data.result.roles_idroles === 1) {
           navigate('/inicioadministrador');
         } else if (data.result.roles_idroles === 2) {
-          navigate('/iniciousuario');
+          navigate('/inicio');
         }
       } else {
         setError(data.message);
