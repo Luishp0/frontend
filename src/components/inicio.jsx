@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "./navbar";
 import Portada from "./portada";
 import Rectangulos from "./rectangulos";
@@ -6,24 +6,24 @@ import Portaima from "./portaima";
 import Informacion from "./informacion";
 import Dobletex from "./dobletex";
 import Comentarios from "./comentarios";
- 
-const Inicio = () =>{
-    return(
-        <> 
-        <div>
-            <Navbar></Navbar>
-            <Portada></Portada>
-            <Rectangulos></Rectangulos>
-            <Portaima></Portaima>
-            <Informacion></Informacion>
-            <Dobletex></Dobletex>
-            <Comentarios></Comentarios>
+import { AuthContext } from './AuthContext';
 
-        </div>
-        </>
-    )
+const Inicio = () => {
+  const { isAuthenticated, userName } = useContext(AuthContext);
+
+  return (
+    <> 
+      <div>
+        <Navbar isAuthenticated={isAuthenticated} userName={userName} />
+        <Portada />
+        <Rectangulos />
+        <Portaima />
+        <Informacion />
+        <Dobletex />
+        <Comentarios />
+      </div>
+    </>
+  );
 }
 
-
-export default Inicio
-
+export default Inicio;
