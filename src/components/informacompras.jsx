@@ -5,10 +5,10 @@ import compra3 from "../img/compra3.jpg";
 import compra4 from "../img/compra4.jpg";
 
 const features = [
-  { name: 'Sistema de Filtración Inteligente', description: ' La pecera puede incorporar un sistema de filtración inteligente que monitorea automáticamente la calidad del agua y ajusta el nivel de filtración según sea necesario..' },
+  { name: 'Sistema de Filtración Inteligente', description: ' La pecera puede incorporar un sistema de filtración inteligente que monitorea automáticamente la calidad del agua y ajusta el nivel de filtración según sea necesario.' },
   { name: 'Conectividad Wi-Fi', description: ' La pecera puede estar equipada con conectividad Wi-Fi que permite al usuario monitorear y controlar la pecera desde una aplicación móvil o un sitio web.' },
   { name: 'Alimentación Automatizada', description: 'Algunas peceras inteligentes pueden incluir sistemas de alimentación automatizados que dispensan comida en horarios programados.' },
-  { name: 'Cámaras Integradas', description: 'Para monitorear a los habitantes de la pecera, especialmente útil en acuarios de peces tropicales o de agua salada' },
+  { name: 'Cámaras Integradas', description: 'Para monitorear a los habitantes de la pecera, especialmente útil en acuarios de peces tropicales o de agua salada.' },
   { name: 'Sistemas de Notificación y Alerta', description: 'La pecera puede enviar notificaciones automáticas al usuario en caso de condiciones adversas como fluctuaciones bruscas de temperatura, niveles de agua bajos o problemas con el sistema de filtración.' },
   { name: 'Diseño Modular y Personalizable', description: 'Muchas peceras inteligentes están diseñadas de manera modular, lo que permite a los usuarios personalizar y expandir su sistema según sus necesidades.' },
 ];
