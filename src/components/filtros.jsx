@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./navbar"
 import Navbarfiltros from "./navbarfiltro"
 import Filtroinfo from "./filtrosinfo"
-import Infofiltros from "./infofiltros"
+import Infopeceraa from "./infopeceraa"
 
 const Filtros = () => {
   return (
@@ -11,7 +11,7 @@ const Filtros = () => {
         <Navbar></Navbar>
       <Navbarfiltros></Navbarfiltros>
       <Filtroinfo></Filtroinfo>
-      <Infofiltros></Infofiltros>
+      <Infopeceraa/>
       </div>
     </>
   );

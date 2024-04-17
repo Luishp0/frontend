@@ -2,7 +2,7 @@ import React from "react";
 import Navbarsensor from "./navbarsensor"
 import Portadafiltro from "./portadafiltro"
 import Navbar from "./navbar"
-import Infosensores from "./infosensores"
+import Infopeceraa from "./infopeceraa"
 
 const Sensores = () => {
   return (
@@ -11,7 +11,7 @@ const Sensores = () => {
         <Navbar></Navbar>
       <Navbarsensor></Navbarsensor>
       <Portadafiltro></Portadafiltro>
-      <Infosensores></Infosensores>
+      <Infopeceraa/>
       </div>
     </>
   );
