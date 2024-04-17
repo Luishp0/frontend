@@ -4,7 +4,6 @@ import Productcompra from "./productcompra"
 import Informacompras from "./informacompras"
 import Coment from "./coment"
 
-
 const Compras = () =>{
     return(
         <> 
