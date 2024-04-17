@@ -26,7 +26,7 @@ const WhatWeOffer = () => {
   ];
 
   return (
-    <div className="py-12" style={{ marginTop: '2cm' }}>
+    <div className="py-12 ml-80" style={{ marginTop: '2cm' }}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
