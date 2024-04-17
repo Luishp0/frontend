@@ -9,7 +9,7 @@ const posts = [
     title: 'Comentario',
     href: '#',
     description:
-      'Gracias a AcuaCode podre tener vigilado mis peceras siempre, es un gran productos para mantener a tus peces con vida.',
+      'Gracias a AcuaCode podre tener vigilado mis peceras siempre, es un gran producto para mantener a tus peces con vida.',
     date: 'Dom 14, 2024',
     datetime: '2024-04-14',
     category: { title: 'Comentario', href: '#' },
@@ -27,7 +27,7 @@ const posts = [
     title: 'Comentario',
     href: '#',
     description:
-      'Este producto me sirvio para tener todo en orden de mi pecera, tambien me ayudo a mantener mi pecera mas limpia y ya no pensar tanto en si les heche comida a mis peces.',
+      'Este producto me sirvió para tener todo en orden de mi pecera, también me ayudo a mantener mi pecera más limpia y ya no pensar tanto en si les heche comida a mis peces.',
     date: 'Mar 15, 2024',
     datetime: '2024-04-14',
     category: { title: 'Comentario', href: '#' },
@@ -45,7 +45,7 @@ const posts = [
     title: 'Comentario',
     href: '#',
     description:
-      'Me ayudo a tener una mejor experiencia con mis peces y una pecera mas limpia y tener mejor control sobre la pecera.',
+      'Me ayudo a tener una mejor experiencia con mis peces y una pecera más limpia y tener mejor control sobre la pecera.',
     date: 'Mar 16, 2024',
     datetime: '2024-04-14',
     category: { title: 'Comentario', href: '#' },
