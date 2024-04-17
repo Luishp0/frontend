@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
 
 const WhatWeOffer = () => {
   const services = [
-    
+  
     {
       icon: <FaFish className="text-blue-500 text-6xl" />,
       title: 'PECES',
@@ -36,6 +36,7 @@ const WhatWeOffer = () => {
               title={service.title}
               link={service.link} // Pasar la ruta al componente de botón de servicio
               isFish={service.title === 'PECES'} // Agregar prop para identificar si es el botón de PECES
+              isFilters={service.title === 'FILTROS'} // Agregar prop para identificar si es el botón de FILTROS
             />
           ))}
         </div>
@@ -46,11 +47,18 @@ const WhatWeOffer = () => {
 
 export default WhatWeOffer;
 
-const ServiceButton = ({ icon, title, link, isFish }) => {
+const ServiceButton = ({ icon, title, link, isFish, isFilters }) => {
+  let bgColorClass = 'bg-white'; // Por defecto, el fondo es blanco
+  if (isFish) {
+    bgColorClass = 'bg-white'; // Cambia el fondo a blanco si es el botón de PECES
+  } else if (isFilters) {
+    bgColorClass = 'bg-blue-200'; // Cambia el fondo a azul celeste si es el botón de FILTROS
+  }
+
   return (
     <Link
       to={link}
-      className={`p-6 rounded-md shadow-md focus:outline-none ${isFish ? 'bg-blue-200' : 'bg-white'}`}
+      className={`p-6 rounded-md shadow-md focus:outline-none ${bgColorClass}`}
     >
       <div className="flex items-center mb-4">
         {icon}

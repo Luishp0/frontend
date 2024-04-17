@@ -152,7 +152,6 @@ export default function Example() {
                 </a>
               </div>
             </div>
-
             <form className="mt-10">
               <button
                 type="submit"

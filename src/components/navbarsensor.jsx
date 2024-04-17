@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
 
 const WhatWeOffer = () => {
   const services = [
-    
+ 
     {
       icon: <FaFish className="text-blue-500 text-6xl" />,
       title: 'PECES',
@@ -28,7 +28,7 @@ const WhatWeOffer = () => {
   return (
     <div className="py-12" style={{ marginTop: '2cm' }}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceButton
               key={index}
@@ -36,6 +36,8 @@ const WhatWeOffer = () => {
               title={service.title}
               link={service.link} // Pasar la ruta al componente de botón de servicio
               isFish={service.title === 'PECES'} // Agregar prop para identificar si es el botón de PECES
+              isFilters={service.title === 'FILTROS'} // Agregar prop para identificar si es el botón de FILTROS
+              isSensors={service.title === 'SENSORES'} // Agregar prop para identificar si es el botón de SENSORES
             />
           ))}
         </div>
@@ -46,11 +48,18 @@ const WhatWeOffer = () => {
 
 export default WhatWeOffer;
 
-const ServiceButton = ({ icon, title, link, isFish }) => {
+const ServiceButton = ({ icon, title, link, isFish, isFilters, isSensors }) => {
+  let bgColorClass = 'bg-white'; // Por defecto, el fondo es blanco
+  if (isFilters) {
+    bgColorClass = 'bg-white'; // Cambia el fondo a blanco si es el botón de FILTROS
+  } else if (isSensors) {
+    bgColorClass = 'bg-blue-200'; // Cambia el fondo a azul celeste si es el botón de SENSORES
+  }
+
   return (
     <Link
       to={link}
-      className={`p-6 rounded-md shadow-md focus:outline-none ${isFish ? 'bg-blue-200' : 'bg-white'}`}
+      className={`p-6 rounded-md shadow-md focus:outline-none ${bgColorClass}`}
     >
       <div className="flex items-center mb-4">
         {icon}

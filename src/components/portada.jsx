@@ -1,34 +1,29 @@
 import React from 'react';
-import foto1 from "../img/foto1.png";
-import backgroundImage from "../img/fondoportada.png"; 
+import nuevofondo from "../img/nuevoimg2.jpg";
+import fondo21 from "../img/fondo21.jpg";
 
 const Portada = () => {
   const pageStyle = {
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${fondo21})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
     minHeight: '100vh',
   };
 
   return (
-    <div className="pagina-container bg-cover bg-top" style={pageStyle}>
+    <div className="pagina-container" style={pageStyle}>
       <div className="portada-container flex flex-col lg:flex-row justify-center items-center min-h-screen">
-        <div className="text-container center-content text-center px-4 lg:w-1/2 lg:px-8 lg:text-center lg:ml-64"> {/* Alinea el texto al centro en dispositivos grandes */}
-          <h2 className="titulo text-5xl font-bold mb-8">AcuaCode</h2>
-          <p className="texto text-lg">AcuaCode es un software que maneja en su totalidad la pecera y ver el estado de salud de los peces</p>
-          <button className="boton leer-mas bg-blue-500 text-white py-3 px-8 rounded-lg mt-8">Leer más</button>
+        <div className="text-container center-content text-center px-4 lg:w-1/2 lg:px-8 lg:mr-8 lg:mt-0 mt-0"> {/* Ajuste del margen superior a mt-0 */}
+          <h2 className="titulo text-5xl lg:text-6xl font-bold mb-6 lg:mb-10 text-black">AcuaCode</h2>
+          <p className="texto text-xl lg:text-2xl text-gray-900 mb-8 lg:mb-10 text-justify">
+            AcuaCode es un software completo para gestionar tu acuario y monitorear la salud de tus peces en tiempo real.
+          </p>
+          <button className="boton leer-mas bg-cyan-400 text-white py-4 px-10 rounded-xl hover:bg-cyan-500 transition duration-300 text-lg">
+            <a href="#">Leer más</a>
+          </button>
         </div>
-        <div className="circles-container relative lg:w-1/2 lg:flex lg:justify-start lg:ml-32"> {/* Alinea la imagen a la izquierda en dispositivos grandes */}
-          <div className="circle-wrapper relative">
-            <div className="outer-circle w-64 h-64 lg:w-80 lg:h-80 bg-blue-500 flex justify-center items-center rounded-full relative shadow-2xl border-8 border-blue-200">
-              <div className="circle-gray w-56 h-56 lg:w-72 lg:h-72 bg-white rounded-full flex justify-center items-center">
-                <div className="inner-circle w-48 h-48 lg:w-64 lg:h-64 overflow-hidden rounded-full flex justify-center items-center">
-                  <img src={foto1} alt="Imagen" className="circle-image object-cover w-full h-full rounded-full" />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="image-container lg:w-1/2 lg:mr-0 lg:ml-auto lg:mt-0 mt-0 flex justify-center"> {/* Ajuste del margen superior a mt-0 */}
+          <img src={nuevofondo} alt="Imagen" className="w-full lg:max-w-full lg:h-auto" />
         </div>
       </div>
     </div>
