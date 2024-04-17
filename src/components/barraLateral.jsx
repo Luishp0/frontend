@@ -12,7 +12,7 @@ const BarraLateral = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-64  flex flex-col justify-between"> 
+    <div className="flex flex-col justify-between w-64 text-black bg-white border"> 
       <div className="p-4">
         <Link to="/inicioadministrador">
           <h1 className="text-2xl font-bold">AcuaCode</h1>
@@ -25,11 +25,11 @@ const BarraLateral = () => {
           className="cursor-pointer" 
           onClick={toggleAnalisis}
         >
-          <div className="flex items-center px-4 py-2 hover:bg-gray-700 cursor-pointer">
+          <div className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white">
             <FontAwesomeIcon 
               icon={faChartPie}
             />
-           <span className='ml-6'> Análisis</span> 
+           <span className='ml-6 '> Análisis</span> 
 
              
             
@@ -39,13 +39,13 @@ const BarraLateral = () => {
           </div>
           {analisisOpen && (
             <ul className="ml-4">
-              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                <Link to="/todasgraficas" className="text-white">
+              <li className="px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white">
+                <Link to="/todasgraficas" >
                   Todos los Análisis
                 </Link>
               </li>
-              <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                <Link to="/graficasfavoritas" className="text-white">
+              <li className="px-4 py-2 cursor-pointer hover:bg-gray-700">
+                <Link to="/graficasfavoritas" >
                   Favoritos
                 </Link>
               </li>
@@ -54,24 +54,24 @@ const BarraLateral = () => {
         </li>
 
         <li 
-          className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+          className="px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white"
         >
           <div className="flex items-center w-full">
             <FontAwesomeIcon icon={faUsers} />
             <span className='ml-6'>
-              <Link to="/tablausuarios" className="text-white">
+              <Link to="/tablausuarios" >
                 Usuarios
               </Link>
             </span>
           </div>
         </li>
         <li 
-          className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+          className="px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white"
         >
           <div className="flex items-center w-full">
           <FontAwesomeIcon icon={faFishFins} />
             <span className='ml-6'>
-              <Link to="/tablapeceras" className="text-white">
+              <Link to="/tablapeceras">
                 Peceras
               </Link>
             </span>
@@ -79,12 +79,12 @@ const BarraLateral = () => {
         </li>
 
         <li 
-          className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+          className="px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white"
         >
           <div className="flex items-center w-full">
             <FontAwesomeIcon icon={faDatabase} />
             <span className='ml-6'>
-              <Link to="/respaldo" className="text-white">
+              <Link to="/respaldo" >
                 Respaldo
               </Link>
             </span>
@@ -92,11 +92,11 @@ const BarraLateral = () => {
         </li>
 
         
-        <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
+        <li className="px-4 py-2 cursor-pointer hover:bg-gray-700 hover:text-white">
           <div className="flex items-center w-full">
           <FontAwesomeIcon icon={faRightFromBracket} />          
             <span className='ml-6'>
-              <Link to="/login" className="text-white">
+              <Link to="/login" >
                 Cerrar Sesión
               </Link>
             </span>
