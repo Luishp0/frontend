@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import BarraLateral from './barraLateral';
+import Buscador from "./buscador";
 
 const Respaldo = () => {
   const [selectedTime, setSelectedTime] = useState('00:00');
@@ -93,7 +94,8 @@ const Respaldo = () => {
     <div className="flex">
       <BarraLateral />
         
-      <div className="container mx-auto p-4 flex justify-center items-center h-screen">
+      <div className="container flex items-center justify-center h-screen p-4 mx-auto bg-gray-100">
+      
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white rounded-lg shadow-lg p-4">
             <h1 className="text-2xl mb-4">Respaldo de Base de Datos</h1>
@@ -117,15 +119,15 @@ const Respaldo = () => {
               </button>
             </div>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
               onClick={handleBackup}
             >
               Realizar Respaldo
             </button>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
-            <h2 className="text-lg font-bold mb-2">Historial de Respaldos</h2>
-            <ul className="list-disc list-inside text-sm">
+          <div className="p-4 overflow-y-auto bg-white rounded-lg shadow-lg" style={{ maxHeight: '400px' }}>
+            <h2 className="mb-2 text-lg font-bold">Historial de Respaldos</h2>
+            <ul className="text-sm list-disc list-inside">
               {backupHistory.map((backup, index) => (
                 <li key={index} className="mb-1">
                   <span className="font-bold">{backup.date}</span> - Hora: {backup.time}
