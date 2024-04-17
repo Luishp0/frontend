@@ -13,7 +13,7 @@ const Portada = () => {
   return (
     <div className="pagina-container" style={pageStyle}>
       <div className="portada-container flex flex-col lg:flex-row justify-center items-center min-h-screen">
-        <div className="text-container center-content text-center lg:text-left px-4 lg:w-1/2 lg:px-8 lg:text-center lg:mr-8 lg:mt-0 mt-0"> {/* Ajuste del margen superior a mt-0 */}
+        <div className="text-container center-content text-center px-4 lg:w-1/2 lg:px-8 lg:mr-8 lg:mt-0 mt-0"> {/* Ajuste del margen superior a mt-0 */}
           <h2 className="titulo text-5xl lg:text-6xl font-bold mb-6 lg:mb-10 text-black">AcuaCode</h2>
           <p className="texto text-xl lg:text-2xl text-gray-900 mb-8 lg:mb-10 text-justify">
             AcuaCode es un software completo para gestionar tu acuario y monitorear la salud de tus peces en tiempo real.

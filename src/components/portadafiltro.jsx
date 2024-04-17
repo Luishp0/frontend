@@ -1,10 +1,10 @@
 import React from "react";
-import pez1 from "../img/pez1.jpg";
-import pez2 from "../img/pez2.jpg";
-import pez3 from "../img/pez3.jpg";
-import pez4 from "../img/pez4.jpg";
-import pez5 from "../img/pez5.jpg";
-import pez6 from "../img/pez6.jpg";
+import sensor1 from "../img/sensor1.jpg";
+import sensor2 from "../img/sensor2.jpg";
+import sensor3 from "../img/sensor3.jpg";
+import sensor4 from "../img/sensor4.jpg";
+import sensor5 from "../img/sensor5.jpg";
+import sensor6 from "../img/sensor6.jpg";
 
 const Finosecond = () => {
   return (
@@ -15,7 +15,7 @@ const Finosecond = () => {
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez1}
+              src={sensor1}
               alt="Modern building architecture"
             />
           </div>
@@ -27,13 +27,13 @@ const Finosecond = () => {
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-             Betta Splendens (Pez Betta)
+             Sensor de Temperatura Digital
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Pequeño.
-Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
-Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
-Alimentación: Carnívoro, se alimenta de alimentos vivos y secos, como pellets de calidad para bettas.
+            Mide la temperatura del agua de forma precisa.
+Compacto y fácil de colocar en la pecera.
+Algunos modelos pueden mostrar la temperatura en grados Celsius o Fahrenheit.
+Puede estar conectado a un sistema de monitoreo o alarma para alertar sobre cambios de temperatura significativos.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ Alimentación: Carnívoro, se alimenta de alimentos vivos y secos, como pellets 
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez2}
+              src={sensor2}
               alt="Modern building architecture"
             />
           </div>
@@ -57,13 +57,13 @@ Alimentación: Carnívoro, se alimenta de alimentos vivos y secos, como pellets 
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-              Guppy
+              Sensor de pH Compacto
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Pequeño.
-Temperamento: Pacífico, generalmente compatible con otros peces comunitarios.
-Requisitos del agua: Prefieren agua ligeramente alcalina y bien oxigenada, con una temperatura de alrededor de 24-28°C.
-Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y alimentos congelados.
+            Mide el nivel de pH del agua, indicando su acidez o alcalinidad.
+Diseño pequeño y discreto para colocarse en la pecera.
+Algunos sensores pueden ser sumergibles y resistentes al agua.
+Ayuda a mantener un ambiente acuático estable y saludable para los peces y las plantas.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez3}
+              src={sensor3}
               alt="Modern building architecture"
             />
           </div>
@@ -87,13 +87,12 @@ Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-              Tetra Neón
+              Sensor de Conductividad Eléctrica (EC)
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Pequeño.
-Temperamento: Pacífico, se lleva bien con otros peces comunitarios.
-Requisitos del agua: Prefieren agua suave y ligeramente ácida, con una temperatura de alrededor de 23-26°C.
-Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y alimentos congelados.
+            Mide la conductividad eléctrica del agua, que está relacionada con la cantidad de sales disueltas.
+Compacto y fácil de integrar en sistemas de monitoreo.
+Útil para controlar la salinidad del agua en acuarios marinos o de agua dulce.
             </p>
           </div>
         </div>
@@ -105,7 +104,7 @@ Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez4}
+              src={sensor4}
               alt="Modern building architecture"
             />
           </div>
@@ -117,13 +116,12 @@ Alimentación: Omnívoro, se alimenta de alimentos vivos y secos, como escamas y
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-              Pez Ángel
+              Sensor de Oxígeno Disuelto (DO)
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Mediano.
-Temperamento: Generalmente pacífico, pero puede volverse agresivo con otros peces de su misma especie.
-Requisitos del agua: Prefieren agua ligeramente ácida y bien oxigenada, con una temperatura de alrededor de 24-30°C.
-Alimentación: Omnivoros, se alimentan de una variedad de alimentos vivos, secos y congelados.
+            Mide la cantidad de oxígeno disuelto en el agua, crucial para la salud de los peces y otros organismos acuáticos.
+Diseño pequeño y sumergible para su uso en acuarios.
+Ayuda a prevenir problemas de falta de oxígeno y a mantener un ambiente acuático bien oxigenado.
             </p>
           </div>
         </div>
@@ -135,7 +133,7 @@ Alimentación: Omnivoros, se alimentan de una variedad de alimentos vivos, secos
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez5}
+              src={sensor5}
               alt="Modern building architecture"
             />
           </div>
@@ -147,13 +145,12 @@ Alimentación: Omnivoros, se alimentan de una variedad de alimentos vivos, secos
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-              Pez Disco
+              Sensor de Nitratos y Nitritos
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Mediano.
-Temperamento: Pacífico, se lleva bien con otros peces tranquilos y pacíficos.
-Requisitos del agua: Prefieren agua blanda y ligeramente ácida, con una temperatura de alrededor de 26-32°C.
-Alimentación: Omnívoro, se alimenta de una variedad de alimentos vivos, congelados y secos.
+            Mide los niveles de nitratos y nitritos en el agua, indicadores de la calidad del agua y la eficacia del ciclo del nitrógeno.
+Compacto y fácil de colocar en la pecera.
+Ayuda a prevenir problemas de toxicidad por acumulación de desechos orgánicos y exceso de alimentos.
             </p>
           </div>
         </div>
@@ -165,7 +162,7 @@ Alimentación: Omnívoro, se alimenta de una variedad de alimentos vivos, congel
           <div className="md:shrink-0">
             <img
               className="h-48 w-full object-cover md:h-full md:w-48"
-              src={pez6}
+              src={sensor6}
               alt="Modern building architecture"
             />
           </div>
@@ -177,13 +174,12 @@ Alimentación: Omnívoro, se alimenta de una variedad de alimentos vivos, congel
               href="#"
               className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
             >
-              Pez Globo Enano
+             Sensor de Luz
             </a>
             <p className="mt-2 text-slate-500">
-            Tamaño: Pequeño.
-Temperamento: Pacífico, pero puede ser territorial.
-Requisitos del agua: Prefieren agua ligeramente alcalina y bien oxigenada, con una temperatura de alrededor de 24-28°C.
-Alimentación: Carnívoro, se alimenta de alimentos vivos y congelados, como camarones, mejillones y gusanos.
+            Mide la intensidad de la luz en la pecera, importante para el crecimiento de las plantas y el comportamiento de los peces.
+Diseño pequeño y discreto.
+Puede estar conectado a sistemas de iluminación automatizados para regular la luz según las necesidades de los organismos acuáticos.
             </p>
           </div>
         </div>

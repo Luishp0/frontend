@@ -53,11 +53,20 @@ const Navbar = () => {
             </svg>
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
-            <li>
-              <Link to={"/Inicio"} className="nav-item">Inicio</Link>
+          <li>
+              <Link to={"/inicio"} className="nav-item">Inicio</Link>
             </li>
             <li>
-              <Link to={"/comenzar"} className="nav-item">Comenzar</Link>
+              <Link to={"/infoma"} className="nav-item">Información</Link>
+            </li>
+            <li>
+              <Link to={"/Login"} className="nav-item">Iniciar Sesión</Link>
+            </li>
+            <li>
+              <Link to={"/registro"} className="nav-item">Registrarse</Link>
+            </li>
+            <li>
+              <Link to={"/Compras"} className="nav-item">Comprar</Link>
             </li>
           </ul>
         </div>
