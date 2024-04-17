@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../img/logotra.png";
 
-const Navbar = ({ isAuthenticated, userName }) => {
+const Navbar = () => {
   const [navbarBackground, setNavbarBackground] = useState('transparent');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,12 +20,6 @@ const Navbar = ({ isAuthenticated, userName }) => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleLogout = () => {
-    // Eliminar el usuario del localStorage y actualizar el estado
-    localStorage.removeItem('user');
-    window.location.reload(); // Recargar la página para reflejar el cambio en el Navbar
-  };
 
   return (
     <nav className={`navbar ${navbarBackground} fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out flex items-center justify-center`}>
@@ -59,31 +53,18 @@ const Navbar = ({ isAuthenticated, userName }) => {
             </svg>
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
-            <li>
+          <li>
               <Link to={"/inicio"} className="nav-item">Inicio</Link>
             </li>
             <li>
               <Link to={"/infoma"} className="nav-item">Información</Link>
             </li>
-            {isAuthenticated ? (
-              <>
-                <li>
-                  <span className="nav-item">{userName}</span>
-                </li>
-                <li>
-                  <button onClick={handleLogout} className="nav-item">Cerrar Sesión</button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to={"/Login"} className="nav-item">Iniciar Sesión</Link>
-                </li>
-                <li>
-                  <Link to={"/registro"} className="nav-item">Registrarse</Link>
-                </li>
-              </>
-            )}
+            <li>
+              <Link to={"/Login"} className="nav-item">Iniciar Sesión</Link>
+            </li>
+            <li>
+              <Link to={"/registro"} className="nav-item">Registrarse</Link>
+            </li>
             <li>
               <Link to={"/Compras"} className="nav-item">Comprar</Link>
             </li>

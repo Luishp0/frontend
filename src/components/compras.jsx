@@ -1,5 +1,5 @@
 import React from "react";
-import Navbarcompras from "./navbarcompras";
+import Navbar from "./navbar";
 import Productcompra from "./productcompra"
 import Informacompras from "./informacompras"
 import Coment from "./coment"
@@ -8,7 +8,7 @@ const Compras = () =>{
     return(
         <> 
         <div>
-            <Navbarcompras></Navbarcompras>
+            <Navbar></Navbar>
             <Productcompra></Productcompra>
             <Informacompras></Informacompras>
             <Coment></Coment>
