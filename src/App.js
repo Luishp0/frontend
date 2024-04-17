@@ -16,6 +16,7 @@ import ResetPasswordScreen from './components/restablecerContrasena.jsx'
 import CodigoVerificacion from './components/verificarCodigoRecuperacion.jsx'
 import FavoritasGraficas from './components/favoritasGraficas.jsx'
 import TablaPeceras from './components/tablaPeceras.jsx';
+import AvisoPrivacidad from './components/avisoPrivacidad.jsx'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/recuperacion' element={<Recuperacion/>}/>
         <Route path='/codigo' element={<CodigoVerificacion/>}/>
         <Route path='/reset-contrasena' element={<ResetPasswordScreen/>}/>
+        <Route path='/avisoPrivacidad' element={<AvisoPrivacidad/>}/>
         
 
       </Routes>
