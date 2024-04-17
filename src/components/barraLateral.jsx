@@ -29,9 +29,10 @@ const BarraLateral = () => {
             <FontAwesomeIcon 
               icon={faChartPie}
             />
-           <span className='ml-6'> Análisis</span> 
+            <Link to="/inicioadministrador">
+            <span className='ml-6'> Análisis</span> 
+            </Link>          
 
-             
             
             <FontAwesomeIcon 
               icon={analisisOpen ? faAngleDown : faAngleRight} className="px-5"
