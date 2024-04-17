@@ -8,7 +8,7 @@ const Sensores = () => {
   return (
     <>
       <div>
-        <Navbar></Navbar>
+      <Navbar></Navbar>
       <Navbarsensor></Navbarsensor>
       <Portadafiltro></Portadafiltro>
       <Infopeceraa/>

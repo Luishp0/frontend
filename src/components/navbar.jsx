@@ -60,32 +60,32 @@ const Navbar = ({ isAuthenticated, userName }) => {
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
             <li>
-              <Link to={"/inicio"} className="nav-item">Inicio</Link>
+              <Link to={"/inicio"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Inicio</Link>
             </li>
             <li>
-              <Link to={"/infoma"} className="nav-item">Información</Link>
+              <Link to={"/infoma"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Información</Link>
             </li>
             {isAuthenticated ? (
               <>
                 <li>
-                  <span className="nav-item">{userName}</span>
+                  <span className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{userName}</span>
                 </li>
                 <li>
-                  <button onClick={handleLogout} className="nav-item">Cerrar Sesión</button>
+                  <button onClick={handleLogout} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Cerrar Sesión</button>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to={"/Login"} className="nav-item">Iniciar Sesión</Link>
+                  <Link to={"/Login"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</Link>
                 </li>
                 <li>
-                  <Link to={"/registro"} className="nav-item">Registrarse</Link>
+                  <Link to={"/registro"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Registrarse</Link>
                 </li>
               </>
             )}
             <li>
-              <Link to={"/Compras"} className="nav-item">Comprar</Link>
+              <Link to={"/Compras"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Comprar</Link>
             </li>
           </ul>
         </div>

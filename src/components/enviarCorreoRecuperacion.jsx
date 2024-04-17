@@ -97,12 +97,6 @@ const EnviarCorreoRecuperacion = () => {
             </Form>
           )}
         </Formik>
-
-        <div className="text-center mt-4">
-          <Link to="/login" className="text-customBlue hover:underline">
-            Volver al inicio de sesión
-          </Link>
-        </div>
       </div>
     </div>
     </div>

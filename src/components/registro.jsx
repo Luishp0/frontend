@@ -123,7 +123,7 @@ const Registro = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <div className="flex items-center px-5 py-3   bg-gray-100 rounded">
+                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
                     <MdLockOutline className="mr-2 text-gray-400" />
                     <Field type="password" name="password" id="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
                   </div>
@@ -158,7 +158,7 @@ const Registro = () => {
                 </p>               
 
                 <div className="mt-3 text-sm text-center">
-                  <Link to="/privacy" className="text-gray-500 hover:text-gray-600">
+                  <Link to="/avisoPrivacidad" className="text-gray-500 hover:text-gray-600">
                     Política de privacidad
                   </Link>
                   <span className="mx-2">|</span>

@@ -54,7 +54,7 @@ const Navbar = ({ linkTo}) => {
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
             <li>
-              <Link to={linkTo} className="nav-item hover:bg-blue-100 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Regresar</Link>
+              <Link to={linkTo} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Regresar</Link>
             </li>
           </ul>
         </div>

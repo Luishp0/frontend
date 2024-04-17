@@ -6,29 +6,29 @@ const WhatWeOffer = () => {
   const services = [
   
     {
-      icon: <FaFish className="text-blue-500 text-6xl" />,
+      icon: <FaFish className="text-6xl text-blue-500" />,
       title: 'PECES',
       description: '',
       link: '/infoma', // Ruta a la que se redirigirá al hacer clic
     },
     {
-      icon: <FaFilter className="text-orange-500 text-6xl" />, // Icono de filtro
+      icon: <FaFilter className="text-6xl text-orange-500" />, // Icono de filtro
       title: 'FILTROS',
       description: '',
       link: '/filtros', // Ruta a la que se redirigirá al hacer clic
     },
     {
-      icon: <FaThermometerHalf className="text-yellow-500 text-6xl" />, // Icono de termómetro medio
+      icon: <FaThermometerHalf className="text-6xl text-yellow-500" />, // Icono de termómetro medio
       title: 'SENSORES',
       description: '',
       link: '/sensores', // Ruta a la que se redirigirá al hacer clic
     }
   ];
 
-  return (
+  return ( 
     <div className="py-12 ml-80" style={{ marginTop: '2cm' }}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {services.map((service, index) => (
             <ServiceButton
               key={index}
