@@ -1,6 +1,5 @@
 import React from 'react';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'; 
-import Logo from '../img/logotra.png'; 
 import Navbar from '../components/navbarRegresar';
 
 const PrivacyPolicy = () => {

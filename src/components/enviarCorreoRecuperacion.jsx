@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FaRegEnvelope } from 'react-icons/fa';
 import logotra from '../img/logotra.png';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import Navbar from './navbarRegresar';
 
 const EnviarCorreoRecuperacion = () => {
