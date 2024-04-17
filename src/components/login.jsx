@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaRegEnvelope, FaApple } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
 import logotra from '../img/logotra.png'
@@ -7,10 +7,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FcGoogle } from "react-icons/fc";
+import Navbar from "./navbar";
+import { AuthContext } from './AuthContext.jsx';
 
 const Login = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
+  const { login } = useContext(AuthContext);
   const [error, setError] = useState('');
 
   const handleSubmit = async (values) => {
@@ -29,10 +31,13 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Guardar el token de autenticación en el local storage o en una cookie
-        localStorage.setItem('token', data.token);
-        // Redirigir al usuario a la página de inicio o dashboard
-        navigate('/inicioadministrador');
+        login(data.result.token, data.result.nombre);
+        // Redirigir al usuario según su rol
+        if (data.result.roles_idroles === 1) {
+          navigate('/inicioadministrador');
+        } else if (data.result.roles_idroles === 2) {
+          navigate('/iniciousuario');
+        }
       } else {
         setError(data.message);
       }
@@ -142,6 +147,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

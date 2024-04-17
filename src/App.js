@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './components/login.jsx'
+import { AuthProvider } from './components/AuthContext.jsx';
 import InicioAdministrador from './components/inicioAdministrador.jsx';
 import TablaUsuarios from './components/tablaUsuarios.jsx'; 
 import Inicio from './components/inicio.jsx'; 
@@ -20,6 +21,7 @@ import TablaPeceras from './components/tablaPeceras.jsx';
 function App() {
   return (
     <BrowserRouter>
+    <AuthProvider>
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/registro' element={<Registro/>}/>
@@ -41,6 +43,7 @@ function App() {
         
 
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
