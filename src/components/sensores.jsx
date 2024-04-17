@@ -1,15 +1,17 @@
 import React from "react";
 import Navbarsensor from "./navbarsensor"
 import Portadafiltro from "./portadafiltro"
-import Navbartercer from "./navbartercer"
+import Navbar from "./navbar"
+import Infopeceraa from "./infopeceraa"
 
 const Sensores = () => {
   return (
     <>
       <div>
-        <Navbartercer></Navbartercer>
+      <Navbar></Navbar>
       <Navbarsensor></Navbarsensor>
       <Portadafiltro></Portadafiltro>
+      <Infopeceraa/>
       </div>
     </>
   );

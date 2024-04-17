@@ -1,5 +1,5 @@
 import React from "react";
-import Navbarprin from "./navbarprin"
+import Navbar from "./navbar"
 import Inforportada from "./infoportada";
 import Finosecond from "./finosecond";
 import Infopeceraa from "./infopeceraa"
@@ -7,7 +7,7 @@ const Infoma = () => {
   return (
     <>
       <div>
-        <Navbarprin></Navbarprin>
+        <Navbar></Navbar>
         <Inforportada></Inforportada>
         <Finosecond></Finosecond>
         <Infopeceraa></Infopeceraa>

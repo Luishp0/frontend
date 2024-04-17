@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../img/logotra.png";
 
-const Navbar = () => {
+const Navbar = ({ linkTo}) => {
   const [navbarBackground, setNavbarBackground] = useState('transparent');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -53,20 +53,8 @@ const Navbar = () => {
             </svg>
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
-          <li>
-              <Link to={"/inicio"} className="nav-item">Inicio</Link>
-            </li>
             <li>
-              <Link to={"/infoma"} className="nav-item">Información</Link>
-            </li>
-            <li>
-              <Link to={"/Login"} className="nav-item">Iniciar Sesión</Link>
-            </li>
-            <li>
-              <Link to={"/registro"} className="nav-item">Registrarse</Link>
-            </li>
-            <li>
-              <Link to={"/Compras"} className="nav-item">Comprar</Link>
+              <Link to={linkTo} className="nav-item hover:bg-customCyan hover:bg-opacity-50 text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Regresar</Link>
             </li>
           </ul>
         </div>

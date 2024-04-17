@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { FaRegEnvelope } from 'react-icons/fa';
 import logotra from '../img/logotra.png';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from './navbarRegresar';
 
 const EnviarCorreoRecuperacion = () => {
   const navigate = useNavigate();
@@ -42,6 +43,8 @@ const EnviarCorreoRecuperacion = () => {
   });
 
   return (
+    <div>
+      <Navbar linkTo='/login' />
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
         <div className="flex justify-center mb-3">
@@ -94,13 +97,8 @@ const EnviarCorreoRecuperacion = () => {
             </Form>
           )}
         </Formik>
-
-        <div className="text-center mt-4">
-          <Link to="/login" className="text-customBlue hover:underline">
-            Volver al inicio de sesión
-          </Link>
-        </div>
       </div>
+    </div>
     </div>
   );
 };

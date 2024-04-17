@@ -1,32 +1,31 @@
 import React from 'react';
 import { FaHome, FaFish, FaFilter, FaThermometerHalf } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
+import { Link } from 'react-router-dom';
 
 const WhatWeOffer = () => {
   const services = [
-    
     {
       icon: <FaFish className="text-blue-500 text-6xl" />,
       title: 'PECES',
       description: '',
-      link: '/infoma', // Ruta a la que se redirigirá al hacer clic
+      link: '/infoma',
     },
     {
-      icon: <FaFilter className="text-orange-500 text-6xl" />, // Icono de filtro
+      icon: <FaFilter className="text-orange-500 text-6xl" />,
       title: 'FILTROS',
       description: '',
-      link: '/filtros', // Ruta a la que se redirigirá al hacer clic
+      link: '/filtros',
     },
     {
-      icon: <FaThermometerHalf className="text-yellow-500 text-6xl" />, // Icono de termómetro medio
+      icon: <FaThermometerHalf className="text-yellow-500 text-6xl" />,
       title: 'SENSORES',
       description: '',
-      link: '/sensores', // Ruta a la que se redirigirá al hacer clic
+      link: '/sensores',
     }
   ];
 
   return (
-    <div className="py-12" style={{ marginTop: '2cm' }}>
+    <div className="py-12 ml-80" style={{ marginTop: '2cm' }}> {/* Ajuste del margen a la izquierda */}
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {services.map((service, index) => (
@@ -34,8 +33,8 @@ const WhatWeOffer = () => {
               key={index}
               icon={service.icon}
               title={service.title}
-              link={service.link} // Pasar la ruta al componente de botón de servicio
-              isFish={service.title === 'PECES'} // Agregar prop para identificar si es el botón de PECES
+              link={service.link}
+              isFish={service.title === 'PECES'}
             />
           ))}
         </div>

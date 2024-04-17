@@ -48,6 +48,8 @@ const Login = () => {
   };
 
   return (
+  <div >
+    <Navbar/>
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
       <div className="w-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl md:flex">
         <div className="px-6 py-5 md:py-10 md:w-1/2 md:px-14">
@@ -125,7 +127,7 @@ const Login = () => {
                 </div>
 
                 <div className="mt-4 text-sm text-center">
-                  <Link to="/privacy" className="text-gray-500 hover:text-gray-600">
+                  <Link to="/avisoPrivacidad" className="text-gray-500 hover:text-gray-600">
                     Política de privacidad
                   </Link>
                   <span className="mx-2">|</span>
@@ -146,6 +148,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

@@ -10,6 +10,7 @@ import Infoma from './components/infoma.jsx';
 import Filtros from './components/filtros.jsx'; 
 import Sensores from './components/sensores.jsx'; 
 import Nextcompra from './components/nextcompra.jsx'; 
+import Secondcompra from './components/secondcompra.jsx'; 
 import Respaldo from './components/respaldo.jsx';
 import Registro from './components/registro.jsx'
 import Recuperacion from './components/enviarCorreoRecuperacion.jsx'
@@ -17,6 +18,7 @@ import ResetPasswordScreen from './components/restablecerContrasena.jsx'
 import CodigoVerificacion from './components/verificarCodigoRecuperacion.jsx'
 import FavoritasGraficas from './components/favoritasGraficas.jsx'
 import TablaPeceras from './components/tablaPeceras.jsx';
+import AvisoPrivacidad from './components/avisoPrivacidad.jsx'
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
         <Route path='/filtros' element={<Filtros/>}/>
         <Route path='/sensores' element={<Sensores/>}/>
         <Route path='/nextcompra' element={<Nextcompra/>}/>
+        <Route path='/secondcompra' element={<Secondcompra/>}/>
         <Route path='/' element={<Inicio/>}/>
         <Route path='/tablausuarios' element={<TablaUsuarios />} />  
         <Route path='/respaldo' element={<Respaldo/>}/>
@@ -40,6 +43,7 @@ function App() {
         <Route path='/recuperacion' element={<Recuperacion/>}/>
         <Route path='/codigo' element={<CodigoVerificacion/>}/>
         <Route path='/reset-contrasena' element={<ResetPasswordScreen/>}/>
+        <Route path='/avisoPrivacidad' element={<AvisoPrivacidad/>}/>
         
 
       </Routes>

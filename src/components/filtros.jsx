@@ -1,15 +1,17 @@
 import React from "react";
-import Navbarsecon from "./navbarsecon"
+import Navbar from "./navbar"
 import Navbarfiltros from "./navbarfiltro"
 import Filtroinfo from "./filtrosinfo"
+import Infopeceraa from "./infopeceraa"
 
 const Filtros = () => {
   return (
     <>
       <div>
-        <Navbarsecon></Navbarsecon>
+        <Navbar></Navbar>
       <Navbarfiltros></Navbarfiltros>
       <Filtroinfo></Filtroinfo>
+      <Infopeceraa/>
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import backgroundImage from '../img/backgroundImage.jpeg';
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Navbar from "./navbar";
 
 const Registro = () => {
     const navigate = useNavigate();
@@ -42,6 +43,8 @@ const Registro = () => {
   };
 
   return (
+  <div>
+    <Navbar/>
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
       <div className="w-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl md:flex">
         <div className="px-2 py-2 md:py-8 md:w-1/2 md:px-10">
@@ -120,7 +123,7 @@ const Registro = () => {
                 </div>
                 
                 <div className="mb-2">
-                  <div className="flex items-center px-5 py-3   bg-gray-100 rounded">
+                  <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
                     <MdLockOutline className="mr-2 text-gray-400" />
                     <Field type="password" name="password" id="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
                   </div>
@@ -155,7 +158,7 @@ const Registro = () => {
                 </p>               
 
                 <div className="mt-3 text-sm text-center">
-                  <Link to="/privacy" className="text-gray-500 hover:text-gray-600">
+                  <Link to="/avisoPrivacidad" className="text-gray-500 hover:text-gray-600">
                     Política de privacidad
                   </Link>
                   <span className="mx-2">|</span>
@@ -176,6 +179,7 @@ const Registro = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 }
 
