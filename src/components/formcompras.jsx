@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import img1 from "../img/peceramadera.png";
 import { Link } from 'react-router-dom';
 
 export default function Example() {
-  const [agreed, setAgreed] = useState(false);
 
   return (
     <div className="relative bg-gray-100 py-20"> {/* Se agregó py-20 para un margen superior de 5 cm */}
@@ -56,7 +55,7 @@ export default function Example() {
               </div>
               <div className="mt-6">
                 <Link to="/secondcompra">
-                  <button className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Aceptar</button>
+                  <button className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-semibold text-white bg-gray-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Aceptar</button>
                 </Link>
               </div>
             </form>
