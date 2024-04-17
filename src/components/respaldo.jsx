@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import BarraLateral from './barraLateral';
 
 const Respaldo = () => {
-  const [selectedTime] = useState('00:00');
+  const [selectedTime, setSelectedTime] = useState('00:00');
   const [backupHistory, setBackupHistory] = useState(() => {
     const history = localStorage.getItem('backupHistory');
     return history ? JSON.parse(history) : [];
@@ -59,6 +59,15 @@ const Respaldo = () => {
       console.error(`Error al realizar el respaldo: ${error}`);
     }
   };
+
+  const handleTimeChange = (e) => {
+    setSelectedTime(e.target.value);
+    setTimeLeft(calculateTimeLeft());
+  };
+
+  const handleSetTime = () => {
+    setTimeLeft(calculateTimeLeft());
+  };
     
   useEffect(() => {
     const fetchBackupHistory = async () => {
@@ -88,6 +97,25 @@ const Respaldo = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white rounded-lg shadow-lg p-4">
             <h1 className="text-2xl mb-4">Respaldo de Base de Datos</h1>
+            <div className="mb-4">
+              <label htmlFor="backupTime" className="block text-sm font-medium text-gray-700">
+                Hora del Respaldo:
+              </label>
+              <input
+                type="time"
+                id="backupTime"
+                name="backupTime"
+                value={selectedTime}
+                onChange={handleTimeChange}
+                className="mt-1 p-2 border rounded-md"
+              />
+              <button
+                className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={handleSetTime}
+              >
+                Fijar Hora
+              </button>
+            </div>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleBackup}
@@ -105,7 +133,12 @@ const Respaldo = () => {
               ))}
             </ul>
           </div>
+          <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col justify-center items-center">
+            <h2 className="text-lg font-bold mb-2">Tiempo Restante para el Respaldo</h2>
+            <p>{`${Math.floor(timeLeft / (1000 * 60 * 60))} horas ${Math.floor((timeLeft / (1000 * 60)) % 60)} minutos ${Math.floor((timeLeft / 1000) % 60)} segundos`}</p>
+          </div>
         </div>
+        
       </div>
     </div>
   );
