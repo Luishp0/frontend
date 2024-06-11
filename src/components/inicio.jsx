@@ -5,6 +5,7 @@ import Rectangulos from "./rectangulos";
 import Portaima from "./portaima";
 import Informacion from "./informacion";
 import Dobletex from "./dobletex";
+import Geolocalizacion from "./geolocalizacion"
 import Comentarios from "./comentarios";
 import { AuthContext } from './AuthContext';
 
@@ -20,6 +21,7 @@ const Inicio = () => {
         <Portaima />
         <Informacion />
         <Dobletex />
+        <Geolocalizacion />
         <Comentarios />
       </div>
     </>
