@@ -1,6 +1,6 @@
 import 'leaflet/dist/leaflet.css';
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 
 const SetViewOnClick = ({ coords }) => {
   const map = useMap();
@@ -11,8 +11,15 @@ const SetViewOnClick = ({ coords }) => {
 };
 
 const GeolocationMap = () => {
-  const [location, setLocation] = useState(null);
+  // Coordenadas de la Universidad Tecnológica de la Zona Metropolitana de Guadalajara
+  const utzmgCoords = [20.4830966, -103.5331819];
+  const [location, setLocation] = useState(utzmgCoords);
   const [error, setError] = useState(null);
+
+  const goToUTZMG = () => {
+    setLocation(utzmgCoords);
+    setError(null); // Clear previous errors if any
+  };
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -30,27 +37,23 @@ const GeolocationMap = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Geolocation API with Map</h1>
-      <button
-        onClick={getLocation}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-      >
-        Get Location
-      </button>
-      {error && <p className="text-red-500 mt-4">{error}</p>}
-      <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        style={{ height: "500px", width: "100%", marginTop: "20px" }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {location && <Marker position={location}></Marker>}
-        <SetViewOnClick coords={location} />
-      </MapContainer>
+    <div className="flex flex-col items-center justify-center min-h-screen px-4" style={{ marginTop: '-5cm', marginBottom: '-7.5cm' }}>
+      <h1 className="text-2xl font-bold mb-2">Geolocalización</h1>
+      {error && <p className="text-red-500 mb-2">{error}</p>}
+      <div className="w-full h-[150px] sm:h-[200px] md:h-[300px] lg:h-[400px]">
+        <MapContainer
+          center={utzmgCoords}
+          zoom={17}
+          style={{ height: "100%", width: "100%" }}
+          scrollWheelZoom={true}
+        >
+          <TileLayer
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+           
+          />
+          <SetViewOnClick coords={location} />
+        </MapContainer>
+      </div>
     </div>
   );
 };
