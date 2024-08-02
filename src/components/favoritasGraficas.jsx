@@ -3,10 +3,15 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
 import { useFavoritos } from './FavoritosContext';
-import { dataLine, dataBar, dataDoughnut, dataRadar, dataPie, dataBarHorizontal, dataBubble, dataScatter } from './chartData';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 const FavoritasGraficas = () => {
-    const { favorites } = useFavoritos();
+    const { favorites, toggleFavorite } = useFavoritos(); // Añade toggleFavorite desde el contexto
+
+    const handleFavoriteToggle = (id) => {
+        const data = favorites[id]?.data; // Obtén los datos del gráfico
+        toggleFavorite(id, data); // Alterna el estado de favorito
+    };
 
     const renderChartComponent = (id, data) => {
         switch (id) {
@@ -42,6 +47,12 @@ const FavoritasGraficas = () => {
                         {Object.keys(favorites).map((id) => (
                             favorites[id]?.isFavorite && favorites[id]?.data && (
                                 <div key={id} className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4 relative">
+                                    <button
+                                        className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
+                                        onClick={() => handleFavoriteToggle(id)}
+                                    >
+                                        <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
+                                    </button>
                                     <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
                                     <div className="w-full h-full">
                                         {renderChartComponent(id, favorites[id].data)}
