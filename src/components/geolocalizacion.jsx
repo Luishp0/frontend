@@ -18,25 +18,7 @@ const GeolocationMap = () => {
   const [location, setLocation] = useState(utzmgCoords);
   const [error, setError] = useState(null);
 
-  const goToUTZMG = () => {
-    setLocation(utzmgCoords);
-    setError(null); // Clear previous errors if any
-  };
 
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation([position.coords.latitude, position.coords.longitude]);
-        },
-        (error) => {
-          setError(error.message);
-        }
-      );
-    } else {
-      setError("Geolocation is not supported by this browser.");
-    }
-  };
 
   // Crear el ícono de marcador personalizado
   const customMarkerIcon = L.icon({

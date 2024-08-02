@@ -1,60 +1,55 @@
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
     BarElement,
     Title,
     Tooltip,
     Legend,
-    Filler,
 } from 'chart.js';
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
     BarElement,
     Title,
     Tooltip,
-    Legend,
-    Filler
+    Legend
 );
 
-var beneficios = [72, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60];
-var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
-var misoptions = {
-    responsive : true,
-    animation : false,
-    plugins : {
-        legend : {
-            display : false
-        }
-    },
-    scales : {
-        y : {
-            min : -25,
-            max : 100
-        },
-        x: {
-            ticks: { color: 'rgba(0, 220, 195)'}
-        }
-    }
-};
-
-var midata = {
-    labels: meses,
+const dataBar = {
+    labels: ['17', '18', '19', '20', '21', '22', '23'],
     datasets: [
         {
-            label: 'Beneficios',
-            data: beneficios,
-            backgroundColor: 'rgba(0, 220, 195, 0.5)'
-        }
-    ]
+            label: 'Weekly Revenue',
+            data: [4000, 3000, 2000, 2780, 1890, 2390, 3490],
+            backgroundColor: 'rgba(136, 132, 216, 0.5)',
+            borderColor: 'rgba(136, 132, 216, 1)',
+            borderWidth: 1,
+        },
+    ],
+};
+
+const optionsBar = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        x: {
+            ticks: { color: 'rgba(0, 220, 195)' },
+        },
+        y: {
+            min: 0,
+            max: 5000,
+        },
+    },
 };
 
 export default function GraficaBarras() {
-    return <Bar data={midata} options={misoptions} />
+    return (
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+            <Bar data={dataBar} options={optionsBar} />
+        </div>
+    );
 }

@@ -5,25 +5,49 @@ import { faUsers, faFish, faThermometer, faDownload } from '@fortawesome/free-so
 const Tarjetas = () => {
   return (
     <div className="flex justify-center mt-8">
-      <div className="flex space-x-4 text-white">
-        <Tarjeta icono={<FontAwesomeIcon icon={faUsers} />} texto="Usuarios" color="bg-orange-500 bg-opacity-75" total="150" />
-        <Tarjeta icono={<FontAwesomeIcon icon={faFish} />} texto="Peceras" color="bg-yellow-500 bg-opacity-75" total="50" />
-        <Tarjeta icono={<FontAwesomeIcon icon={faThermometer} />} texto="Sensores" color="bg-green-500 bg-opacity-75" total="100" />
-        <Tarjeta icono={<FontAwesomeIcon icon={faDownload} />} texto="Descargas" color="bg-purple-500 bg-opacity-75" total="200" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Tarjeta
+          icono={<FontAwesomeIcon icon={faUsers} />}
+          texto="Usuarios"
+          link="/tablausuarios"
+          total="150"
+        />
+        <Tarjeta
+          icono={<FontAwesomeIcon icon={faFish} />}
+          texto="Peceras"
+          link="/tablapeceras"
+          total="50"
+        />
+        <Tarjeta
+          icono={<FontAwesomeIcon icon={faThermometer} />}
+          texto="Sensores"
+          link="/sensores"
+          total="100"
+        />
+        <Tarjeta
+          icono={<FontAwesomeIcon icon={faDownload} />}
+          texto="Descargas"
+          link="/inicio"
+          total="200"
+        />
       </div>
     </div>
   );
 };
 
-const Tarjeta = ({ icono, texto, color, total }) => {
+const Tarjeta = ({ icono, texto, link, total }) => {
   return (
-    <div className={`${color} p-6 rounded-md shadow-md flex flex-col items-center w-58`}>
-      <div className="flex items-center justify-center mb-6 text-4xl">
+    <div
+      onClick={() => window.location.href = link}
+      className="bg-white p-8 rounded-lg shadow-lg flex items-center cursor-pointer transition-transform transform hover:scale-105"
+    >
+      <div className="text-blue-500 text-6xl mr-6">
         {icono}
       </div>
-      
-      <p className="text-2xl font-bold text-center text-white">{`Total de `} {texto}</p>
-      <p className="mb-2 text-xl text-center text-white"> {`${total}`}</p>
+      <div>
+        <p className="text-2xl font-semibold text-gray-700">{texto}</p>
+        <p className="text-3xl font-bold text-gray-900">{total}</p>
+      </div>
     </div>
   );
 };

@@ -36,7 +36,12 @@ const Team = () => {
             profession="Desarrollador web, Back end"
             imageSrc="https://i.ibb.co/30tGtjP/image-04.jpg"
           />
-         
+         <TeamCard
+            name="Isaac"
+            profession="Desarrollador web, Back end"
+            imageSrc="https://i.ibb.co/30tGtjP/image-04.jpg"
+          />
+          
         </div>
       </div>
     </section>

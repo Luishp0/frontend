@@ -1,37 +1,75 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler,
+} from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+);
 
-var options = {
-    responsive: true,
-    maintainAspectRatio: false,
-};
-
-var data = {
-    labels: ['Usuarios', 'Jamón', 'Dulces', 'Turrón'],
+const dataLine = {
+    labels: ['SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB'],
     datasets: [
         {
-            label: 'Popularidad en Navidad',
-            data: [25, 20, 20, 15],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1,
+            label: 'Dataset 1',
+            data: [4000, 3000, 2000, 2780, 1890, 2390],
+            borderColor: 'rgba(136, 132, 216, 1)',
+            backgroundColor: 'rgba(136, 132, 216, 0.5)',
+            fill: true,
+        },
+        {
+            label: 'Dataset 2',
+            data: [2400, 1398, 9800, 3908, 4800, 3800],
+            borderColor: 'rgba(0, 181, 216, 1)',
+            backgroundColor: 'rgba(0, 181, 216, 0.5)',
+            fill: true,
         },
     ],
 };
 
+const optionsLine = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            display: true,
+        },
+        title: {
+            display: true,
+            text: 'This month',
+        },
+    },
+    scales: {
+        x: {
+            ticks: { color: 'rgba(0, 220, 195)' },
+        },
+        y: {
+            min: 0,
+            max: 10000,
+        },
+    },
+};
+
 export default function GraficaPastel() {
-    return <Pie data={data} options={options} className="w-full md:w-1/2 lg:w-1/3 mx-auto md:mx-0" />
+    return (
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+            <Line data={dataLine} options={optionsLine} />
+        </div>
+    );
 }
