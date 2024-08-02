@@ -1,5 +1,6 @@
 import React from "react";
 import BarraLateral from "./barraLateral";
+import Buscador from './buscador';
 
 const datosUsuarios = [
   {
@@ -22,7 +23,8 @@ const TablaPeceras = () => {
       <BarraLateral />
       <div className="flex-1 p-10 bg-gray-100">
         <h1 className="mb-6 text-3xl font-bold text-gray-800">Tabla de Peceras</h1>
-        <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <Buscador /> {/* Agregado Buscador aquí */}
+        <div className="overflow-x-auto bg-white shadow-lg rounded-lg mt-6">
           <table className="min-w-full divide-y divide-gray-300">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
