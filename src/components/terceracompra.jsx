@@ -31,21 +31,27 @@ const PayPalButtonsWrapper = () => {
 
   return (
     <>
-      {isPending ? <div>Loading...</div> : null}
+      {isPending ? <div className="spinner" /> : null}
       <PayPalButtons
         style={{ layout: 'vertical' }}
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '10.00', // El valor del pago
+                value: '1699.00', // El valor del pago
               },
             }],
+          }).catch(err => {
+            console.error('Error in createOrder:', err);
+            alert('An error occurred creating the order. Please check the console for details.');
           });
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then((details) => {
             alert('Transaction completed by ' + details.payer.name.given_name);
+          }).catch(err => {
+            console.error('Error in onApprove:', err);
+            alert('An error occurred capturing the order. Please check the console for details.');
           });
         }}
         onError={(err) => {
