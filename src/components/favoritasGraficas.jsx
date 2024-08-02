@@ -11,21 +11,21 @@ const FavoritasGraficas = () => {
     const renderChartComponent = (id, data) => {
         switch (id) {
             case 'line':
-                return <Line data={data} />;
+                return <Line data={data} options={{ maintainAspectRatio: false }} />;
             case 'bar':
-                return <Bar data={data} />;
+                return <Bar data={data} options={{ maintainAspectRatio: false }} />;
             case 'doughnut':
-                return <Doughnut data={data} />;
+                return <Doughnut data={data} options={{ maintainAspectRatio: false }} />;
             case 'radar':
-                return <Radar data={data} />;
+                return <Radar data={data} options={{ maintainAspectRatio: false }} />;
             case 'pie':
-                return <Pie data={data} />;
+                return <Pie data={data} options={{ maintainAspectRatio: false }} />;
             case 'barHorizontal':
-                return <Bar data={data} options={{ indexAxis: 'y' }} />;
+                return <Bar data={data} options={{ indexAxis: 'y', maintainAspectRatio: false }} />;
             case 'bubble':
-                return <Bubble data={data} />;
+                return <Bubble data={data} options={{ maintainAspectRatio: false }} />;
             case 'scatter':
-                return <Scatter data={data} />;
+                return <Scatter data={data} options={{ maintainAspectRatio: false }} />;
             default:
                 return <p>No data available</p>;
         }
