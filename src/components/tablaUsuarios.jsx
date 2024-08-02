@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
+import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 
 const TablaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -28,74 +29,66 @@ const TablaUsuarios = () => {
   };
 
   const handleUpdate = (userId) => {
-    // Implementa la lógica para actualizar un usuario
     console.log('Actualizar usuario con ID:', userId);
   };
 
   const handleDelete = (userId) => {
-    // Implementa la lógica para eliminar un usuario
     console.log('Eliminar usuario con ID:', userId);
   };
 
   return (
-    <div className='flex h-screen'>
+    <div className="flex h-screen bg-gray-100">
       <BarraLateral />
-      <div className="container px-4 py-8 bg-gray-100">
+      <div className="container mx-auto px-4 py-8">
         <Buscador />
-        <h1 className="mb-4 text-2xl">Lista de Usuarios</h1>
-        <table className="w-full leading-normal">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Nombre
-              </th>
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Email
-              </th>
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Fecha de Nacimiento
-              </th>
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Telefono
-              </th>
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                Acciones
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {usuarios.map((usuario) => (
-              <tr key={usuario._id}>
-                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                  {usuario.nombre}
-                </td>
-                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                  {usuario.correo}
-                </td>
-                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                  {formatDate(usuario.fechaNacimiento)}
-                </td>
-                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                  {usuario.telefono}
-                </td>
-                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                  <button
-                    className="px-4 py-2 mr-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                    onClick={() => handleUpdate(usuario._id)}
-                  >
-                    Actualizar
-                  </button>
-                  <button
-                    className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
-                    onClick={() => handleDelete(usuario._id)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
+        <h1 className="mb-4 text-2xl font-semibold text-gray-700" style={{ marginTop: '1cm' }}>Lista de Usuarios </h1>
+        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Nombre
+                </th>
+                <th className="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Email
+                </th>
+                <th className="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Fecha de Nacimiento
+                </th>
+                <th className="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Teléfono
+                </th>
+                <th className="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Acciones
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {usuarios.map((usuario) => (
+                <tr key={usuario._id} className="hover:bg-gray-100">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{usuario.nombre}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{usuario.correo}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{formatDate(usuario.fechaNacimiento)}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{usuario.telefono}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button
+                      className="text-blue-600 hover:text-blue-900 mr-4"
+                      onClick={() => handleUpdate(usuario._id)}
+                    >
+                      <PencilIcon className="h-5 w-5 inline" /> Actualizar
+                    </button>
+                    <button
+                      className="text-red-600 hover:text-red-900"
+                      onClick={() => handleDelete(usuario._id)}
+                    >
+                      <TrashIcon className="h-5 w-5 inline" /> Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -18,35 +18,35 @@ const datosUsuarios = [
 
 const TablaPeceras = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg-gray-200">
       <BarraLateral />
       <div className="flex-1 p-10 bg-gray-100">
-        <h1 className="mb-4 text-2xl">Tabla de Peceras</h1>
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+        <h1 className="mb-6 text-3xl font-bold text-gray-800">Tabla de Peceras</h1>
+        <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+          <table className="min-w-full divide-y divide-gray-300">
+            <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                  className="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase"
                 >
                   Nombre
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                  className="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase"
                 >
                   Edad
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                  className="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase"
                 >
                   Pecera
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                  className="px-6 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase"
                 >
                   Diseño
                 </th>
@@ -54,18 +54,18 @@ const TablaPeceras = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {datosUsuarios.map((usuario, index) => (
-                <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{usuario.nombre}</div>
+                <tr key={index} className="hover:bg-gray-50 transition duration-200">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {usuario.nombre}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{usuario.edad}</div>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {usuario.edad}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{usuario.pecera}</div>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {usuario.pecera}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{usuario.diseño}</div>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {usuario.diseño}
                   </td>
                 </tr>
               ))}
