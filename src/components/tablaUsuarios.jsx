@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
+import Swal from 'sweetalert2';
 
 const TablaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -32,8 +33,46 @@ const TablaUsuarios = () => {
     console.log('Actualizar usuario con ID:', userId);
   };
 
-  const handleDelete = (userId) => {
-    console.log('Eliminar usuario con ID:', userId);
+  const handleDelete = async (userId) => {
+    // Muestra una alerta de confirmación
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás recuperar este usuario!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'Cancelar',
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // Realiza la petición para eliminar el usuario
+        await fetch(`http://localhost:8000/usuario/${userId}`, {
+          method: 'DELETE',
+        });
+
+        // Elimina el usuario de la lista local
+        setUsuarios(usuarios.filter(usuario => usuario._id !== userId));
+
+        // Muestra un mensaje de éxito
+        Swal.fire(
+          '¡Eliminado!',
+          'El usuario ha sido eliminado.',
+          'success'
+        );
+      } catch (error) {
+        console.error('Error deleting user:', error);
+
+        // Muestra un mensaje de error
+        Swal.fire(
+          'Error',
+          'Hubo un problema al eliminar el usuario.',
+          'error'
+        );
+      }
+    }
   };
 
   return (

@@ -13,7 +13,7 @@ const BarraLateral = () => {
   return (
     <div className="flex flex-col justify-between w-64 bg-white text-gray-600 border-r border-gray-300">
       <div className="p-4">
-        <Link to="/inicioadministrador">
+        <Link to="/inicio">
           <h1 className="text-3xl font-extrabold text-black">AcuaCode</h1>
         </Link>
       </div>
