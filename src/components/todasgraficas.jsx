@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Draggable from 'react-draggable';
+import { useNavigate } from 'react-router-dom';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
+import { useFavoritos } from './FavoritosContext'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -20,6 +22,7 @@ import {
     BubbleController,
     ScatterController,
 } from 'chart.js';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 ChartJS.register(
     CategoryScale,
@@ -49,59 +52,62 @@ const dataLine = {
             fill: true,
             tension: 0.1,
         },
-        {
-            label: 'Dataset 2',
-            data: [2400, 1398, 9800, 3908, 4800, 3800],
-            borderColor: 'rgba(0, 181, 216, 1)',
-            backgroundColor: 'rgba(0, 181, 216, 0.5)',
-            fill: true,
-            tension: 0.1,
-        },
     ],
 };
 
 const dataBar = {
-    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+    labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY'],
     datasets: [
         {
-            label: 'Usuarios',
-            data: [500, 400, 600, 700, 800, 900],
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            label: 'Sales',
+            data: [65, 59, 80, 81, 56],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
         },
     ],
 };
 
 const dataDoughnut = {
-    labels: ['Red', 'Blue', 'Yellow'],
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [
         {
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Votes',
+            data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
             ],
-            hoverBackgroundColor: [
+            borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
             ],
+            borderWidth: 1,
         },
     ],
 };
 
 const dataRadar = {
-    labels: ['Running', 'Swimming', 'Eating', 'Cycling'],
+    labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
     datasets: [
         {
             label: 'My First Dataset',
-            data: [20, 10, 4, 2],
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 2,
+            pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(255, 99, 132, 1)',
         },
     ],
 };
@@ -110,28 +116,32 @@ const dataPie = {
     labels: ['Red', 'Blue', 'Yellow'],
     datasets: [
         {
-            label: 'My Second Dataset',
-            data: [150, 200, 300],
+            label: 'My First Dataset',
+            data: [300, 50, 100],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
             ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1,
         },
     ],
 };
 
 const dataBarHorizontal = {
-    labels: ['Red', 'Blue', 'Yellow'],
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [
         {
-            label: 'My Third Dataset',
-            data: [300, 150, 200],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
-            ],
+            label: 'Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
         },
     ],
 };
@@ -139,13 +149,14 @@ const dataBarHorizontal = {
 const dataBubble = {
     datasets: [
         {
-            label: 'My Bubble Dataset',
+            label: 'Bubble Chart',
             data: [
                 { x: 10, y: 20, r: 15 },
-                { x: 15, y: 25, r: 20 },
-                { x: 20, y: 30, r: 25 },
+                { x: 15, y: 30, r: 10 },
+                { x: 20, y: 25, r: 20 },
             ],
-            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
         },
     ],
 };
@@ -153,15 +164,14 @@ const dataBubble = {
 const dataScatter = {
     datasets: [
         {
-            label: 'My Scatter Dataset',
+            label: 'Scatter Dataset',
             data: [
-                { x: 1, y: 1 },
-                { x: 2, y: 3 },
-                { x: 3, y: 2 },
+                { x: 10, y: 20 },
+                { x: 15, y: 25 },
+                { x: 20, y: 30 },
             ],
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            showLine: true,
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
         },
     ],
 };
@@ -210,65 +220,75 @@ const options = {
     },
 };
 
-const TablaUsuarios = () => {
+const TodasGraficas = () => {
+    const [favorites, setFavorites] = useState({});
+    const navigate = useNavigate();
+    const { toggleFavorite } = useFavoritos(); // Usa el hook para obtener toggleFavorite
+
+    const handleFavoriteToggle = (id) => {
+        const data = dataMap[id]; // Obtén los datos del gráfico
+        const isFavorite = favorites[id]?.isFavorite;
+    
+        // Cambia el estado de favorito y navega solo si es necesario
+        if (!isFavorite) {
+            toggleFavorite(id, data); // Envía los datos al contexto
+            navigate('/graficasfavoritas');
+        }
+    };
+    
+
+    const dataMap = {
+        line: dataLine,
+        bar: dataBar,
+        doughnut: dataDoughnut,
+        radar: dataRadar,
+        pie: dataPie,
+        barHorizontal: dataBarHorizontal,
+        bubble: dataBubble,
+        scatter: dataScatter,
+    };
+
+    const renderChartComponent = (id, Component) => {
+        const data = dataMap[id];
+        if (!data) {
+            return <p>No data available</p>;
+        }
+        return <Component data={data} options={options} />;
+    };
+
     return (
         <div className="flex h-screen bg-gray-100">
             <BarraLateral />
-            <div className="container mx-auto px-4 py-8">
+            <div className="flex-1 container mx-auto px-4 py-8">
                 <Buscador />
-                <div className="mt-8 bg-white p-6 rounded-lg shadow-md relative"> {/* Make the parent container relative */}
+                <div className="mt-8 bg-white p-6 rounded-lg shadow-md relative">
                     <h2 className="text-xl font-bold mb-4">Gráficos de Usuarios</h2>
                     <div className="grid grid-cols-2 gap-4">
-                        {/* Gráficas principales */}
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Líneas</h3>
-                                <Line data={dataLine} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Barras</h3>
-                                <Bar data={dataBar} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Donuts</h3>
-                                <Doughnut data={dataDoughnut} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico Radar</h3>
-                                <Radar data={dataRadar} options={options} />
-                            </div>
-                        </Draggable>
-                        {/* Nuevas gráficas */}
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Pastel</h3>
-                                <Pie data={dataPie} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Barras Horizontales</h3>
-                                <Bar data={dataBarHorizontal} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Burbuja</h3>
-                                <Bubble data={dataBubble} options={options} />
-                            </div>
-                        </Draggable>
-                        <Draggable bounds="parent">
-                            <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4">
-                                <h3 className="text-lg font-semibold mb-2">Gráfico de Dispersión</h3>
-                                <Scatter data={dataScatter} options={options} />
-                            </div>
-                        </Draggable>
+                        {[
+                            { id: 'line', Component: Line },
+                            { id: 'bar', Component: Bar },
+                            { id: 'doughnut', Component: Doughnut },
+                            { id: 'radar', Component: Radar },
+                            { id: 'pie', Component: Pie },
+                            { id: 'barHorizontal', Component: Bar },
+                            { id: 'bubble', Component: Bubble },
+                            { id: 'scatter', Component: Scatter },
+                        ].map(({ id, Component }) => (
+                            <Draggable key={id} bounds="parent">
+                                <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4 relative">
+                                    <button
+                                        className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
+                                        onClick={() => handleFavoriteToggle(id)}
+                                    >
+                                        <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
+                                    </button>
+                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
+                                    <div className="w-full h-full">
+                                        {renderChartComponent(id, Component)}
+                                    </div>
+                                </div>
+                            </Draggable>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -276,4 +296,4 @@ const TablaUsuarios = () => {
     );
 };
 
-export default TablaUsuarios;
+export default TodasGraficas;
