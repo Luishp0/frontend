@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import BarraLateral from './barraLateral';
-import Buscador from "./buscador";
+import Buscador from './buscador'; // Importar Buscador
 
 const Respaldo = () => {
   const [selectedTime, setSelectedTime] = useState('00:00');
@@ -91,43 +91,44 @@ const Respaldo = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <BarraLateral />
-        
-      <div className="container flex items-center justify-center h-screen p-4 mx-auto bg-gray-100">
-      
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h1 className="text-2xl mb-4">Respaldo de Base de Datos</h1>
+      <div className="flex-1 p-4 mx-auto bg-gray-100 dark:bg-gray-800">
+        <Buscador /> {/* Añadir Buscador */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4">
+            <h1 className="text-2xl mb-4 text-gray-900 dark:text-gray-100">Respaldo de Base de Datos</h1>
             <div className="mb-4">
-              <label htmlFor="backupTime" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="backupTime" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Hora del Respaldo:
               </label>
-              <input
-                type="time"
-                id="backupTime"
-                name="backupTime"
-                value={selectedTime}
-                onChange={handleTimeChange}
-                className="mt-1 p-2 border rounded-md"
-              />
+              <div className="flex items-center">
+                <input
+                  type="time"
+                  id="backupTime"
+                  name="backupTime"
+                  value={selectedTime}
+                  onChange={handleTimeChange}
+                  className="mt-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                />
+                <button
+                  className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={handleSetTime}
+                >
+                  Fijar Hora
+                </button>
+              </div>
               <button
-                className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={handleSetTime}
+                className="mt-4 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                onClick={handleBackup}
               >
-                Fijar Hora
+                Realizar Respaldo
               </button>
             </div>
-            <button
-              className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-              onClick={handleBackup}
-            >
-              Realizar Respaldo
-            </button>
           </div>
-          <div className="p-4 overflow-y-auto bg-white rounded-lg shadow-lg" style={{ maxHeight: '400px' }}>
-            <h2 className="mb-2 text-lg font-bold">Historial de Respaldos</h2>
-            <ul className="text-sm list-disc list-inside">
+          <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Historial de Respaldos</h2>
+            <ul className="text-sm list-disc list-inside text-gray-800 dark:text-gray-300">
               {backupHistory.map((backup, index) => (
                 <li key={index} className="mb-1">
                   <span className="font-bold">{backup.date}</span> - Hora: {backup.time}
@@ -135,12 +136,13 @@ const Respaldo = () => {
               ))}
             </ul>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col justify-center items-center">
-            <h2 className="text-lg font-bold mb-2">Tiempo Restante para el Respaldo</h2>
-            <p>{`${Math.floor(timeLeft / (1000 * 60 * 60))} horas ${Math.floor((timeLeft / (1000 * 60)) % 60)} minutos ${Math.floor((timeLeft / 1000) % 60)} segundos`}</p>
+          <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4 flex flex-col justify-center items-center">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Tiempo Restante para el Respaldo</h2>
+            <p className="text-gray-800 dark:text-gray-300">
+              {`${Math.floor(timeLeft / (1000 * 60 * 60))} horas ${Math.floor((timeLeft / (1000 * 60)) % 60)} minutos ${Math.floor((timeLeft / 1000) % 60)} segundos`}
+            </p>
           </div>
         </div>
-        
       </div>
     </div>
   );

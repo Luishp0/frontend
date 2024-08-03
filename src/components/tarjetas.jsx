@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faFish, faThermometer, faDownload, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from './AuthContext'; // Importa el AuthContext
 
 const iconColors = {
   usuarios: 'text-green-500',
@@ -10,6 +11,7 @@ const iconColors = {
 };
 
 const Tarjetas = () => {
+  const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
@@ -21,7 +23,7 @@ const Tarjetas = () => {
       {/* Botón de alternancia */}
       <button 
         onClick={toggleVisibility} 
-        className="p-2 rounded-md hover:bg-gray-100 transition-colors mb-4 text-lg"
+        className={`p-2 rounded-md mb-4 text-lg ${darkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-100 text-black'}`}
       >
         <FontAwesomeIcon 
           icon={isVisible ? faChevronUp : faChevronDown} 
@@ -36,24 +38,28 @@ const Tarjetas = () => {
             texto="Usuarios"
             link="/tablausuarios"
             total="150"
+            darkMode={darkMode} // Pasando el estado de darkMode a los componentes hijos
           />
           <Tarjeta
             icono={<FontAwesomeIcon icon={faFish} className={iconColors.peceras} />}
             texto="Peceras"
             link="/tablapeceras"
             total="50"
+            darkMode={darkMode}
           />
           <Tarjeta
             icono={<FontAwesomeIcon icon={faThermometer} className={iconColors.sensores} />}
             texto="Sensores"
             link="/sensores"
             total="100"
+            darkMode={darkMode}
           />
           <Tarjeta
             icono={<FontAwesomeIcon icon={faDownload} className={iconColors.descargas} />}
             texto="Descargas"
             link="/inicio"
             total="200"
+            darkMode={darkMode}
           />
         </div>
       ) : (
@@ -61,18 +67,22 @@ const Tarjetas = () => {
           <Icono
             icono={<FontAwesomeIcon icon={faUsers} className={iconColors.usuarios} />}
             link="/tablausuarios"
+            darkMode={darkMode}
           />
           <Icono
             icono={<FontAwesomeIcon icon={faFish} className={iconColors.peceras} />}
             link="/tablapeceras"
+            darkMode={darkMode}
           />
           <Icono
             icono={<FontAwesomeIcon icon={faThermometer} className={iconColors.sensores} />}
             link="/sensores"
+            darkMode={darkMode}
           />
           <Icono
             icono={<FontAwesomeIcon icon={faDownload} className={iconColors.descargas} />}
             link="/inicio"
+            darkMode={darkMode}
           />
         </div>
       )}
@@ -80,26 +90,26 @@ const Tarjetas = () => {
   );
 };
 
-const Tarjeta = ({ icono, texto, link, total }) => {
+const Tarjeta = ({ icono, texto, link, total, darkMode }) => {
   return (
     <div
       onClick={() => window.location.href = link}
-      className="bg-white p-8 rounded-lg shadow-lg flex items-center cursor-pointer transition-transform transform hover:scale-105"
+      className={`p-8 rounded-lg shadow-lg flex items-center cursor-pointer transition-transform transform hover:scale-105 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
     >
       <div className="text-6xl mr-6">
         {icono}
       </div>
       <div>
-        <p className="text-2xl font-semibold text-gray-700">{texto}</p>
-        <p className="text-3xl font-bold text-gray-900">{total}</p>
+        <p className="text-2xl font-semibold">{texto}</p>
+        <p className="text-3xl font-bold">{total}</p>
       </div>
     </div>
   );
 };
 
-const Icono = ({ icono, link }) => {
+const Icono = ({ icono, link, darkMode }) => {
   return (
-    <a href={link} className="p-4 hover:bg-gray-100 transition-colors">
+    <a href={link} className={`p-4 transition-colors ${darkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-100 text-black'}`}>
       <div className="text-4xl">
         {icono}
       </div>
