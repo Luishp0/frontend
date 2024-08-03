@@ -1,4 +1,5 @@
 import React from "react";
+import empresa from "../img/empresa.jpg";
 
 const Team = () => {
   return (
@@ -36,12 +37,11 @@ const Team = () => {
             profession="Desarrollador web, Back end"
             imageSrc="https://i.ibb.co/30tGtjP/image-04.jpg"
           />
-         <TeamCard
+          <TeamCard
             name="Isaac"
             profession="Desarrollador web, Back end"
-            imageSrc="https://i.ibb.co/30tGtjP/image-04.jpg"
+            imageSrc={empresa}
           />
-          
         </div>
       </div>
     </section>
@@ -55,7 +55,11 @@ const TeamCard = ({ imageSrc, name, profession }) => {
     <div className="w-full px-4 md:w-1/2 xl:w-1/4">
       <div className="mx-auto mb-10 w-full max-w-[370px]">
         <div className="relative overflow-hidden rounded-lg">
-          <img src={imageSrc} alt={name} className="w-full h-auto object-cover" />
+          <img 
+            src={imageSrc} 
+            alt={name} 
+            className="w-full h-[350px] object-cover" // Increased height for all images
+          />
           <div className="absolute bottom-5 left-0 w-full text-center">
             <div className="relative mx-5 overflow-hidden rounded-lg bg-white dark:bg-grayDark px-3 py-5">
               <h3 className="text-base font-semibold text-dark dark:text-grayLight">
@@ -240,4 +244,3 @@ const TeamCard = ({ imageSrc, name, profession }) => {
     </div>
   );
 };
-
