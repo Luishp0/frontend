@@ -11,7 +11,7 @@ const InicioAdministrador = () => {
             <BarraLateral />
             <div className="flex flex-col flex-grow p-4">
                 <Buscador />
-                <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+                <div className="bg-white rounded-lg shadow-md p-4 mb-4" style={{ marginTop: '2px' }}>
                     <Tarjetas />
                 </div>
                 <div className="flex flex-col gap-4" style={{ marginTop: '1px' }}> {/* Añadido margen superior */}
