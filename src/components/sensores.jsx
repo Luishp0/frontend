@@ -1,7 +1,7 @@
 import React from "react";
+import Navbar from "./navbar"
 import Navbarsensor from "./navbarsensor"
 import Portadafiltro from "./portadafiltro"
-import Navbar from "./navbar"
 import Infopeceraa from "./infopeceraa"
 
 const Sensores = () => {
