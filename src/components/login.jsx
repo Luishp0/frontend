@@ -8,12 +8,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "./navbar";
-import { AuthContext } from './AuthContext.jsx';
-import Swal from 'sweetalert2';  // Importa SweetAlert2
+import { AuthContext } from './AuthContext'; // Ajusta la ruta si es necesario
+import Swal from 'sweetalert2';
 
 const Login = () => {
+  const { login } = useContext(AuthContext); // Asegúrate de que AuthContext está correctamente importado
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
   const [error, setError] = useState('');
 
   const handleSubmit = async (values) => {
@@ -32,15 +32,13 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        login(data.result.token, data.result.nombre);
-        // Muestra SweetAlert2 con mensaje de éxito
+        login(data.result.token, data.result.nombre); // Llama a login desde el AuthContext
         Swal.fire({
           title: '¡Bienvenido!',
           text: 'Inicio de sesión exitoso. Redirigiendo...',
           icon: 'success',
           confirmButtonText: 'Aceptar',
         }).then(() => {
-          // Redirige al usuario según su rol
           if (data.result.roles_idroles === 1) {
             navigate('/inicioadministrador');
           } else if (data.result.roles_idroles === 2) {

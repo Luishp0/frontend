@@ -1,3 +1,18 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Estilos básicos del modo oscuro */
+html.dark {
+    --bg-color: #1F2937; /* Ajusta según el color de fondo oscuro deseado */
+    --text-color: #F3F4F6; /* Ajusta según el color del texto claro deseado */
+  }
+  
+  /* Aplica estilos globales de fondo y texto */
+  body {
+    background-color: var(--bg-color, #F3F4F6); /* Fallback color for light mode */
+    color: var(--text-color, #1F2937); /* Fallback color for dark mode */
+  }
+  
+  /* Otros estilos personalizados */
+  
