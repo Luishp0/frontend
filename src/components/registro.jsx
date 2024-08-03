@@ -6,7 +6,7 @@ import backgroundImage from '../img/backgroundImage.jpeg';
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Swal from 'sweetalert2';  // Importa SweetAlert2
+import Swal from 'sweetalert2';
 import Navbar from "./navbar";
 
 const Registro = () => {
@@ -32,7 +32,6 @@ const Registro = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Muestra SweetAlert2 con mensaje de éxito
         Swal.fire({
           title: '¡Registrado!',
           text: 'Tu cuenta ha sido creada exitosamente. Redirigiendo a la página de inicio de sesión...',
@@ -42,7 +41,6 @@ const Registro = () => {
           navigate('/login');
         });
       } else {
-        // Muestra errores del backend en el formulario
         setErrors(data.errors);
       }
     } catch (error) {
@@ -59,14 +57,14 @@ const Registro = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
-        <div className="w-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl md:flex">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100 dark:bg-gray-900">
+        <div className="w-full max-w-4xl mx-auto overflow-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl md:flex">
           <div className="px-2 py-2 md:py-8 md:w-1/2 md:px-10">
             <div className="flex justify-center mb-2">
               <img src={logotra} alt="Logo" className="w-20 h-20" />
             </div>
 
-            <h2 className="mb-2 text-xl font-bold text-center text-customBlue">Registro de Cuenta</h2>
+            <h2 className="mb-2 text-xl font-bold text-center text-customBlue dark:text-customBlue-light">Registro de Cuenta</h2>
 
             <Formik
               initialValues={{
@@ -105,57 +103,57 @@ const Registro = () => {
               {({ errors, touched }) => (
                 <Form>
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <FaUser className="mr-2 text-gray-400" />
-                      <Field type="text" id="username" name="username" placeholder="Nombre" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <FaUser className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="text" id="username" name="username" placeholder="Nombre" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="username" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <FaPhone className="mr-2 text-gray-400" />
-                      <Field type="tel" id="telefono" name="telefono" placeholder="Teléfono" maxLength={10} className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <FaPhone className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="tel" id="telefono" name="telefono" placeholder="Teléfono" maxLength={10} className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="telefono" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <FaCalendarAlt className="mr-2 text-gray-400" />
-                      <Field type="date" id="fechaN" name="fechaN" placeholder="Fecha de Nacimiento" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <FaCalendarAlt className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="date" id="fechaN" name="fechaN" placeholder="Fecha de Nacimiento" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="fechaN" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <FaRegEnvelope className="mr-2 text-gray-400" />
-                      <Field type="email" id="email" name="email" placeholder="Correo Electrónico" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <FaRegEnvelope className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="email" id="email" name="email" placeholder="Correo Electrónico" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="email" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <MdLockOutline className="mr-2 text-gray-400" />
-                      <Field type="password" name="password" id="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <MdLockOutline className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="password" name="password" id="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="password" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className="mb-2">
-                    <div className="flex items-center px-5 py-3 bg-gray-100 rounded">
-                      <MdLockOutline className="mr-2 text-gray-400" />
-                      <Field type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" className="flex-1 text-sm text-gray-600 bg-transparent outline-none" />
+                    <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
+                      <MdLockOutline className="mr-2 text-gray-400 dark:text-gray-300" />
+                      <Field type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
                     </div>
                     <ErrorMessage name="confirmPassword" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
 
                   <div className='flex items-center justify-between w-full mb-3 sm:w-full md:w-80'>
                     <label className='flex items-center space-x-2 text-xs sm:text-sm md:w-2/3 lg:w-full'>
-                      <input type='checkbox' name='remember' className='bg-gray-100 form-checkbox ' />
-                      <span style={{ fontSize: '0.75rem' }} className='text-xs sm:text-sm text-customBlue text-nowrap'>Acepto los Términos de Servicio y la Política de Privacidad</span>
+                      <input type='checkbox' name='terms' className='bg-gray-100 dark:bg-gray-700 form-checkbox ' />
+                      <span style={{ fontSize: '0.75rem' }} className='text-xs sm:text-sm text-customBlue dark:text-customBlue-light text-nowrap'>Acepto los Términos de Servicio y la Política de Privacidad</span>
                     </label>
                   </div>
 
@@ -163,19 +161,19 @@ const Registro = () => {
                     Registrarse
                   </button>
 
-                  <p className="text-sm text-center text-gray-600">
+                  <p className="text-sm text-center text-gray-600 dark:text-gray-400">
                     ¿Ya tienes una cuenta?{' '}
-                    <Link to="/login" className="text-sm text-customBlue hover:underline">
+                    <Link to="/login" className="text-sm text-customBlue dark:text-customBlue-light hover:underline">
                       Iniciar Sesión
                     </Link>
                   </p>
 
                   <div className="mt-3 text-sm text-center">
-                    <Link to="/avisoPrivacidad" className="text-gray-500 hover:text-gray-600">
+                    <Link to="/avisoPrivacidad" className="text-gray-500 dark:text-gray-400 hover:text-gray-600">
                       Política de privacidad
                     </Link>
                     <span className="mx-2">|</span>
-                    <Link to="/terms" className="text-gray-500 hover:text-gray-600">
+                    <Link to="/terms" className="text-gray-500 dark:text-gray-400 hover:text-gray-600">
                       Términos de uso
                     </Link>
                   </div>
