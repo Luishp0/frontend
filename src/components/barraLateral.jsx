@@ -28,7 +28,7 @@ const BarraLateral = () => {
       <div className="p-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {sidebarOpen && (
-            <Link to="/inicio">
+            <Link to="/inicioadministrador">
               <h1 className="text-3xl font-extrabold text-black">AcuaCode</h1>
             </Link>
           )}
@@ -37,7 +37,7 @@ const BarraLateral = () => {
           </button>
         </div>
       </div>
-      <ul className="flex-1 space-y-2">
+      <ul className={`flex-1 space-y-2 relative ${dropdownOpen ? 'pb-24' : ''}`}> {/* Ajuste de espacio para cuando el dropdown está abierto */}
         <li className={`px-4 py-3 cursor-pointer hover:bg-gray-100 transition-colors flex items-center ${!sidebarOpen && 'justify-center'}`}>
           <FontAwesomeIcon icon={faChartPie} className={`${iconColors.dashboard} text-lg`} />
           <span className={`ml-4 text-lg font-medium ${!sidebarOpen && 'hidden'}`}>
@@ -67,7 +67,7 @@ const BarraLateral = () => {
           <span className={`ml-4 text-lg font-medium ${!sidebarOpen && 'hidden'}`}>Análisis</span>
           <FontAwesomeIcon icon={dropdownOpen ? faAngleDown : faAngleRight} className={`ml-auto ${!sidebarOpen && 'hidden'}`} />
           {dropdownOpen && (
-            <ul className={`pl-8 mt-2 space-y-1 ${!sidebarOpen && 'hidden'}`}>
+            <ul className={`pl-4 mt-2 space-y-1 bg-gray-100 rounded-md shadow-md absolute top-full left-0 w-full z-20`}>
               <li className="px-4 py-2 cursor-pointer hover:bg-gray-200 transition-colors">
                 <Link to="/todasgraficas">Todos los Análisis</Link>
               </li>
@@ -77,7 +77,7 @@ const BarraLateral = () => {
             </ul>
           )}
         </li>
-        <li className={`px-4 py-3 cursor-pointer hover:bg-gray-100 transition-colors flex items-center ${!sidebarOpen && 'justify-center'}`}>
+        <li className={`px-4 py-3 cursor-pointer hover:bg-gray-100 transition-colors flex items-center ${!sidebarOpen && 'justify-center'} z-10`}>
           <FontAwesomeIcon icon={faRightFromBracket} className={`${iconColors.cerrarSesion} text-lg`} />
           <span className={`ml-4 text-lg font-medium ${!sidebarOpen && 'hidden'}`}>
             <Link to="/login">Cerrar Sesión</Link>
@@ -88,22 +88,22 @@ const BarraLateral = () => {
       {!sidebarOpen && (
         <div className="absolute top-0 left-0 w-16 h-full flex flex-col items-center justify-center bg-white z-10">
           <button onClick={toggleSidebar} className="p-2 rounded-md hover:bg-gray-100 mt-4">
-            <FontAwesomeIcon icon={faBars} className="text-2xl" /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faBars} className="text-2xl" />
           </button>
           <Link to="/inicioadministrador" className="p-2 hover:bg-gray-100">
-            <FontAwesomeIcon icon={faChartPie} className={`${iconColors.dashboard} text-2xl`} /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faChartPie} className={`${iconColors.dashboard} text-2xl`} />
           </Link>
           <Link to="/tablausuarios" className="p-2 hover:bg-gray-100">
-            <FontAwesomeIcon icon={faUsers} className={`${iconColors.usuarios} text-2xl`} /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faUsers} className={`${iconColors.usuarios} text-2xl`} />
           </Link>
           <Link to="/tablapeceras" className="p-2 hover:bg-gray-100">
-            <FontAwesomeIcon icon={faFishFins} className={`${iconColors.peceras} text-2xl`} /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faFishFins} className={`${iconColors.peceras} text-2xl`} />
           </Link>
           <Link to="/respaldo" className="p-2 hover:bg-gray-100">
-            <FontAwesomeIcon icon={faDatabase} className={`${iconColors.respaldo} text-2xl`} /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faDatabase} className={`${iconColors.respaldo} text-2xl`} />
           </Link>
           <Link to="/login" className="p-2 hover:bg-gray-100">
-            <FontAwesomeIcon icon={faRightFromBracket} className={`${iconColors.cerrarSesion} text-2xl`} /> {/* Cambiado a text-2xl */}
+            <FontAwesomeIcon icon={faRightFromBracket} className={`${iconColors.cerrarSesion} text-2xl`} />
           </Link>
         </div>
       )}
