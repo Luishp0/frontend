@@ -15,7 +15,7 @@ const Terceracompra = () => {
       <div className="min-h-screen flex flex-col">
         <div className="flex-grow flex justify-center items-center mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 p-4">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-4xl">
-            <h1 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-white">Checkout</h1>
+            <h1 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-white">Verificar</h1>
             <PayPalButtonsWrapper />
           </div>
         </div>
