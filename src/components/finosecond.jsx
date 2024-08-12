@@ -12,7 +12,7 @@ const Finosecond = () => {
 
   return (
     <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-grayDark' : 'bg-white'}`}>
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -31,7 +31,7 @@ const Finosecond = () => {
             >
               Betta Splendens (Pez Betta)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño.
               Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
               Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
@@ -41,7 +41,7 @@ const Finosecond = () => {
         </div>
       </div>
 
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -60,7 +60,7 @@ const Finosecond = () => {
             >
               Amphiprioninae (Pez Payaso)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño a mediano.
               Temperamento: Generalmente pacífico pero puede ser territorial.
               Requisitos del agua: Prefieren agua salada y limpia, con una temperatura de alrededor de 24-28°C.
@@ -70,7 +70,7 @@ const Finosecond = () => {
         </div>
       </div>
 
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -89,7 +89,7 @@ const Finosecond = () => {
             >
               Betta Splendens (Pez Betta)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño.
               Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
               Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
@@ -99,7 +99,7 @@ const Finosecond = () => {
         </div>
       </div>
 
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -118,7 +118,7 @@ const Finosecond = () => {
             >
               Betta Splendens (Pez Betta)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño.
               Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
               Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
@@ -128,7 +128,7 @@ const Finosecond = () => {
         </div>
       </div>
 
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -147,7 +147,7 @@ const Finosecond = () => {
             >
               Betta Splendens (Pez Betta)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño.
               Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
               Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
@@ -157,7 +157,7 @@ const Finosecond = () => {
         </div>
       </div>
 
-      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-4 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <div className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
             <img
@@ -176,7 +176,7 @@ const Finosecond = () => {
             >
               Betta Splendens (Pez Betta)
             </a>
-            <p className={`mt-2 text-slate-500 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <p className={`mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Tamaño: Pequeño.
               Temperamento: A menudo agresivo hacia otros peces betta y peces con colores brillantes similares.
               Requisitos del agua: Prefieren agua cálida y limpia, con una temperatura de alrededor de 24-28°C.
