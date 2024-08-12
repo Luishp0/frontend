@@ -24,9 +24,6 @@ const Portada = () => {
           <p className={`texto text-xl lg:text-2xl mb-8 lg:mb-10 text-justify ${darkMode ? 'text-black' : 'text-black'}`}>
             AcuaCode es un software completo para gestionar tu acuario y monitorear la salud de tus peces en tiempo real.
           </p>
-          <button className={`boton leer-mas bg-cyan-400 ${darkMode ? 'text-white' : 'text-black'} py-4 px-10 rounded-xl hover:bg-cyan-500 transition duration-300 text-lg`}>
-            <a href="#" className={`${darkMode ? 'text-white' : 'text-black'}`}>Leer más</a>
-          </button>
         </div>
         <div className="image-container lg:w-1/2 lg:mr-0 lg:ml-auto lg:mt-0 mt-0 flex justify-center">
           <img src={nuevofondo} alt="Imagen" className="w-full lg:max-w-full lg:h-auto" />

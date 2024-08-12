@@ -42,7 +42,11 @@ const SingleCard = ({
 }) => {
   return (
     <div className="mb-10 overflow-hidden rounded-lg bg-white shadow-lg duration-300 hover:shadow-xl dark:bg-grayDark dark:shadow-none">
-      <img src={image} alt={CardTitle} className="w-full h-auto object-cover" />
+      <img
+        src={image}
+        alt={CardTitle}
+        className="w-full h-auto object-cover rounded-lg" // Añadido rounded-lg aquí
+      />
       <div className="p-8 text-center sm:p-9 md:p-7 xl:p-9">
         <h3>
           <a
