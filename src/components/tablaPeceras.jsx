@@ -24,60 +24,42 @@ const TablaPeceras = () => {
   return (
     <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
       <BarraLateral />
-      <div className={`flex-1 p-10 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-        <h1 className={`mb-6 text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-          Tabla de Peceras
-        </h1>
+      <div className="flex-1 flex flex-col">
         <Buscador />
-        <div className={`overflow-x-auto bg-white shadow-lg rounded-lg mt-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-          <table className={`min-w-full divide-y ${darkMode ? 'divide-gray-700' : 'divide-gray-300'} ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-            <thead className={`${darkMode ? 'bg-gray-700' : 'bg-gray-50'} border-b ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
-              <tr>
-                <th
-                  scope="col"
-                  className={`px-6 py-3 text-xs font-semibold tracking-wider text-left ${darkMode ? 'text-white' : 'text-gray-600'} uppercase`}
-                >
-                  Nombre
-                </th>
-                <th
-                  scope="col"
-                  className={`px-6 py-3 text-xs font-semibold tracking-wider text-left ${darkMode ? 'text-white' : 'text-gray-600'} uppercase`}
-                >
-                  Edad
-                </th>
-                <th
-                  scope="col"
-                  className={`px-6 py-3 text-xs font-semibold tracking-wider text-left ${darkMode ? 'text-white' : 'text-gray-600'} uppercase`}
-                >
-                  Pecera
-                </th>
-                <th
-                  scope="col"
-                  className={`px-6 py-3 text-xs font-semibold tracking-wider text-left ${darkMode ? 'text-white' : 'text-gray-600'} uppercase`}
-                >
-                  Diseño
-                </th>
-              </tr>
-            </thead>
-            <tbody className={`${darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}`}>
-              {datosUsuarios.map((usuario, index) => (
-                <tr key={index} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-50'} transition duration-200`}>
-                  <td className={`px-6 py-4 whitespace-nowrap text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {usuario.nombre}
-                  </td>
-                  <td className={`px-6 py-4 whitespace-nowrap text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {usuario.edad}
-                  </td>
-                  <td className={`px-6 py-4 whitespace-nowrap text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {usuario.pecera}
-                  </td>
-                  <td className={`px-6 py-4 whitespace-nowrap text-sm ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    {usuario.diseño}
-                  </td>
+        <div className={`flex-1 p-10 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+          <h1 className={`mb-6 text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+            Tabla de Peceras
+          </h1>
+          <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
+            <table className={`min-w-full ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+              <thead className={darkMode ? 'bg-gray-700' : 'bg-gray-50'}>
+                <tr>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Nombre
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Edad
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Pecera
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Diseño
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className={darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}>
+                {datosUsuarios.map((usuario, index) => (
+                  <tr key={index} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-100'} transition duration-200`}>
+                    <td className="px-6 py-4 text-sm">{usuario.nombre}</td>
+                    <td className="px-6 py-4 text-sm">{usuario.edad}</td>
+                    <td className="px-6 py-4 text-sm">{usuario.pecera}</td>
+                    <td className="px-6 py-4 text-sm">{usuario.diseño}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

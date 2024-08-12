@@ -75,57 +75,59 @@ const TablaUsuarios = () => {
   return (
     <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
       <BarraLateral />
-      <div className={`container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`}>
+      <div className="flex-1 flex flex-col">
         <Buscador />
-        <h1 className="mb-4 text-2xl font-semibold" style={{ marginTop: '1cm' }}>
-          Lista de Usuarios
-        </h1>
-        <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
-          <table className={`min-w-full ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-            <thead className={darkMode ? 'bg-gray-700' : 'bg-gray-50'}>
-              <tr>
-                <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                  Nombre
-                </th>
-                <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                  Email
-                </th>
-                <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                  Fecha de Nacimiento
-                </th>
-                <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                  Teléfono
-                </th>
-                <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                  Acciones
-                </th>
-              </tr>
-            </thead>
-            <tbody className={darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}>
-              {usuarios.map((usuario) => (
-                <tr key={usuario._id} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-100'} transition duration-200`}>
-                  <td className="px-6 py-4 text-sm">{usuario.nombre}</td>
-                  <td className="px-6 py-4 text-sm">{usuario.correo}</td>
-                  <td className="px-6 py-4 text-sm">{formatDate(usuario.fechaNacimiento)}</td>
-                  <td className="px-6 py-4 text-sm">{usuario.telefono}</td>
-                  <td className="px-6 py-4 text-sm font-medium">
-                    <button
-                      className="text-blue-600 hover:text-blue-900 mr-4"
-                      onClick={() => handleUpdate(usuario._id)}
-                    >
-                      <PencilIcon className="h-5 w-5 inline" /> Actualizar
-                    </button>
-                    <button
-                      className="text-red-600 hover:text-red-900"
-                      onClick={() => handleDelete(usuario._id)}
-                    >
-                      <TrashIcon className="h-5 w-5 inline" /> Eliminar
-                    </button>
-                  </td>
+        <div className={`flex-1 overflow-y-auto container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`} style={{ marginTop: '1cm' }}>
+          <h1 className="mb-4 text-2xl font-semibold">
+            Lista de Usuarios
+          </h1>
+          <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
+            <table className={`min-w-full ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+              <thead className={darkMode ? 'bg-gray-700' : 'bg-gray-50'}>
+                <tr>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Nombre
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Fecha de Nacimiento
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Teléfono
+                  </th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                    Acciones
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className={darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}>
+                {usuarios.map((usuario) => (
+                  <tr key={usuario._id} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-100'} transition duration-200`}>
+                    <td className="px-6 py-4 text-sm">{usuario.nombre}</td>
+                    <td className="px-6 py-4 text-sm">{usuario.correo}</td>
+                    <td className="px-6 py-4 text-sm">{formatDate(usuario.fechaNacimiento)}</td>
+                    <td className="px-6 py-4 text-sm">{usuario.telefono}</td>
+                    <td className="px-6 py-4 text-sm font-medium">
+                      <button
+                        className="text-blue-600 hover:text-blue-900 mr-4"
+                        onClick={() => handleUpdate(usuario._id)}
+                      >
+                        <PencilIcon className="h-5 w-5 inline" /> Actualizar
+                      </button>
+                      <button
+                        className="text-red-600 hover:text-red-900"
+                        onClick={() => handleDelete(usuario._id)}
+                      >
+                        <TrashIcon className="h-5 w-5 inline" /> Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

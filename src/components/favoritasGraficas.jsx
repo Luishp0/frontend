@@ -4,15 +4,15 @@ import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
 import { useFavoritos } from './FavoritosContext';
 import { StarIcon } from '@heroicons/react/24/solid';
-import { AuthContext } from './AuthContext'; // Asegúrate de importar AuthContext
+import { AuthContext } from './AuthContext';
 
 const FavoritasGraficas = () => {
-    const { favorites, toggleFavorite } = useFavoritos(); // Añade toggleFavorite desde el contexto
-    const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
+    const { favorites, toggleFavorite } = useFavoritos();
+    const { darkMode } = useContext(AuthContext);
 
     const handleFavoriteToggle = (id) => {
-        const data = favorites[id]?.data; // Obtén los datos del gráfico
-        toggleFavorite(id, data); // Alterna el estado de favorito
+        const data = favorites[id]?.data;
+        toggleFavorite(id, data);
     };
 
     const renderChartComponent = (id, data) => {
@@ -41,27 +41,29 @@ const FavoritasGraficas = () => {
     return (
         <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
             <BarraLateral />
-            <div className={`flex-1 container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <div className="flex-1 flex flex-col">
                 <Buscador />
-                <div className={`mt-8 p-6 rounded-lg shadow-md relative ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-                    <h2 className="text-xl font-bold mb-4">Gráficas Favoritas</h2>
-                    <div className="grid grid-cols-2 gap-4">
-                        {Object.keys(favorites).map((id) => (
-                            favorites[id]?.isFavorite && favorites[id]?.data && (
-                                <div key={id} className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
-                                    <button
-                                        className={`absolute top-2 right-2 p-1 ${darkMode ? 'text-yellow-300 hover:text-yellow-400' : 'text-yellow-400 hover:text-yellow-600'}`}
-                                        onClick={() => handleFavoriteToggle(id)}
-                                    >
-                                        <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? (darkMode ? 'text-yellow-300' : 'text-yellow-400') : (darkMode ? 'text-gray-500' : 'text-gray-400')}`} />
-                                    </button>
-                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
-                                    <div className="w-full h-full">
-                                        {renderChartComponent(id, favorites[id].data)}
+                <div className={`flex-1 container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <div className={`mt-8 p-6 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                        <h2 className="text-xl font-bold mb-4">Gráficas Favoritas</h2>
+                        <div className="grid grid-cols-2 gap-4">
+                            {Object.keys(favorites).map((id) => (
+                                favorites[id]?.isFavorite && favorites[id]?.data && (
+                                    <div key={id} className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                                        <button
+                                            className={`absolute top-2 right-2 p-1 ${darkMode ? 'text-yellow-300 hover:text-yellow-400' : 'text-yellow-400 hover:text-yellow-600'}`}
+                                            onClick={() => handleFavoriteToggle(id)}
+                                        >
+                                            <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? (darkMode ? 'text-yellow-300' : 'text-yellow-400') : (darkMode ? 'text-gray-500' : 'text-gray-400')}`} />
+                                        </button>
+                                        <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
+                                        <div className="w-full h-full">
+                                            {renderChartComponent(id, favorites[id].data)}
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        ))}
+                                )
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

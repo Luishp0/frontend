@@ -21,7 +21,10 @@ const Buscador = () => {
     <nav className={`p-4 shadow-md ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <div className="flex justify-between items-center">
         <div className="relative flex items-center w-1/3">
-          <FontAwesomeIcon icon={faSearch} className={`absolute left-3 ${darkMode ? 'text-white' : 'text-gray-500'}`} />
+          <FontAwesomeIcon 
+            icon={faSearch} 
+            className={`absolute left-3 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} 
+          />
           <input
             type="text"
             placeholder="Escriba para buscar..."
@@ -31,22 +34,32 @@ const Buscador = () => {
           />
         </div>
         <div className="flex items-center space-x-4">
-          <button onClick={toggleDarkMode} className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'}`}>
+          <button 
+            onClick={toggleDarkMode} 
+            className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'}`}
+          >
             {darkMode ? (
-              <SunIcon className="w-6 h-6" />
+              <SunIcon className="w-6 h-6 text-yellow-500" />
             ) : (
-              <MoonIcon className="w-6 h-6" />
+              <MoonIcon className="w-6 h-6 text-gray-500" />
             )}
           </button>
-          <button className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'}`}>
-            <FontAwesomeIcon icon={faCog} />
+          <button 
+            className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'}`}
+          >
+            <FontAwesomeIcon 
+              icon={faCog} 
+              className={darkMode ? 'text-gray-300' : 'text-gray-600'} 
+            />
           </button>
-          <button className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'} relative`}>
-            <FontAwesomeIcon icon={faEnvelope} />
-            <span className="absolute top-0 right-0 block h-2 w-2 bg-red-600 rounded-full"></span>
-          </button>
-          <button className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'} relative`}>
-            <FontAwesomeIcon icon={faBell} />
+          <button 
+            className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'} relative`}
+          >
+            
+            <FontAwesomeIcon 
+              icon={faBell} 
+              className={darkMode ? 'text-gray-300' : 'text-gray-600'} 
+            />
             <span className="absolute top-0 right-0 block h-2 w-2 bg-red-600 rounded-full"></span>
           </button>
           <div className="flex items-center space-x-2">

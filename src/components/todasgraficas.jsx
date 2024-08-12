@@ -5,7 +5,7 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
 import { useFavoritos } from './FavoritosContext';
-import { AuthContext } from './AuthContext'; // Asegúrate de importar AuthContext
+import { AuthContext } from './AuthContext';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -260,36 +260,38 @@ const TodasGraficas = () => {
     return (
         <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
             <BarraLateral />
-            <div className="flex-1 container mx-auto px-4 py-8">
+            <div className="flex-1 flex flex-col">
                 <Buscador />
-                <div className={`mt-8 p-6 rounded-lg shadow-md relative ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'}`}>
-                    <h2 className="text-xl font-bold mb-4">Gráficos de Usuarios</h2>
-                    <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { id: 'line', Component: Line },
-                            { id: 'bar', Component: Bar },
-                            { id: 'doughnut', Component: Doughnut },
-                            { id: 'radar', Component: Radar },
-                            { id: 'pie', Component: Pie },
-                            { id: 'barHorizontal', Component: Bar },
-                            { id: 'bubble', Component: Bubble },
-                            { id: 'scatter', Component: Scatter },
-                        ].map(({ id, Component }) => (
-                            <Draggable key={id} bounds="parent">
-                                <div className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
-                                    <button
-                                        className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
-                                        onClick={() => handleFavoriteToggle(id)}
-                                    >
-                                        <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
-                                    </button>
-                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
-                                    <div className="w-full h-full">
-                                        {renderChartComponent(id, Component)}
+                <div className={`flex-1 container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <div className={`mt-8 p-6 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                        <h2 className="text-xl font-bold mb-4"></h2>
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { id: 'line', Component: Line },
+                                { id: 'bar', Component: Bar },
+                                { id: 'doughnut', Component: Doughnut },
+                                { id: 'radar', Component: Radar },
+                                { id: 'pie', Component: Pie },
+                                { id: 'barHorizontal', Component: Bar },
+                                { id: 'bubble', Component: Bubble },
+                                { id: 'scatter', Component: Scatter },
+                            ].map(({ id, Component }) => (
+                                <Draggable key={id} bounds="parent">
+                                    <div className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                                        <button
+                                            className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
+                                            onClick={() => handleFavoriteToggle(id)}
+                                        >
+                                            <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
+                                        </button>
+                                        <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
+                                        <div className="w-full h-full">
+                                            {renderChartComponent(id, Component)}
+                                        </div>
                                     </div>
-                                </div>
-                            </Draggable>
-                        ))}
+                                </Draggable>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
