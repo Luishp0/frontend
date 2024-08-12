@@ -28,8 +28,8 @@ const WhatWeOffer = () => {
   ];
 
   return (
-    <div className={`py-12 ml-80 ${darkMode ? 'bg-grayDark' : 'bg-grayLight'}`} style={{ marginTop: '2cm' }}>
-      <div className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-black'}`}>
+    <div className={`py-12 ml-80 ${darkMode ? 'bg-gray-800' : 'bg-white'} ${darkMode ? 'text-white' : 'text-black'}`} style={{ marginTop: '2cm' }}>
+      <div className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceButton
@@ -52,11 +52,11 @@ const ServiceButton = ({ icon, title, link, darkMode }) => {
   return (
     <Link
       to={link}
-      className={`p-6 rounded-md shadow-md focus:outline-none ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+      className={`p-6 rounded-md shadow-md focus:outline-none ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'}`}
     >
       <div className="flex items-center mb-4">
         {icon}
-        <h3 className={`ml-4 text-lg font-bold ${darkMode ? 'text-white' : 'text-gray-700'}`}>{title}</h3>
+        <h3 className="ml-4 text-lg font-bold">{title}</h3>
       </div>
       <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>{/* No se muestra la descripción en el botón de enlace */}</p>
     </Link>

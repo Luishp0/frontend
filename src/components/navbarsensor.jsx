@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaHome, FaFish, FaFilter, FaThermometerHalf } from 'react-icons/fa';
+import { FaFish, FaFilter, FaThermometerHalf } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthContext'; // Importa el contexto
 
@@ -28,7 +28,7 @@ const WhatWeOffer = () => {
   ];
 
   return (
-    <div className={`py-12 ml-80 ${darkMode ? 'bg-grayDark' : 'bg-grayLight'}`} style={{ marginTop: '2cm' }}>
+    <div className={`py-12 ml-80 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`} style={{ marginTop: '2cm' }}>
       <div className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-black'}`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {services.map((service, index) => (
@@ -52,7 +52,7 @@ const ServiceButton = ({ icon, title, link, darkMode }) => {
   return (
     <Link
       to={link}
-      className={`p-6 rounded-md shadow-md focus:outline-none ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+      className={`p-6 rounded-md shadow-md focus:outline-none ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'}`}
     >
       <div className="flex items-center mb-4">
         {icon}

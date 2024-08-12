@@ -1,18 +1,20 @@
-import React from "react";
-import Navbar from "./navbar"
+import React, { useContext } from 'react';
+import Navbar from "./navbar";
 import Inforportada from "./infoportada";
 import Finosecond from "./finosecond";
-import Infopeceraa from "./infopeceraa"
+import Infopeceraa from "./infopeceraa";
+import { AuthContext } from './AuthContext';
+
 const Infoma = () => {
+  const { darkMode } = useContext(AuthContext);
+
   return (
-    <>
-      <div>
-        <Navbar></Navbar>
-        <Inforportada></Inforportada>
-        <Finosecond></Finosecond>
-        <Infopeceraa></Infopeceraa>
-      </div>
-    </>
+    <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+      <Navbar />
+      <Inforportada />
+      <Finosecond />
+      <Infopeceraa />
+    </div>
   );
 };
 
