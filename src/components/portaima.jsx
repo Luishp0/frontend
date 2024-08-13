@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthContext'; // Asegúrate de que el contexto esté importado correctamente
-import foto2 from '../img/pecesito.jpg'; // Importa la imagen
+import foto2 from '../img/pecesito5.png'; // Importa la imagen
 
 const ContenidoAdicional = () => {
   const { darkMode } = useContext(AuthContext); // Obtén el estado del modo oscuro
