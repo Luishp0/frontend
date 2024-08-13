@@ -3,6 +3,7 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, PolarArea } from 'react-chartjs-2';
 import { AuthContext } from './AuthContext';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 const FavoritasGraficas = () => {
     const { darkMode } = useContext(AuthContext);
@@ -132,11 +133,16 @@ const FavoritasGraficas = () => {
                         <h2 className="text-xl font-bold mb-4">Gráficas Favoritas</h2>
                         <div className="grid grid-cols-3 gap-4">
                             {['line', 'bar', 'doughnut', 'radar', 'pie', 'polarArea'].map((chartType) => (
-                                <div key={chartType} className={`p-4 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'} h-60`}>
-                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${chartType.charAt(0).toUpperCase() + chartType.slice(1)}`}</h3>
-                                    <div className="w-full h-full">
+                                <div key={chartType} className="p-2 border rounded-lg shadow-sm bg-white dark:bg-gray-800 relative h-64">
+                                    <div className="absolute inset-0">
                                         {renderChartComponent(chartType, { Line, Bar, Doughnut, Radar, Pie, PolarArea }[chartType])}
                                     </div>
+                                    <button
+                                        className="absolute top-2 right-2 text-gray-400 hover:text-yellow-500 transition-all duration-300"
+                                        onClick={() => {}}
+                                    >
+                                        <StarIcon className="h-6 w-6" />
+                                    </button>
                                 </div>
                             ))}
                         </div>

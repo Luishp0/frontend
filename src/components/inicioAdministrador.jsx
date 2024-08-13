@@ -3,7 +3,6 @@ import BarraLateral from "./barraLateral";
 import Buscador from "./buscador";
 import Tarjetas from './tarjetas';
 import GraficaPastel from "./graficaPastel";
-import GraficaBarras from "./graficaBarras";
 import { AuthContext } from './AuthContext'; // Importa el AuthContext para obtener el estado de dark mode
 
 const InicioAdministrador = () => {
@@ -22,9 +21,6 @@ const InicioAdministrador = () => {
                     </div>
                     <div className="flex flex-col gap-4" style={{ marginTop: '1px' }}>
                         <div className="flex flex-wrap gap-4 mb-4">
-                            <div className={`flex-1 min-w-[200px] rounded-lg shadow-md overflow-hidden ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-                                <GraficaBarras />
-                            </div>
                             <div className={`flex-1 min-w-[200px] rounded-lg shadow-md overflow-hidden ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
                                 <GraficaPastel />
                             </div>
