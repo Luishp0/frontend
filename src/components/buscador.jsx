@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faBell, faCog, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { AuthContext } from './AuthContext'; // Asegúrate de tener la ruta correcta
+import { useNavigate } from 'react-router-dom';
 
 const Buscador = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { darkMode, toggleDarkMode } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -15,6 +17,10 @@ const Buscador = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(`Buscando: ${searchTerm}`);
+  };
+
+  const handleUserProfileClick = () => {
+    navigate('/profile'); // Reemplaza '/profile' con la ruta correcta a tu interfaz
   };
 
   return (
@@ -68,7 +74,12 @@ const Buscador = () => {
               className="w-10 h-10 rounded-full"
             />
             <div className={`text-${darkMode ? 'white' : 'gray-700'}`}>
-              <div>Thomas Anree</div>
+              <div 
+                onClick={handleUserProfileClick} 
+                className={`cursor-pointer hover:underline ${darkMode ? 'text-white' : 'text-gray-900'}`}
+              >
+                Thomas Anree
+              </div>
               <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>UX Designer</div>
             </div>
           </div>

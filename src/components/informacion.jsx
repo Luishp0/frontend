@@ -45,7 +45,7 @@ const SingleCard = ({
       <img
         src={image}
         alt={CardTitle}
-        className="w-full h-auto object-cover rounded-lg" // Añadido rounded-lg aquí
+        className="w-full h-auto object-cover rounded-lg"
       />
       <div className="p-8 text-center sm:p-9 md:p-7 xl:p-9">
         <h3>
@@ -56,7 +56,7 @@ const SingleCard = ({
             {CardTitle}
           </a>
         </h3>
-        <p className="mb-7 text-base leading-relaxed text-body-color dark:text-grayLight">
+        <p className="mb-7 text-base leading-relaxed text-body-color dark:text-grayLight text-justify">
           {CardDescription}
         </p>
 
