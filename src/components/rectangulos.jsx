@@ -24,7 +24,7 @@ const WhatWeOffer = () => {
     {
       icon: <FaCog className={`text-6xl ${darkMode ? 'text-green-300' : 'text-green-500'}`} />,
       title: 'Servicios de limpieza y cambio de agua programados',
-      description: 'Nos encargamos de la limpieza periódica de tu pecera inteligente y del cambio de agua según un calendario preestablecido.'
+      description: 'La pecera inteligente realizará automáticamente la limpieza periódica y el cambio de agua según un calendario preestablecido.'
     },
     {
       icon: <FaWrench className={`text-6xl ${darkMode ? 'text-purple-300' : 'text-purple-500'}`} />,

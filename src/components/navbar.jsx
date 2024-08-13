@@ -40,10 +40,7 @@ const Navbar = () => {
             </svg>
           </button>
           <ul className={`nav-list flex flex-col lg:flex-row gap-8 items-center ${isMenuOpen ? 'block' : 'hidden'} lg:flex`}>
-            <li>
-              <Link to={"/inicio"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</Link>
-            </li>
-            <li>
+          <li>
               <button
                 onClick={toggleDarkMode}
                 className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium"
@@ -54,6 +51,9 @@ const Navbar = () => {
                   <MoonIcon className="w-6 h-6" />
                 )}
               </button>
+            </li>
+            <li>
+              <Link to={"/inicio"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</Link>
             </li>
             <li>
               <Link to={"/infoma"} className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Información</Link>

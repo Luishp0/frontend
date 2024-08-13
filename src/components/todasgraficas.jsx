@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Draggable from 'react-draggable';
 import { useNavigate } from 'react-router-dom';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
-import { useFavoritos } from './FavoritosContext'
+import { useFavoritos } from './FavoritosContext';
+import { AuthContext } from './AuthContext';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -176,7 +177,7 @@ const dataScatter = {
     ],
 };
 
-const options = {
+const options = (darkMode) => ({
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -184,7 +185,7 @@ const options = {
             display: true,
             position: 'top',
             labels: {
-                color: 'rgba(0, 0, 0, 0.8)',
+                color: darkMode ? '#fff' : '#000', // Blanco más puro en modo oscuro
             },
         },
         title: {
@@ -194,11 +195,11 @@ const options = {
                 size: 18,
                 weight: 'bold',
             },
-            color: 'rgba(0, 0, 0, 0.8)',
+            color: darkMode ? '#fff' : '#000', // Blanco más puro en modo oscuro
         },
         tooltip: {
             callbacks: {
-                label: function(tooltipItem) {
+                label: function (tooltipItem) {
                     return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`;
                 },
             },
@@ -206,36 +207,36 @@ const options = {
     },
     scales: {
         x: {
-            ticks: { color: 'rgba(0, 0, 0, 0.8)' },
+            ticks: { color: darkMode ? '#fff' : '#000' }, // Blanco más puro en modo oscuro
             grid: {
-                borderColor: 'rgba(0, 0, 0, 0.1)',
+                borderColor: darkMode ? '#fff' : '#000', // Blanco más puro en modo oscuro
             },
         },
         y: {
-            ticks: { color: 'rgba(0, 0, 0, 0.8)' },
+            ticks: { color: darkMode ? '#fff' : '#000' }, // Blanco más puro en modo oscuro
             grid: {
-                borderColor: 'rgba(0, 0, 0, 0.1)',
+                borderColor: darkMode ? '#fff' : '#000', // Blanco más puro en modo oscuro
             },
         },
     },
-};
+});
 
 const TodasGraficas = () => {
     const [favorites, setFavorites] = useState({});
     const navigate = useNavigate();
     const { toggleFavorite } = useFavoritos(); // Usa el hook para obtener toggleFavorite
+    const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
 
     const handleFavoriteToggle = (id) => {
         const data = dataMap[id]; // Obtén los datos del gráfico
         const isFavorite = favorites[id]?.isFavorite;
-    
+
         // Cambia el estado de favorito y navega solo si es necesario
         if (!isFavorite) {
             toggleFavorite(id, data); // Envía los datos al contexto
             navigate('/graficasfavoritas');
         }
     };
-    
 
     const dataMap = {
         line: dataLine,
@@ -253,42 +254,44 @@ const TodasGraficas = () => {
         if (!data) {
             return <p>No data available</p>;
         }
-        return <Component data={data} options={options} />;
+        return <Component data={data} options={options(darkMode)} />;
     };
 
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
             <BarraLateral />
-            <div className="flex-1 container mx-auto px-4 py-8">
+            <div className="flex-1 flex flex-col">
                 <Buscador />
-                <div className="mt-8 bg-white p-6 rounded-lg shadow-md relative">
-                    <h2 className="text-xl font-bold mb-4">Gráficos de Usuarios</h2>
-                    <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { id: 'line', Component: Line },
-                            { id: 'bar', Component: Bar },
-                            { id: 'doughnut', Component: Doughnut },
-                            { id: 'radar', Component: Radar },
-                            { id: 'pie', Component: Pie },
-                            { id: 'barHorizontal', Component: Bar },
-                            { id: 'bubble', Component: Bubble },
-                            { id: 'scatter', Component: Scatter },
-                        ].map(({ id, Component }) => (
-                            <Draggable key={id} bounds="parent">
-                                <div className="w-full h-[320px] bg-white p-4 rounded-lg shadow-lg mt-4 relative">
-                                    <button
-                                        className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
-                                        onClick={() => handleFavoriteToggle(id)}
-                                    >
-                                        <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
-                                    </button>
-                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
-                                    <div className="w-full h-full">
-                                        {renderChartComponent(id, Component)}
+                <div className={`flex-1 container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <div className={`mt-8 p-6 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                        <h2 className="text-xl font-bold mb-4"></h2>
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { id: 'line', Component: Line },
+                                { id: 'bar', Component: Bar },
+                                { id: 'doughnut', Component: Doughnut },
+                                { id: 'radar', Component: Radar },
+                                { id: 'pie', Component: Pie },
+                                { id: 'barHorizontal', Component: Bar },
+                                { id: 'bubble', Component: Bubble },
+                                { id: 'scatter', Component: Scatter },
+                            ].map(({ id, Component }) => (
+                                <Draggable key={id} bounds="parent">
+                                    <div className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                                        <button
+                                            className="absolute top-2 right-2 p-1 text-yellow-400 hover:text-yellow-600"
+                                            onClick={() => handleFavoriteToggle(id)}
+                                        >
+                                            <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? 'text-yellow-400' : 'text-gray-400'}`} />
+                                        </button>
+                                        <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
+                                        <div className="w-full h-full">
+                                            {renderChartComponent(id, Component)}
+                                        </div>
                                     </div>
-                                </div>
-                            </Draggable>
-                        ))}
+                                </Draggable>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

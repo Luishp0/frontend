@@ -1,11 +1,12 @@
-import React from 'react';
-import { StarIcon } from '@heroicons/react/20/solid'
+import React, { useContext } from 'react';
+import { StarIcon } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
 
 import venta1 from "../img/venta1.jpg";
 import venta2 from "../img/venta2.jpg";
 import venta3 from "../img/venta3.jpg";
 import venta4 from "../img/venta4.jpg";
+import { AuthContext } from './AuthContext';
 
 const product = {
   name: '',
@@ -43,24 +44,25 @@ const product = {
   ],
   details:
     'Diseñada con líneas limpias y materiales de alta calidad, nuestra pecera inteligente combina a la perfección estilo y funcionalidad. Ya sea en la sala de estar, la oficina o cualquier otro espacio, esta pieza de conversación se convertirá en el centro de atención donde quiera que vaya.',
-}
-const reviews = { href: '#', average: 4, totalCount: 117 }
+};
+const reviews = { href: '#', average: 4, totalCount: 117 };
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Example() {
+  const { darkMode } = useContext(AuthContext);
 
   return (
-    <div className="bg-white">
-       <div className="pt-6" style={{ marginTop: '1cm' }}>
+    <div className={`bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
+      <div className="pt-6" style={{ marginTop: '1cm' }}>
         <nav aria-label="Breadcrumb">
-          <ol  className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <ol className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
-                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900 dark:text-gray-100">
                     {breadcrumb.name}
                   </a>
                   <svg
@@ -69,7 +71,7 @@ export default function Example() {
                     viewBox="0 0 16 20"
                     fill="currentColor"
                     aria-hidden="true"
-                    className="h-5 w-4 text-gray-300"
+                    className="h-5 w-4 text-gray-300 dark:text-gray-500"
                   >
                     <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                   </svg>
@@ -77,7 +79,7 @@ export default function Example() {
               </li>
             ))}
             <li className="text-sm">
-              <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
+              <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">
                 {product.name}
               </a>
             </li>
@@ -120,14 +122,14 @@ export default function Example() {
 
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 dark:border-gray-700 lg:pr-8">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl">{product.name}</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only ">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900 dark:text-gray-100">{product.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -138,7 +140,7 @@ export default function Example() {
                     <StarIcon
                       key={rating}
                       className={classNames(
-                        reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
+                        reviews.average > rating ? 'text-gray-900 dark:text-gray-100' : 'text-gray-200 dark:text-gray-600',
                         'h-5 w-5 flex-shrink-0'
                       )}
                       aria-hidden="true"
@@ -146,37 +148,36 @@ export default function Example() {
                   ))}
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
                   {reviews.totalCount} Vistas
                 </a>
               </div>
             </div>
             <form className="mt-10">
-            <Link to="/nextcompra" className="mt-10 flex  w-full items-center justify-center rounded-md border border-transparent bg-gray-800 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-          Comprar
-        </Link>
-
+              <Link to="/nextcompra" className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-800 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700 dark:hover:bg-gray-600">
+                Comprar
+              </Link>
             </form>
           </div>
 
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 dark:border-gray-700 lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{product.description}</p>
+                <p className="text-base text-gray-900 dark:text-gray-100">{product.description}</p>
               </div>
             </div>
 
             <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Características </h3>
+              <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">Características </h3>
 
               <div className="mt-4">
                 <ul className="list-disc space-y-2 pl-4 text-sm">
                   {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
+                    <li key={highlight} className="text-gray-400 dark:text-gray-500">
+                      <span className="text-gray-600 dark:text-gray-300">{highlight}</span>
                     </li>
                   ))}
                 </ul>
@@ -184,15 +185,15 @@ export default function Example() {
             </div>
 
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Diseño Elegante y Funcional</h2>
+              <h2 className="text-sm font-medium text-gray-900 dark:text-gray-100">Diseño Elegante y Funcional</h2>
 
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
+              <div className="mt-4">
+                <p className="text-gray-500 dark:text-gray-400">{product.details}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

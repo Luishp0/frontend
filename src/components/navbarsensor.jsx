@@ -1,43 +1,43 @@
-import React from 'react';
-import { FaHome, FaFish, FaFilter, FaThermometerHalf } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
+import React, { useContext } from 'react';
+import { FaFish, FaFilter, FaThermometerHalf } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { AuthContext } from './AuthContext'; // Importa el contexto
 
 const WhatWeOffer = () => {
+  const { darkMode } = useContext(AuthContext);
+
   const services = [
- 
     {
-      icon: <FaFish className="text-blue-500 text-6xl" />,
+      icon: <FaFish className={`text-6xl ${darkMode ? 'text-blue-300' : 'text-blue-500'}`} />,
       title: 'PECES',
       description: '',
-      link: '/infoma', // Ruta a la que se redirigirá al hacer clic
+      link: '/infoma',
     },
     {
-      icon: <FaFilter className="text-orange-500 text-6xl" />, // Icono de filtro
+      icon: <FaFilter className={`text-6xl ${darkMode ? 'text-orange-300' : 'text-orange-500'}`} />,
       title: 'FILTROS',
       description: '',
-      link: '/filtros', // Ruta a la que se redirigirá al hacer clic
+      link: '/filtros',
     },
     {
-      icon: <FaThermometerHalf className="text-yellow-500 text-6xl" />, // Icono de termómetro medio
+      icon: <FaThermometerHalf className={`text-6xl ${darkMode ? 'text-yellow-300' : 'text-yellow-500'}`} />,
       title: 'SENSORES',
       description: '',
-      link: '/sensores', // Ruta a la que se redirigirá al hacer clic
+      link: '/sensores',
     }
   ];
 
   return (
-    <div className="py-12 ml-80" style={{ marginTop: '2cm' }}>
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className={`py-12 ml-80 ${darkMode ? 'bg-gray-800' : 'bg-white'}`} style={{ marginTop: '2cm' }}>
+      <div className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ${darkMode ? 'text-white' : 'text-black'}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceButton
               key={index}
               icon={service.icon}
               title={service.title}
-              link={service.link} // Pasar la ruta al componente de botón de servicio
-              isFish={service.title === 'PECES'} // Agregar prop para identificar si es el botón de PECES
-              isFilters={service.title === 'FILTROS'} // Agregar prop para identificar si es el botón de FILTROS
-              isSensors={service.title === 'SENSORES'} // Agregar prop para identificar si es el botón de SENSORES
+              link={service.link}
+              darkMode={darkMode}
             />
           ))}
         </div>
@@ -48,24 +48,17 @@ const WhatWeOffer = () => {
 
 export default WhatWeOffer;
 
-const ServiceButton = ({ icon, title, link, isFish, isFilters, isSensors }) => {
-  let bgColorClass = 'bg-white'; // Por defecto, el fondo es blanco
-  if (isFilters) {
-    bgColorClass = 'bg-white'; // Cambia el fondo a blanco si es el botón de FILTROS
-  } else if (isSensors) {
-    bgColorClass = 'bg-blue-200'; // Cambia el fondo a azul celeste si es el botón de SENSORES
-  }
-
+const ServiceButton = ({ icon, title, link, darkMode }) => {
   return (
     <Link
       to={link}
-      className={`p-6 rounded-md shadow-md focus:outline-none ${bgColorClass}`}
+      className={`p-6 rounded-md shadow-md focus:outline-none ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-black'}`}
     >
       <div className="flex items-center mb-4">
         {icon}
-        <h3 className="ml-4 text-lg font-bold text-gray-700">{title}</h3>
+        <h3 className={`ml-4 text-lg font-bold ${darkMode ? 'text-white' : 'text-black'}`}>{title}</h3>
       </div>
-      <p className="text-sm text-gray-500">{/* No se muestra la descripción en el botón de enlace */}</p>
+      <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>{/* No se muestra la descripción en el botón de enlace */}</p>
     </Link>
   );
 };
