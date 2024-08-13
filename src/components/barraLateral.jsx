@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleRight, faChartPie, faUsers, faDatabase, faRightFromBracket, faFishFins, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleRight, faChartPie, faUsers, faDatabase, faRightFromBracket, faFishFins, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthContext'; // Importa el AuthContext para acceder al dark mode
 
@@ -35,7 +35,7 @@ const BarraLateral = () => {
             </Link>
           )}
           <button onClick={toggleSidebar} className={`p-2 rounded-md hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-colors ${sidebarOpen ? 'ml-4' : ''}`}>
-            <FontAwesomeIcon icon={faBars} className="text-lg" />
+            <FontAwesomeIcon icon={sidebarOpen ? faArrowLeft : faArrowRight} className="text-lg" />
           </button>
         </div>
       </div>
@@ -89,7 +89,7 @@ const BarraLateral = () => {
       {!sidebarOpen && (
         <div className={`absolute top-0 left-0 w-16 h-full flex flex-col items-center justify-center ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-600'} z-10`}>
           <button onClick={toggleSidebar} className={`p-2 rounded-md hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'} mt-4`}>
-            <FontAwesomeIcon icon={faBars} className="text-2xl" />
+            <FontAwesomeIcon icon={faArrowRight} className="text-2xl" />
           </button>
           <Link to="/inicioadministrador" className={`p-2 hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
             <FontAwesomeIcon icon={faChartPie} className={`${iconColors.dashboard} text-2xl`} />
