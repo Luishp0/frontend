@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
-import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2';
 import { AuthContext } from './AuthContext'; // Asegúrate de tener la ruta correcta
 
