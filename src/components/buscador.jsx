@@ -18,7 +18,7 @@ const Buscador = () => {
   };
 
   return (
-    <nav className={`p-4 shadow-md ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <nav className={`p-4 shadow-md ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} sticky top-0 z-10`}>
       <div className="flex justify-between items-center">
         <div className="relative flex items-center w-1/3">
           <FontAwesomeIcon 
@@ -55,7 +55,6 @@ const Buscador = () => {
           <button 
             className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'} relative`}
           >
-            
             <FontAwesomeIcon 
               icon={faBell} 
               className={darkMode ? 'text-gray-300' : 'text-gray-600'} 

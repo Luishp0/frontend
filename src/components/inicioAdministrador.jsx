@@ -3,15 +3,15 @@ import BarraLateral from "./barraLateral";
 import Buscador from "./buscador";
 import Tarjetas from './tarjetas';
 import GraficaPastel from "./graficaPastel";
-import { AuthContext } from './AuthContext'; // Importa el AuthContext para obtener el estado de dark mode
+import { AuthContext } from './AuthContext'; 
 
 const InicioAdministrador = () => {
-    const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
+    const { darkMode } = useContext(AuthContext); 
 
     return (
-        <div className={`flex h-screen overflow-auto ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+        <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
             <BarraLateral />
-            <div className="flex flex-col flex-grow">
+            <div className="flex flex-col flex-grow overflow-auto">
                 <div className="sticky top-0 z-10">
                     <Buscador />
                 </div>

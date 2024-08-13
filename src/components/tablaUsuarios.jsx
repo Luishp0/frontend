@@ -73,7 +73,7 @@ const TablaUsuarios = () => {
   };
 
   return (
-    <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+    <div className={`flex h-screen ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
       <BarraLateral />
       <div className="flex-1 flex flex-col">
         <Buscador />
@@ -82,8 +82,8 @@ const TablaUsuarios = () => {
             Lista de Usuarios
           </h1>
           <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
-            <table className={`min-w-full ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-              <thead className={darkMode ? 'bg-gray-700' : 'bg-gray-50'}>
+            <table className={`min-w-full ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+              <thead className={darkMode ? 'bg-gray-600' : 'bg-gray-50'}>
                 <tr>
                   <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
                     Nombre
@@ -102,9 +102,9 @@ const TablaUsuarios = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className={darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}>
+              <tbody className={darkMode ? 'bg-gray-700 divide-y divide-gray-600' : 'bg-white divide-y divide-gray-200'}>
                 {usuarios.map((usuario) => (
-                  <tr key={usuario._id} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-100'} transition duration-200`}>
+                  <tr key={usuario._id} className={`hover:${darkMode ? 'bg-gray-600' : 'bg-gray-100'} transition duration-200`}>
                     <td className="px-6 py-4 text-sm">{usuario.nombre}</td>
                     <td className="px-6 py-4 text-sm">{usuario.correo}</td>
                     <td className="px-6 py-4 text-sm">{formatDate(usuario.fechaNacimiento)}</td>
