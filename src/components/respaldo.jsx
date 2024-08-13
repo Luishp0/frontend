@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import BarraLateral from './barraLateral';
-import Buscador from './buscador'; // Importar Buscador
+import Buscador from './buscador';
+import { AuthContext } from './AuthContext'; // Importar AuthContext
 
 const Respaldo = () => {
   const [selectedTime, setSelectedTime] = useState('00:00');
@@ -8,6 +9,8 @@ const Respaldo = () => {
     const history = localStorage.getItem('backupHistory');
     return history ? JSON.parse(history) : [];
   });
+
+  const { darkMode } = useContext(AuthContext); // Obtener el estado de darkMode desde AuthContext
 
   const calculateTimeLeft = useCallback(() => {
     const now = new Date();
@@ -91,15 +94,15 @@ const Respaldo = () => {
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className={`flex h-screen overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
       <BarraLateral />
       <div className="flex-1 flex flex-col">
         <div className="sticky top-0 z-10">
           <Buscador />
         </div>
-        <div className="flex-1 p-4 bg-gray-100 dark:bg-gray-800 overflow-auto">
+        <div className="flex-1 p-4 bg-gray-100 dark:bg-gray-900 overflow-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
               <h1 className="text-2xl mb-4 text-gray-900 dark:text-gray-100">Respaldo de Base de Datos</h1>
               <div className="mb-4">
                 <label htmlFor="backupTime" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -129,7 +132,7 @@ const Respaldo = () => {
                 </button>
               </div>
             </div>
-            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Historial de Respaldos</h2>
               <ul className="text-sm list-disc list-inside text-gray-800 dark:text-gray-300">
                 {backupHistory.map((backup, index) => (
@@ -139,7 +142,7 @@ const Respaldo = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-4 flex flex-col justify-center items-center col-span-1 md:col-span-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 flex flex-col justify-center items-center col-span-1 md:col-span-2">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Tiempo Restante para el Respaldo</h2>
               <p className="text-gray-800 dark:text-gray-300">
                 {`${Math.floor(timeLeft / (1000 * 60 * 60))} horas ${Math.floor((timeLeft / (1000 * 60)) % 60)} minutos ${Math.floor((timeLeft / 1000) % 60)} segundos`}

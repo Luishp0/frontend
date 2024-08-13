@@ -51,10 +51,14 @@ const Tarjetas = () => {
 };
 
 const Tarjeta = ({ icono, texto, link, total, darkMode }) => {
+  // Establece los colores de fondo para las tarjetas según el estado darkMode
+  const bgColor = darkMode ? 'bg-gray-700' : 'bg-white';
+  const textColor = darkMode ? 'text-white' : 'text-gray-700';
+
   return (
     <div
       onClick={() => window.location.href = link}
-      className={`p-8 rounded-lg shadow-lg flex items-center cursor-pointer transition-transform transform hover:scale-105 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+      className={`p-6 rounded-lg shadow-md flex items-center cursor-pointer transition-transform transform hover:scale-105 ${bgColor} ${textColor}`}
     >
       <div className="text-6xl mr-6">
         {icono}

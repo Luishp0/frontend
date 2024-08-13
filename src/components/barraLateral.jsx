@@ -30,7 +30,7 @@ const BarraLateral = () => {
       <div className="p-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {sidebarOpen && (
-            <Link to="/inicioadministrador">
+            <Link to="">
               <h1 className={`text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-black'}`}>AcuaCode</h1>
             </Link>
           )}

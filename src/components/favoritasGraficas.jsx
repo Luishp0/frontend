@@ -1,42 +1,126 @@
 import React, { useContext } from 'react';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
-import { Line, Bar, Doughnut, Radar, Pie, Bubble, Scatter } from 'react-chartjs-2';
-import { useFavoritos } from './FavoritosContext';
-import { StarIcon } from '@heroicons/react/24/solid';
+import { Line, Bar, Doughnut, Radar, Pie, PolarArea } from 'react-chartjs-2';
 import { AuthContext } from './AuthContext';
 
 const FavoritasGraficas = () => {
-    const { favorites, toggleFavorite } = useFavoritos();
     const { darkMode } = useContext(AuthContext);
 
-    const handleFavoriteToggle = (id) => {
-        const data = favorites[id]?.data;
-        toggleFavorite(id, data);
+    // Datos preestablecidos para los gráficos
+    const chartData = {
+        line: {
+            labels: ['January', 'February', 'March', 'April'],
+            datasets: [{
+                label: 'Sales',
+                data: [65, 59, 80, 81],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            }],
+        },
+        bar: {
+            labels: ['January', 'February', 'March', 'April'],
+            datasets: [{
+                label: 'Revenue',
+                data: [45, 30, 60, 75],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+            }],
+        },
+        doughnut: {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }],
+        },
+        radar: {
+            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding'],
+            datasets: [{
+                label: 'Activities',
+                data: [65, 59, 90, 81, 56],
+                backgroundColor: 'rgba(179, 181, 198, 0.2)',
+                borderColor: 'rgba(179, 181, 198, 1)',
+                borderWidth: 1,
+            }],
+        },
+        pie: {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }],
+        },
+        polarArea: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                data: [11, 16, 7, 25, 13, 9],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+            }],
+        },
     };
 
-    const renderChartComponent = (id, data) => {
+    const renderChartComponent = (id, Component) => {
         switch (id) {
             case 'line':
-                return <Line data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Línea', color: darkMode ? '#fff' : '#000' } }, scales: { x: { ticks: { color: darkMode ? '#fff' : '#000' }, grid: { borderColor: darkMode ? '#fff' : '#000' } }, y: { ticks: { color: darkMode ? '#fff' : '#000' }, grid: { borderColor: darkMode ? '#fff' : '#000' } } } }} />;
+                return <Line data={chartData.line} options={getChartOptions('Line Chart')} />;
             case 'bar':
-                return <Bar data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Barras', color: darkMode ? '#fff' : '#000' } }, scales: { x: { ticks: { color: darkMode ? '#fff' : '#000' }, grid: { borderColor: darkMode ? '#fff' : '#000' } }, y: { ticks: { color: darkMode ? '#fff' : '#000' }, grid: { borderColor: darkMode ? '#fff' : '#000' } } } }} />;
+                return <Bar data={chartData.bar} options={getChartOptions('Bar Chart')} />;
             case 'doughnut':
-                return <Doughnut data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Doughnut', color: darkMode ? '#fff' : '#000' } } }} />;
+                return <Doughnut data={chartData.doughnut} options={getChartOptions('Doughnut Chart')} />;
             case 'radar':
-                return <Radar data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Radar', color: darkMode ? '#fff' : '#000' } } }} />;
+                return <Radar data={chartData.radar} options={getChartOptions('Radar Chart')} />;
             case 'pie':
-                return <Pie data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Pie', color: darkMode ? '#fff' : '#000' } } }} />;
-            case 'barHorizontal':
-                return <Bar data={data} options={{ maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Barras Horizontal', color: darkMode ? '#fff' : '#000' } } }} />;
-            case 'bubble':
-                return <Bubble data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Burbuja', color: darkMode ? '#fff' : '#000' } } }} />;
-            case 'scatter':
-                return <Scatter data={data} options={{ maintainAspectRatio: false, plugins: { legend: { labels: { color: darkMode ? '#fff' : '#000' } }, tooltip: { callbacks: { label: function (tooltipItem) { return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`; } } }, title: { display: true, text: 'Gráfico de Dispersión', color: darkMode ? '#fff' : '#000' } } }} />;
+                return <Pie data={chartData.pie} options={getChartOptions('Pie Chart')} />;
+            case 'polarArea':
+                return <PolarArea data={chartData.polarArea} options={getChartOptions('Polar Area Chart')} />;
             default:
                 return <p>No data available</p>;
         }
     };
+
+    const getChartOptions = (titleText) => ({
+        maintainAspectRatio: false,
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: darkMode ? '#fff' : '#000',
+                },
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}`;
+                    },
+                },
+            },
+            title: {
+                display: true,
+                text: titleText,
+                color: darkMode ? '#fff' : '#000',
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: darkMode ? '#fff' : '#000',
+                },
+                grid: {
+                    borderColor: darkMode ? '#fff' : '#000',
+                },
+            },
+            y: {
+                ticks: {
+                    color: darkMode ? '#fff' : '#000',
+                },
+                grid: {
+                    borderColor: darkMode ? '#fff' : '#000',
+                },
+            },
+        },
+    });
 
     return (
         <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
@@ -46,22 +130,14 @@ const FavoritasGraficas = () => {
                 <div className={`flex-1 container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     <div className={`mt-8 p-6 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
                         <h2 className="text-xl font-bold mb-4">Gráficas Favoritas</h2>
-                        <div className="grid grid-cols-2 gap-4">
-                            {Object.keys(favorites).map((id) => (
-                                favorites[id]?.isFavorite && favorites[id]?.data && (
-                                    <div key={id} className={`w-full h-[320px] p-4 rounded-lg shadow-lg mt-4 relative ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
-                                        <button
-                                            className={`absolute top-2 right-2 p-1 ${darkMode ? 'text-yellow-300 hover:text-yellow-400' : 'text-yellow-400 hover:text-yellow-600'}`}
-                                            onClick={() => handleFavoriteToggle(id)}
-                                        >
-                                            <StarIcon className={`h-6 w-6 ${favorites[id]?.isFavorite ? (darkMode ? 'text-yellow-300' : 'text-yellow-400') : (darkMode ? 'text-gray-500' : 'text-gray-400')}`} />
-                                        </button>
-                                        <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${id.charAt(0).toUpperCase() + id.slice(1)}`}</h3>
-                                        <div className="w-full h-full">
-                                            {renderChartComponent(id, favorites[id].data)}
-                                        </div>
+                        <div className="grid grid-cols-3 gap-4">
+                            {['line', 'bar', 'doughnut', 'radar', 'pie', 'polarArea'].map((chartType) => (
+                                <div key={chartType} className={`p-4 rounded-lg shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'} h-60`}>
+                                    <h3 className="text-lg font-semibold mb-2">{`Gráfico de ${chartType.charAt(0).toUpperCase() + chartType.slice(1)}`}</h3>
+                                    <div className="w-full h-full">
+                                        {renderChartComponent(chartType, { Line, Bar, Doughnut, Radar, Pie, PolarArea }[chartType])}
                                     </div>
-                                )
+                                </div>
                             ))}
                         </div>
                     </div>

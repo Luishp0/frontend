@@ -26,8 +26,8 @@ const TablaPeceras = () => {
       <BarraLateral />
       <div className="flex-1 flex flex-col">
         <Buscador />
-        <div className={`flex-1 p-10 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-          <h1 className={`mb-6 text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+        <div className={`flex-1 overflow-y-auto container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`} style={{ marginTop: '1cm' }}>
+          <h1 className="mb-4 text-2xl font-semibold">
             Tabla de Peceras
           </h1>
           <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
