@@ -24,6 +24,7 @@ import ResetPasswordScreen from './components/restablecerContrasena.jsx';
 import CodigoVerificacion from './components/verificarCodigoRecuperacion.jsx';
 import TablaPeceras from './components/tablaPeceras.jsx';
 import Actualizador from './components/actualizador.jsx';
+import Notificaciones from './components/notificaciones.jsx';
 import Actializardatos from './components/Actualizardatos.jsx';
 import AvisoPrivacidad from './components/avisoPrivacidad.jsx';
 import { FavoritosProvider } from './components/FavoritosContext.js'; // Importa el proveedor de contexto
@@ -38,6 +39,7 @@ function App() {
             <Route path='/actualizardatos' element={<Actializardatos />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/registro' element={<Registro />} />
+            <Route path='/notificaciones' element={<Notificaciones />} />
             <Route path='/inicioAdministrador' element={<InicioAdministrador />} />
             <Route path='/inicio' element={<Inicio />} />
             <Route path='/internoprofile' element={<Internoprofile />} />

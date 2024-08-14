@@ -4,6 +4,7 @@ import Portada from "./portada";
 import Rectangulos from "./rectangulos";
 import Portaima from "./portaima";
 import Informacion from "./informacion";
+import Descarga from "./descarga";
 import Dobletex from "./dobletex";
 import Geolocalizacion from "./geolocalizacion"
 import Comentarios from "./comentarios";
@@ -20,6 +21,7 @@ const Inicio = () => {
         <Rectangulos />
         <Portaima />
         <Informacion />
+        <Descarga />
         <Dobletex />
         <Geolocalizacion />
         <Comentarios />

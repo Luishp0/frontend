@@ -23,6 +23,10 @@ const Buscador = () => {
     navigate('/profile'); // Reemplaza '/profile' con la ruta correcta a tu interfaz
   };
 
+  const handleNotificationsClick = () => {
+    navigate('/notificaciones'); // Reemplaza '/notifications' con la ruta correcta a tu página de notificaciones
+  };
+
   return (
     <nav className={`p-4 shadow-md ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} sticky top-0 z-10`}>
       <div className="flex justify-between items-center">
@@ -59,6 +63,7 @@ const Buscador = () => {
             />
           </button>
           <button 
+            onClick={handleNotificationsClick}
             className={`text-${darkMode ? 'white' : 'gray-500'} hover:text-${darkMode ? 'gray-300' : 'gray-700'} relative`}
           >
             <FontAwesomeIcon 
