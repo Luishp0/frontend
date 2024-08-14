@@ -3,7 +3,6 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { Line, Bar, Doughnut, Radar, Pie, PolarArea } from 'react-chartjs-2';
 import { AuthContext } from './AuthContext';
-import { StarIcon } from '@heroicons/react/24/solid';
 
 const FavoritasGraficas = () => {
     const { darkMode } = useContext(AuthContext);
@@ -137,12 +136,6 @@ const FavoritasGraficas = () => {
                                     <div className="absolute inset-0">
                                         {renderChartComponent(chartType, { Line, Bar, Doughnut, Radar, Pie, PolarArea }[chartType])}
                                     </div>
-                                    <button
-                                        className="absolute top-2 right-2 text-gray-400 hover:text-yellow-500 transition-all duration-300"
-                                        onClick={() => {}}
-                                    >
-                                        <StarIcon className="h-6 w-6" />
-                                    </button>
                                 </div>
                             ))}
                         </div>

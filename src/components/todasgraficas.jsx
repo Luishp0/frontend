@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import Draggable from 'react-draggable';
 import { useNavigate } from 'react-router-dom';
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
@@ -241,22 +240,20 @@ const TodasGraficas = () => {
                                 { id: 'pie', Component: Pie },
                                 { id: 'polarArea', Component: PolarArea }, // Añadido el nuevo gráfico
                             ].map(({ id, Component }) => (
-                                <Draggable key={id} bounds="parent">
-                                    <div className="p-2 border rounded-lg shadow-sm bg-white dark:bg-gray-800">
-                                        <div className="relative h-64">
-                                            {renderChartComponent(id, Component)}
-                                        </div>
-                                        <button
-                                            onClick={() => setFavorites((prevFavorites) => ({ ...prevFavorites, [id]: !prevFavorites[id] }))}
-                                            className="absolute top-2 right-2 text-gray-400 hover:text-yellow-500 transition-all duration-300">
-                                            {favorites[id] ? (
-                                                <StarIcon className="h-6 w-6 text-yellow-400" />
-                                            ) : (
-                                                <StarIcon className="h-6 w-6" />
-                                            )}
-                                        </button>
+                                <div key={id} className="p-2 border rounded-lg shadow-sm bg-white dark:bg-gray-800">
+                                    <div className="relative h-64">
+                                        {renderChartComponent(id, Component)}
                                     </div>
-                                </Draggable>
+                                    <button
+                                        onClick={() => setFavorites((prevFavorites) => ({ ...prevFavorites, [id]: !prevFavorites[id] }))}
+                                        className="absolute top-2 right-2 text-gray-400 hover:text-yellow-500 transition-all duration-300">
+                                        {favorites[id] ? (
+                                            <StarIcon className="h-6 w-6 text-yellow-400" />
+                                        ) : (
+                                            <StarIcon className="h-6 w-6" />
+                                        )}
+                                    </button>
+                                </div>
                             ))}
                         </div>
                     </div>
