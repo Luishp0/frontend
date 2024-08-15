@@ -1,5 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import imgBasico from '../img/compras1.jpg'; // Importa la imagen del paquete básico
+import imgAvanzado from '../img/compras2.jpg'; // Importa la imagen del paquete avanzado
+import imgPro from '../img/compras3.jpg'; // Importa la imagen del paquete pro
 
 export const Pricing = () => {
   const navigate = useNavigate();
@@ -8,7 +11,7 @@ export const Pricing = () => {
       title: 'Paquete Básico',
       description: 'Cuidado esencial para peceras pequeñas.',
       price: '$19.99/mes',
-      imgSrc: 'https://images.pexels.com/photos/10653949/pexels-photo-10653949.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      imgSrc: imgBasico, // Usa la imagen importada
       buttonText: 'Comprar Básico',
       features: [
         'Filtro básico',
@@ -21,7 +24,7 @@ export const Pricing = () => {
       title: 'Paquete Avanzado',
       description: 'Cuidado completo para peceras medianas.',
       price: '$39.99/mes',
-      imgSrc: 'https://images.pexels.com/photos/4587877/pexels-photo-4587877.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      imgSrc: imgAvanzado, // Usa la imagen importada
       buttonText: 'Comprar Avanzado',
       features: [
         'Filtro avanzado',
@@ -35,7 +38,7 @@ export const Pricing = () => {
       title: 'Paquete Pro',
       description: 'Cuidado para peceras grandes y exóticas.',
       price: '$59.99/mes',
-      imgSrc: 'https://images.pexels.com/photos/3688936/pexels-photo-3688936.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      imgSrc: imgPro, // Usa la imagen importada
       buttonText: 'Comprar Pro',
       features: [
         'Filtro de alta capacidad',
@@ -53,7 +56,8 @@ export const Pricing = () => {
 
   return (
     <div className="px-8 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gradient-to-r dark:from-gray-800 dark:to-gray-900">
-      <div className="text-center mb-8">
+      {/* Ajuste del espaciado del título */}
+      <div className="text-center mb-12">
         <p className="text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-400">
           Selecciona el paquete que mejor se adapte a tus necesidades.
         </p>
