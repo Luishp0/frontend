@@ -9,7 +9,9 @@ const Nextcompra = () => {
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <Navbar />
-      <Formcompras />
+      <div style={{ marginTop: '1cm' }}> {/* Aplicar el margen en línea aquí */}
+        <Formcompras />
+      </div>
     </div>
   );
 };
