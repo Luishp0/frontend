@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Navbar from './navbar';
-import Productcompra from './productcompra';
+import { Pricing } from './productcompra'
 import Informacompras from './informacompras';
 import { AuthContext } from './AuthContext'; // Asegúrate de importar el contexto correcto
 
@@ -10,7 +10,7 @@ const Compras = () => {
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <Navbar />
-      <Productcompra />
+      <Pricing />
       <div style={{ marginTop: '2.5cm' }}>
         <Informacompras />
       </div>
