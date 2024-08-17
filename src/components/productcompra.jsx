@@ -10,7 +10,7 @@ export const Pricing = () => {
     {
       title: 'Paquete Básico',
       description: 'Cuidado esencial para peceras pequeñas.',
-      price: '$339.83 MXN/mes',
+      price: '$339.99 MXN/mes',
       imgSrc: imgBasico, // Usa la imagen importada
       buttonText: 'Compra Básica',
       features: [
@@ -23,7 +23,7 @@ export const Pricing = () => {
     {
       title: 'Paquete Avanzado',
       description: 'Cuidado completo para peceras medianas.',
-      price: '$679.83 MXN/mes',
+      price: '$680.00 MXN/mes',
       imgSrc: imgAvanzado, // Usa la imagen importada
       buttonText: 'Compra Avanzada',
       features: [
@@ -37,7 +37,7 @@ export const Pricing = () => {
     {
       title: 'Paquete Pro',
       description: 'Cuidado para peceras grandes y exóticas.',
-      price: '$1019.83 MXN/mes',
+      price: '$1019.99 MXN/mes',
       imgSrc: imgPro, // Usa la imagen importada
       buttonText: 'Compra Pro',
       features: [
