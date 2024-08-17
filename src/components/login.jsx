@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FaRegEnvelope, FaApple } from 'react-icons/fa';
 import { MdLockOutline } from 'react-icons/md';
 import logotra from '../img/logotra.png';
@@ -8,13 +8,29 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FcGoogle } from "react-icons/fc";
 import Navbar from "./navbar";
-import { AuthContext } from './AuthContext'; // Ajusta la ruta si es necesario
+import { AuthContext } from './AuthContext'; 
 import Swal from 'sweetalert2';
+import { auth, provider } from '../firebaseConfig'; // Importa Firebase y Google provider
+import { signInWithPopup } from "firebase/auth"; // Importa función para autenticación
 
 const Login = () => {
-  const { login } = useContext(AuthContext); // Asegúrate de que AuthContext está correctamente importado
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const rememberedEmail = localStorage.getItem('rememberedEmail');
+    if (rememberedEmail) {
+      setEmail(rememberedEmail);
+      setRememberMe(true);
+    }
+  }, []);
+
+  const handleRememberMeChange = (e) => {
+    setRememberMe(e.target.checked);
+  };
 
   const handleSubmit = async (values) => {
     try {
@@ -32,7 +48,13 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        login(data.result.token, data.result.nombre); // Llama a login desde el AuthContext
+        if (rememberMe) {
+          localStorage.setItem('rememberedEmail', values.email);
+        } else {
+          localStorage.removeItem('rememberedEmail');
+        }
+
+        login(data.result.token, data.result.nombre);
         Swal.fire({
           title: '¡Bienvenido!',
           text: 'Inicio de sesión exitoso. Redirigiendo...',
@@ -65,6 +87,26 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log('Usuario autenticado:', user);
+        // Aquí puedes manejar el inicio de sesión con Google
+        login(user.accessToken, user.displayName); // Aquí puedes ajustar esto según tu lógica de autenticación
+        navigate('/inicio');
+      })
+      .catch((error) => {
+        console.error('Error durante la autenticación con Google:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'Error durante la autenticación con Google',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -78,8 +120,9 @@ const Login = () => {
             <h2 className="mb-5 text-xl font-bold text-center text-customBlue dark:text-customBlue-light">Inicio de Sesión</h2>
 
             <Formik
+              enableReinitialize={true} // Esto asegura que los valores iniciales se actualicen cuando cambia el estado
               initialValues={{
-                email: '',
+                email: email,
                 password: '',
               }}
               validationSchema={Yup.object({
@@ -95,7 +138,14 @@ const Login = () => {
                   <div className="mb-4">
                     <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
                       <FaRegEnvelope className="mr-2 text-gray-400 dark:text-gray-300" />
-                      <Field type="email" name="email" placeholder="Correo electrónico" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
+                      <Field
+                        type="email"
+                        name="email"
+                        placeholder="Correo electrónico"
+                        value={email} // Asegúrate de que el valor del campo sea el estado de `email`
+                        onChange={(e) => setEmail(e.target.value)} // Actualiza el estado de `email` cuando el usuario escribe
+                        className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none"
+                      />
                     </div>
                     <ErrorMessage name="email" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
@@ -103,7 +153,12 @@ const Login = () => {
                   <div className="mb-5">
                     <div className="flex items-center px-5 py-3 bg-gray-100 dark:bg-gray-700 rounded">
                       <MdLockOutline className="mr-2 text-gray-400 dark:text-gray-300" />
-                      <Field type="password" name="password" placeholder="Contraseña" className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none" />
+                      <Field
+                        type="password"
+                        name="password"
+                        placeholder="Contraseña"
+                        className="flex-1 text-sm text-gray-600 dark:text-gray-300 bg-transparent outline-none"
+                      />
                     </div>
                     <ErrorMessage name="password" component="div" className="mt-1 text-xs text-red-500 error-message" />
                   </div>
@@ -112,7 +167,13 @@ const Login = () => {
 
                   <div className='flex items-center justify-between w-full mb-4 sm:w-full md:w-80'>
                     <label className='flex items-center space-x-2 text-xs sm:text-sm md:w-2/3 lg:w-full'>
-                      <input type='checkbox' name='remember' className='bg-gray-100 dark:bg-gray-700 form-checkbox ' />
+                      <input
+                        type='checkbox'
+                        name='remember'
+                        className='bg-gray-100 dark:bg-gray-700 form-checkbox'
+                        checked={rememberMe}
+                        onChange={handleRememberMeChange}
+                      />
                       <span className='text-nowrap sm:text-sm text-customBlue dark:text-customBlue-light'>Recordar</span>
                     </label>
                     <Link to="/recuperacion" className='text-xs text-nowrap sm:text-sm text-customBlue dark:text-customBlue-light hover:underline'>¿Olvidaste la contraseña?</Link>
@@ -139,7 +200,8 @@ const Login = () => {
                     <button className="flex items-center justify-center w-40 h-10 mr-2 transition-colors duration-300 bg-gray-100 dark:bg-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
                       <FaApple className="text-2xl text-black dark:text-white" />
                     </button>
-                    <button className="flex items-center justify-center w-40 h-10 ml-4 transition-colors duration-300 bg-gray-100 dark:bg-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
+
+                    <button onClick={handleGoogleLogin} className="flex items-center justify-center w-40 h-10 ml-4 transition-colors duration-300 bg-gray-100 dark:bg-gray-700 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
                       <FcGoogle className="text-2xl text-gray-600 dark:text-gray-400" />
                     </button>
                   </div>
@@ -150,19 +212,21 @@ const Login = () => {
                     </Link>
                     <span className="mx-2">|</span>
                     <Link to="/terms" className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
-                      Términos de uso
+                      Términos y condiciones
                     </Link>
                   </div>
+
                 </Form>
               )}
             </Formik>
           </div>
 
-          <div className="hidden md:block md:w-1/2 rounded-r-md filter brightness-75" style={{ backgroundImage: `url(${backgroundImage})` }}>
-            <div className="px-10 py-12 bg-opacity-80">
-              <h2 className="mb-4 text-2xl font-bold text-white">¡Hola de nuevo!</h2>
-              <p className="mb-6 text-white">Ingresa tus datos para seguir adelante.</p>
-            </div>
+          <div className="relative hidden md:block md:w-1/2">
+            <img
+              src={backgroundImage}
+              alt="Imagen de fondo"
+              className="absolute inset-0 object-cover w-full h-full"
+            />
           </div>
         </div>
       </div>

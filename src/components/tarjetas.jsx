@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faFish, faThermometer, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from './AuthContext'; // Importa el AuthContext
@@ -11,7 +11,46 @@ const iconColors = {
 };
 
 const Tarjetas = () => {
+  const [usuarios, setUsuarios] = useState(0); // Inicializar como número
+  const [peces, setPeces] = useState(0); // Inicializar como número
+  const [sensores, setSensores] = useState(0); // Inicializar como número
   const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
+
+  useEffect(() => {
+    fetchUsuarios();
+    fetchPeces();
+    fetchSensores();
+  }, []);
+
+  const fetchUsuarios = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/usuario/contador');
+      const data = await response.json();
+      setUsuarios(data.totalUsuarios); // Asigna el valor de totalUsuarios al estado
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
+  const fetchPeces = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/peces/contador');
+      const data = await response.json();
+      setPeces(data.totalPeces); // Asigna el valor de totalPeces al estado
+    } catch (error) {
+      console.error('Error fetching fish:', error);
+    }
+  };
+
+  const fetchSensores = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/sensores/contador');
+      const data = await response.json();
+      setSensores(data.totalSensores); // Asigna el valor de totalSensores al estado
+    } catch (error) {
+      console.error('Error fetching sensors:', error);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center mt-8">
@@ -21,28 +60,27 @@ const Tarjetas = () => {
           icono={<FontAwesomeIcon icon={faUsers} className={iconColors.usuarios} />}
           texto="Usuarios"
           link="/tablausuarios"
-          total="150"
+          total={usuarios} // Usando el valor dinámico
           darkMode={darkMode} // Pasando el estado de darkMode a los componentes hijos
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faFish} className={iconColors.peceras} />}
           texto="Peceras"
           link="/tablapeceras"
-          total="50"
+          total={peces} // Usando el valor dinámico
           darkMode={darkMode}
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faThermometer} className={iconColors.sensores} />}
           texto="Sensores"
           link="/sensores"
-          total="100"
+          total={sensores} // Usando el valor dinámico
           darkMode={darkMode}
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faDownload} className={iconColors.descargas} />}
           texto="Descargas"
-          link="/inicio"
-          total="200"
+          total="1"
           darkMode={darkMode}
         />
       </div>
