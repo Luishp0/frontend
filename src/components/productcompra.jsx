@@ -10,9 +10,9 @@ export const Pricing = () => {
     {
       title: 'Paquete Básico',
       description: 'Cuidado esencial para peceras pequeñas.',
-      price: '$19.99/mes',
+      price: '$339.83 MXN/mes',
       imgSrc: imgBasico, // Usa la imagen importada
-      buttonText: 'Comprar Básico',
+      buttonText: 'Compra Básica',
       features: [
         'Filtro básico',
         'Sensor de temperatura',
@@ -23,9 +23,9 @@ export const Pricing = () => {
     {
       title: 'Paquete Avanzado',
       description: 'Cuidado completo para peceras medianas.',
-      price: '$39.99/mes',
+      price: '$679.83 MXN/mes',
       imgSrc: imgAvanzado, // Usa la imagen importada
-      buttonText: 'Comprar Avanzado',
+      buttonText: 'Compra Avanzada',
       features: [
         'Filtro avanzado',
         'Sensor de temperatura y pH',
@@ -37,9 +37,9 @@ export const Pricing = () => {
     {
       title: 'Paquete Pro',
       description: 'Cuidado para peceras grandes y exóticas.',
-      price: '$59.99/mes',
+      price: '$1019.83 MXN/mes',
       imgSrc: imgPro, // Usa la imagen importada
-      buttonText: 'Comprar Pro',
+      buttonText: 'Compra Pro',
       features: [
         'Filtro de alta capacidad',
         'Sensor de temperatura, pH y calidad del agua',
