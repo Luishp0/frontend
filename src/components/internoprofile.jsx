@@ -4,6 +4,13 @@ import { AuthContext } from './AuthContext';
 const UserProfile = () => {
   const { darkMode } = useContext(AuthContext);
   const [profileImage, setProfileImage] = useState('https://via.placeholder.com/120');
+  const [formData, setFormData] = useState({
+    nombre: '',
+    telefono: '',
+    edad: '',
+    correo: '',
+    contraseña: ''
+  });
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -14,6 +21,13 @@ const UserProfile = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -38,8 +52,6 @@ const UserProfile = () => {
           </div>
           <div className="mt-4"> {/* Separación de aproximadamente 1 cm */}
             <h2 className="font-semibold text-2xl text-center">Nombre de usuario</h2>
-            <span className={`block ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            </span>
           </div>
         </div>
 
@@ -62,15 +74,18 @@ const UserProfile = () => {
           {/* Account Settings Form */}
           <form className="flex-grow">
             <div className="grid grid-cols-2 gap-6">
-              {['Nombre', 'Telefono', 'Edad', 'Correo electronico', 'Contraseña'].map((label, index) => (
+              {['nombre', 'telefono', 'edad', 'correo', 'contraseña'].map((label, index) => (
                 <div key={index}>
                   <label className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    {label}
+                    {label.charAt(0).toUpperCase() + label.slice(1)}
                   </label>
                   <input
                     type="text"
+                    name={label}
                     className={`mt-1 p-3 block w-full border rounded-md ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-300'}`}
-                    value="Placeholder"
+                    placeholder="Placeholder"
+                    value={formData[label]}
+                    onChange={handleChange}
                   />
                 </div>
               ))}
