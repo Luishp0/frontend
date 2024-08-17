@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { PencilIcon } from '@heroicons/react/outline';
+import { PencilSquareIcon } from '@heroicons/react/24/outline';
+
 
 const UserProfile = () => {
   const { darkMode } = useContext(AuthContext);
@@ -37,14 +38,15 @@ const UserProfile = () => {
               onChange={handleImageUpload} 
             />
             <div 
-              className="absolute bottom-0 right-0 flex items-center justify-center w-10 h-10 bg-black bg-opacity-40 rounded-full cursor-pointer transition-opacity opacity-0 hover:opacity-100"
-              onClick={(e) => {
-                e.stopPropagation();
-                document.getElementById('upload-avatar').click();
-              }}
-            >
-              <PencilIcon className={`h-6 w-6 ${darkMode ? 'text-gray-300' : 'text-gray-900'}`} />
-            </div>
+                className="absolute bottom-0 right-0 flex items-center justify-center w-10 h-10 bg-black bg-opacity-40 rounded-full cursor-pointer transition-opacity opacity-0 hover:opacity-100"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  document.getElementById('upload-avatar').click();
+                }}
+              >
+                <PencilSquareIcon className={`h-6 w-6 ${darkMode ? 'text-gray-300' : 'text-gray-900'}`} />
+              </div>
+
           </div>
           <div className="mt-[-1.5rem] flex items-center space-x-4"> {/* Espaciado ajustado */}
             <div>
