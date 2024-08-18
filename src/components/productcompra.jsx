@@ -55,10 +55,10 @@ export const Pricing = () => {
   };
 
   return (
-    <div className="px-8 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gradient-to-r dark:from-gray-800 dark:to-gray-900">
+    <div className="px-8 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 bg-gradient-to-r">
       {/* Ajuste del espaciado del título */}
       <div className="text-center mb-12">
-        <p className="text-2xl lg:text-3xl font-bold text-gray-700 dark:text-gray-400">
+        <p className="text-2xl lg:text-3xl font-bold text-gray-700 dark:text-white">
           Selecciona el paquete que mejor se adapte a tus necesidades.
         </p>
       </div>

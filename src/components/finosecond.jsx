@@ -74,9 +74,9 @@ const Finosecond = () => {
   ];
 
   return (
-    <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-grayDark' : 'bg-white'}`}>
+    <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
       {fishData.map((fish, index) => (
-        <div key={index} className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        <div key={index} className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 border-2 ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}>
           <div className="md:flex">
             <div className="md:shrink-0">
               <img
@@ -85,7 +85,7 @@ const Finosecond = () => {
                 alt={fish.name}
               />
             </div>
-            <div className={`p-8 ${darkMode ? 'text-white' : 'text-black'}`}>
+            <div className={`p-8 ${darkMode ? 'text-blue-300' : 'text-black'}`}>
               <a
                 href="#"
                 className={`block mt-1 text-lg leading-tight font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`}

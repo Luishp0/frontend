@@ -10,13 +10,14 @@ import sensor6 from "../img/sensordeluz.jpg";
 const Finosecond = () => {
   const { darkMode } = useContext(AuthContext);
 
-  const cardClasses = `max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-4 ${darkMode ? 'bg-gray-800' : 'bg-white'}`;
-  const textClasses = `${darkMode ? 'text-white' : 'text-black'}`;
+  const cardClasses = `max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-4 border-2 ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`;
+  const textClasses = `${darkMode ? 'text-gray-300' : 'text-black'}`;
   const linkClasses = `block mt-1 text-lg leading-tight font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`;
   const descriptionClasses = `mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`;
+  const containerClasses = `flex flex-wrap justify-center ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`;
 
   return (
-    <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-grayDark' : 'bg-white'}`}>
+    <div className={containerClasses}>
       {/* Primer componente */}
       <div className={cardClasses}>
         <div className="md:flex">
