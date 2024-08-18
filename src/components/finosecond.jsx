@@ -76,7 +76,7 @@ const Finosecond = () => {
   return (
     <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
       {fishData.map((fish, index) => (
-        <div key={index} className={`max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-8 md:mr-6 border-2 ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}>
+        <div key={index} className={`max-w-md mx-auto rounded-md shadow-md overflow-hidden md:max-w-2xl mb-8 border border-gray-300 border-opacity-30 ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-black'}`}>
           <div className="md:flex">
             <div className="md:shrink-0">
               <img
