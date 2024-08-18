@@ -43,17 +43,17 @@ const Respaldo = () => {
     try {
       const response = await fetch('http://localhost:8000/respaldo');
       const data = await response.json();
-  
+
       if (response.ok) {
         const now = new Date();
         const formattedDate = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
         const formattedTime = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
-  
+
         const newBackup = {
           date: formattedDate,
           time: formattedTime,
         };
-  
+
         const updatedHistory = [newBackup, ...backupHistory];
         setBackupHistory(updatedHistory);
         localStorage.setItem('backupHistory', JSON.stringify(updatedHistory));
@@ -73,13 +73,13 @@ const Respaldo = () => {
   const handleSetTime = () => {
     setTimeLeft(calculateTimeLeft());
   };
-    
+
   useEffect(() => {
     const fetchBackupHistory = async () => {
       try {
         const response = await fetch('http://localhost:8000/respaldo/historial');
         const data = await response.json();
-        
+
         if (response.ok) {
           setBackupHistory(data.historial);
           localStorage.setItem('backupHistory', JSON.stringify(data.historial));
@@ -90,9 +90,14 @@ const Respaldo = () => {
         console.error(`Error al obtener el historial de respaldos: ${error}`);
       }
     };
-  
+
     fetchBackupHistory();
   }, []);
+
+  const handleFolderClick = () => {
+    // Aquí puedes manejar la lógica al hacer clic en el ícono de la carpeta
+    console.log('Ícono de carpeta clicado');
+  };
 
   return (
     <div className={`flex h-screen overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
@@ -132,9 +137,12 @@ const Respaldo = () => {
                   >
                     Realizar Respaldo
                   </button>
-                  <FaFolder
-                    className="ml-10 text-5xl text-gray-500 dark:text-gray-400" // Ajusta el margen aquí
-                  />
+                  <div
+                    onClick={handleFolderClick}
+                    className="ml-10 cursor-pointer"
+                  >
+                    <FaFolder className="text-5xl text-gray-500 dark:text-gray-400" />
+                  </div>
                 </div>
               </div>
             </div>
