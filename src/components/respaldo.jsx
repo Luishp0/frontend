@@ -132,7 +132,9 @@ const Respaldo = () => {
                   >
                     Realizar Respaldo
                   </button>
-                  <FaFolder className="ml-4 text-xl text-gray-500 dark:text-gray-400" />
+                  <FaFolder
+                    className="ml-10 text-5xl text-gray-500 dark:text-gray-400" // Ajusta el margen aquí
+                  />
                 </div>
               </div>
             </div>

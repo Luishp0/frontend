@@ -28,7 +28,7 @@ const TablaPeceras = () => {
         <Buscador />
         <div className={`flex-1 overflow-y-auto container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`} style={{ marginTop: '1cm' }}>
           <h1 className="mb-4 text-2xl font-semibold">
-            Tabla de Peceras
+            Peces
           </h1>
           <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
             <table className={`min-w-full ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>

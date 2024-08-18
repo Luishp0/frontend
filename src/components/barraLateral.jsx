@@ -56,7 +56,7 @@ const BarraLateral = () => {
           <li className={`px-4 py-3 cursor-pointer hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-colors flex items-center ${!sidebarOpen && 'justify-center'}`}>
             <FontAwesomeIcon icon={faFishFins} className={`${iconColors.peceras} text-lg`} />
             <span className={`ml-4 text-lg font-medium ${!sidebarOpen && 'hidden'}`}>
-              <Link to="/tablapeceras">Peceras</Link>
+              <Link to="/tablapeceras">Peces</Link>
             </span>
           </li>
           <li className={`px-4 py-3 cursor-pointer hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-colors flex items-center ${!sidebarOpen && 'justify-center'}`}>

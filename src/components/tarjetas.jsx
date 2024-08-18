@@ -65,7 +65,7 @@ const Tarjetas = () => {
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faFish} className={iconColors.peceras} />}
-          texto="Peceras"
+          texto="Peces"
           link="/tablapeceras"
           total={peces} // Usando el valor dinámico
           darkMode={darkMode}
