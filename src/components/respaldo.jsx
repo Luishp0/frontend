@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { FaFolder } from 'react-icons/fa'; // Importa el ícono de la carpeta
 import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { AuthContext } from './AuthContext'; // Importar AuthContext
@@ -124,12 +125,15 @@ const Respaldo = () => {
                     Fijar Hora
                   </button>
                 </div>
-                <button
-                  className="mt-4 px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-                  onClick={handleBackup}
-                >
-                  Realizar Respaldo
-                </button>
+                <div className="flex items-center mt-4">
+                  <button
+                    className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 flex items-center"
+                    onClick={handleBackup}
+                  >
+                    Realizar Respaldo
+                  </button>
+                  <FaFolder className="ml-4 text-xl text-gray-500 dark:text-gray-400" />
+                </div>
               </div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
