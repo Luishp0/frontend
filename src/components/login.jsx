@@ -54,7 +54,9 @@ const Login = () => {
           localStorage.removeItem('rememberedEmail');
         }
 
-        login(data.result.token, data.result.nombre);
+        login(data.result.token, data.result.nombre, data.result.telefono, data.result.correo);
+        console.log(login);
+        
         Swal.fire({
           title: '¡Bienvenido!',
           text: 'Inicio de sesión exitoso. Redirigiendo...',

@@ -7,6 +7,9 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userName, setUserName] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [correo, setCorreo] = useState('');
+  
   const [darkMode, setDarkMode] = useState(false);
 
   // Función para alternar el modo oscuro
@@ -22,9 +25,11 @@ export const AuthProvider = ({ children }) => {
   }, [darkMode]);
 
   // Función para iniciar sesión
-  const login = (token, name) => {
+  const login = (token, name, userTelefono, userCorreo) => {
     setIsAuthenticated(true);
     setUserName(name);
+    setTelefono(userTelefono);
+    setCorreo(userCorreo);
     // Guarda el token en localStorage o en un estado seguro
     localStorage.setItem('authToken', token);
   };
@@ -33,13 +38,24 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setIsAuthenticated(false);
     setUserName('');
+    setTelefono('');
+    setCorreo('');
     // Remueve el token de localStorage o del estado seguro
     localStorage.removeItem('authToken');
   };
 
   // Valor del contexto
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userName, darkMode, toggleDarkMode, login, logout }}>
+    <AuthContext.Provider value={{
+      isAuthenticated, 
+      userName, 
+      telefono, 
+      correo, 
+      darkMode, 
+      toggleDarkMode, 
+      login, 
+      logout 
+    }}>
       {children}
     </AuthContext.Provider>
   );

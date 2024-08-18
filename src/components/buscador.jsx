@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Buscador = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const { darkMode, toggleDarkMode } = useContext(AuthContext);
+  const { darkMode, toggleDarkMode, userName } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -83,9 +83,9 @@ const Buscador = () => {
                 onClick={handleUserProfileClick} 
                 className={`cursor-pointer hover:underline ${darkMode ? 'text-white' : 'text-gray-900'}`}
               >
-                Thomas Anree
+                {userName}
               </div>
-              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>UX Designer</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Administrador</div>
             </div>
           </div>
         </div>
