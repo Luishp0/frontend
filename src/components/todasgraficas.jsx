@@ -3,7 +3,7 @@ import BarraLateral from "./barraLateral";
 import Buscador from "./buscador";
 import { AuthContext } from './AuthContext'; 
 import Graficauno from "./graficauno"; // Importar el componente de la gráfica
-import Graficaph from "./graficaph"
+import Graficaph from "./graficaph";
 
 const TodasLasGraficas = () => {
     const { darkMode } = useContext(AuthContext); 
@@ -16,15 +16,15 @@ const TodasLasGraficas = () => {
                     <Buscador />
                 </div>
                 <div className="flex flex-col flex-grow p-4">
-                    {/* Añadir el componente Graficauno */}
-                    <div className="mb-6">
-                        <Graficauno />
+                    {/* Contenedor con flex para alinear las gráficas horizontalmente */}
+                    <div className="flex space-x-6">  {/* Agregué `space-x-6` para agregar un espacio entre las gráficas */}
+                        <div className="w-1/2"> {/* Cada gráfica ocupará el 50% del ancho */}
+                            <Graficauno />
+                        </div>
+                        <div className="w-1/2">
+                            <Graficaph />
+                        </div>
                     </div>
-                    {/* Puedes añadir más gráficas aquí si es necesario */}
-                    <div className="mb-6">
-                        <Graficaph />
-                    </div>
-                    {/* Puedes añadir más gráficas aquí si es necesario */}
                 </div>
             </div>
         </div>
