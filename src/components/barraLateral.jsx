@@ -74,9 +74,6 @@ const BarraLateral = () => {
                 <li className={`px-4 py-2 cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-200'} transition-colors`}>
                   <Link to="/todasgraficas">Todos los Análisis</Link>
                 </li>
-                <li className={`px-4 py-2 cursor-pointer hover:${darkMode ? 'bg-gray-700' : 'bg-gray-200'} transition-colors`}>
-                  <Link to="/graficasfavoritas">Favoritos</Link>
-                </li>
               </ul>
             )}
           </li>
