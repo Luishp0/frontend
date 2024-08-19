@@ -5,11 +5,11 @@ import { AuthContext } from './AuthContext'; // Asegúrate de tener la ruta corr
 const NotificationView = () => {
   const { darkMode } = useContext(AuthContext); // Obtener el estado de darkMode
   const [events, setEvents] = useState([
-    { id: 1, name: 'Meghan Smith', date: '10 de septiembre', time: '3:30 PM', subject: 'Reunión de equipo', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://i.pravatar.cc/150?img=1' },
-    { id: 2, name: 'Nado Husa', date: '15 de septiembre', time: '8:00 AM', subject: 'Desayuno con clientes', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://i.pravatar.cc/150?img=2' },
-    { id: 3, name: 'Nick Bove', date: '18 de septiembre', time: '9:00 AM', subject: 'Revisión de proyectos', status: 'pendiente', color: 'bg-yellow-500', avatar: 'https://i.pravatar.cc/150?img=3' },
-    { id: 4, name: 'Mónica Ribeiro', date: '20 de septiembre', time: '4:00 PM', subject: 'Entrega de informes', status: 'cancelado', color: 'bg-red-500', avatar: 'https://i.pravatar.cc/150?img=4' },
-    { id: 5, name: 'Gunther Ackner', date: '20 de septiembre', time: '5:00 PM', subject: 'Reunión de planificación', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://i.pravatar.cc/150?img=5' },
+    { id: 1, name: 'Meghan Smith', date: '10 de septiembre', time: '3:30 PM', subject: 'Temperatura alta detectada en la pecera', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://ui-avatars.com/api/?name=Meghan+Smith&background=random' },
+    { id: 2, name: 'Nado Husa', date: '15 de septiembre', time: '8:00 AM', subject: 'Revisión de niveles de pH en la pecera', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://ui-avatars.com/api/?name=Nado+Husa&background=random' },
+    { id: 3, name: 'Nick Bove', date: '18 de septiembre', time: '9:00 AM', subject: 'Alarma: oxígeno bajo en la pecera', status: 'pendiente', color: 'bg-yellow-500', avatar: 'https://ui-avatars.com/api/?name=Nick+Bove&background=random' },
+    { id: 4, name: 'Mónica Ribeiro', date: '20 de septiembre', time: '4:00 PM', subject: 'Sistema de filtración necesita mantenimiento', status: 'cancelado', color: 'bg-red-500', avatar: 'https://ui-avatars.com/api/?name=Mónica+Ribeiro&background=random' },
+    { id: 5, name: 'Gunther Ackner', date: '20 de septiembre', time: '5:00 PM', subject: 'Revisión general de la pecera inteligente', status: 'confirmado', color: 'bg-blue-500', avatar: 'https://ui-avatars.com/api/?name=Gunther+Ackner&background=random' },
   ]);
 
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -54,12 +54,7 @@ const NotificationView = () => {
             <p className={`text-md font-medium ${darkMode ? 'text-gray-300' : 'text-gray-600'} mt-1`}>{event.date}</p>
           </div>
           <div className={`text-xs ${darkMode ? 'text-gray-300' : 'text-gray-600'} ml-4`}>
-            <div className="flex items-center">
-              <svg className={`w-4 h-4 mr-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              {event.subject}
-            </div>
+            {event.subject}
           </div>
           <div className={`text-xs ml-2 ${event.status === 'confirmado' ? 'text-green-500' : event.status === 'pendiente' ? 'text-yellow-500' : 'text-red-500'}`}>
             {event.status.charAt(0).toUpperCase() + event.status.slice(1)}
@@ -83,16 +78,16 @@ const NotificationView = () => {
   return (
     <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-200'} p-6`}>
       <div className={`w-2/3 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white'} shadow-md rounded-xl overflow-hidden mr-4`}>
-        <div className={`p-4 flex justify-between items-center rounded-t-xl ${darkMode ? 'bg-gray-700 text-white' : 'bg-gray-900 text-white'}`}>
+        <div className={`p-4 flex justify-between items-center rounded-t-xl ${darkMode ? 'bg-blue-700 text-white' : 'bg-blue-600 text-white'}`}>
           <div className="flex space-x-2">
             {['Todos', 'Confirmados', 'Pendientes', 'Cancelados'].map(status => (
-              <button key={status} className={`px-4 py-2 ${darkMode ? 'bg-gray-600 text-white hover:bg-gray-500' : 'bg-gray-700 text-white hover:bg-gray-600'} rounded-full text-xs transition-colors duration-300`}>
+              <button key={status} className={`bg-teal-600 text-white px-5 py-2 rounded-full text-xs hover:bg-teal-500 transition-colors duration-300`}>
                 {status}
               </button>
             ))}
           </div>
           <button className={`bg-teal-600 text-white px-5 py-2 rounded-full text-xs hover:bg-teal-500 transition-colors duration-300`}>
-            Añadir Klatsch
+            Añadir Notificaciones
           </button>
         </div>
         <div className={`p-6 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
