@@ -81,6 +81,7 @@ const Tarjetas = () => {
           icono={<FontAwesomeIcon icon={faDownload} className={iconColors.descargas} />}
           texto="Descargas"
           total="1"
+          link="/inicio"
           darkMode={darkMode}
         />
       </div>

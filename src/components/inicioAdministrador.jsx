@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import BarraLateral from "./barraLateral";
 import Buscador from "./buscador";
 import Tarjetas from './tarjetas';
-import GraficaPastel from "./graficaPastel";
+import Graficauno from "./graficauno"; // Importar el componente de la gráfica
+import Graficaph from "./graficaph";
+
 import { AuthContext } from './AuthContext'; 
 
 const InicioAdministrador = () => {
@@ -19,11 +21,12 @@ const InicioAdministrador = () => {
                     <div className={`rounded-lg shadow-md p-4 mb-4 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`} style={{ marginTop: '2px' }}>
                         <Tarjetas />
                     </div>
-                    <div className="flex flex-col gap-4" style={{ marginTop: '1px' }}>
-                        <div className="flex flex-wrap gap-4 mb-4">
-                            <div className={`flex-1 min-w-[200px] rounded-lg shadow-md overflow-hidden ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
-                                <GraficaPastel />
-                            </div>
+                    <div className="flex space-x-6 mb-4">  {/* Agregué `space-x-6` para agregar un espacio entre las gráficas */}
+                        <div className="w-1/2"> {/* Cada gráfica ocupará el 50% del ancho */}
+                            <Graficauno />
+                        </div>
+                        <div className="w-1/2">
+                            <Graficaph />
                         </div>
                     </div>
                 </div>
