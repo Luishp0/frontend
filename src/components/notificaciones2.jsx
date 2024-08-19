@@ -78,18 +78,19 @@ const NotificationView = () => {
   return (
     <div className={`flex h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-200'} p-6`}>
       <div className={`w-2/3 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white'} shadow-md rounded-xl overflow-hidden mr-4`}>
-        <div className={`p-4 flex justify-between items-center rounded-t-xl ${darkMode ? 'bg-blue-700 text-white' : 'bg-blue-600 text-white'}`}>
-          <div className="flex space-x-2">
-            {['Todos', 'Confirmados', 'Pendientes', 'Cancelados'].map(status => (
-              <button key={status} className={`bg-teal-600 text-white px-5 py-2 rounded-full text-xs hover:bg-teal-500 transition-colors duration-300`}>
-                {status}
-              </button>
-            ))}
-          </div>
-          <button className={`bg-teal-600 text-white px-5 py-2 rounded-full text-xs hover:bg-teal-500 transition-colors duration-300`}>
-            Añadir Notificaciones
-          </button>
-        </div>
+      <div className={`p-4 flex overflow-x-auto ${darkMode ? 'bg-blue-700 text-white' : 'bg-blue-600 text-white'} rounded-t-lg`}>
+  <div className="flex space-x-2">
+    {['Todos', 'Confirmados', 'Pendientes', 'Cancelados'].map(status => (
+      <button key={status} className={`bg-white-500 text-white px-4 py-2 rounded-md text-xs hover:bg-blue-400 transition-colors duration-300`}>
+        {status}
+      </button>
+    ))}
+    <button className={`bg-white-500 text-white px-4 py-2 rounded-md text-xs hover:bg-blue-400 transition-colors duration-300`}>
+      Añadir Notificaciones
+    </button>
+  </div>
+</div>
+
         <div className={`p-6 border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
           <h2 className={`text-md font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Hoy</h2>
           {events.length > 0 && <EventItem event={events[0]} />}
