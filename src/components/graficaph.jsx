@@ -2,24 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
-const TemperatureChart = () => {
+const PHChart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchTemperatura();
+    fetchPH(); // Cambiado para reflejar el nuevo tipo de sensor
   }, []);
 
-  const fetchTemperatura = async () => {
+  const fetchPH = async () => {
     try {
       const response = await fetch('http://localhost:8000/sensores');
       const result = await response.json();
       
       console.log(result);
 
-      const temperaturaData = result[0]?.sensor ? result[0].sensor.filter(sensor => sensor.tipo === 'Temperatura') : [];
-      
-      setData(temperaturaData);
+      // Filtrar el valor de pH de la estructura de datos
+      const phData = result.flatMap(item => 
+        item.sensor ? item.sensor.filter(sensor => sensor.tipo === 'pH') : []
+      );
+
+      setData(phData);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -37,7 +40,7 @@ const TemperatureChart = () => {
     labels: labels,
     datasets: [
       {
-        label: 'Temperatura del Agua',
+        label: 'Nivel de pH',
         data: data.map(sensor => sensor.valor),
         borderColor: 'rgba(75,192,192,1)',
         backgroundColor: 'rgba(75,192,192,0.2)',
@@ -51,13 +54,13 @@ const TemperatureChart = () => {
     scales: {
       y: {
         beginAtZero: true,
-        max: 38, // Límite superior del eje Y
+        max: 14, // Límite superior del pH
         ticks: {
-          stepSize: 3, // Incrementos de 3 en 3
+          stepSize: 1, // Incrementos de 1 en 1 para pH
         },
         title: {
           display: true,
-          text: 'Temperatura (°C)',
+          text: 'pH',
         },
       },
       x: {
@@ -75,7 +78,7 @@ const TemperatureChart = () => {
       tooltip: {
         callbacks: {
           label: function(context) {
-            return `Temperatura: ${context.raw} °C`;
+            return `pH: ${context.raw}`;
           },
         },
       },
@@ -84,7 +87,7 @@ const TemperatureChart = () => {
 
   return (
     <div className="w-full max-w-xl ml-4 p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Temperatura del Agua</h2>
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Nivel de pH</h2>
       <div className="h-72">
         <Line data={chartData} options={chartOptions} />
       </div>
@@ -92,4 +95,4 @@ const TemperatureChart = () => {
   );
 };
 
-export default TemperatureChart;
+export default PHChart;

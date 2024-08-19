@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import BarraLateral from "./barraLateral";
 import Buscador from "./buscador";
 import { AuthContext } from './AuthContext'; 
+import Graficauno from "./graficauno"; // Importar el componente de la gráfica
+import Graficaph from "./graficaph"
 
 const TodasLasGraficas = () => {
     const { darkMode } = useContext(AuthContext); 
@@ -14,7 +16,15 @@ const TodasLasGraficas = () => {
                     <Buscador />
                 </div>
                 <div className="flex flex-col flex-grow p-4">
-                    {/* Puedes añadir más contenido aquí si es necesario */}
+                    {/* Añadir el componente Graficauno */}
+                    <div className="mb-6">
+                        <Graficauno />
+                    </div>
+                    {/* Puedes añadir más gráficas aquí si es necesario */}
+                    <div className="mb-6">
+                        <Graficaph />
+                    </div>
+                    {/* Puedes añadir más gráficas aquí si es necesario */}
                 </div>
             </div>
         </div>
