@@ -30,7 +30,7 @@ const WhatWeOffer = () => {
   return (
     <div className={`py-12 ${darkMode ? 'bg-gray-800' : 'bg-white'} ${darkMode ? 'text-white' : 'text-black'}`} style={{ marginTop: '2cm' }}>
       <div className={`px-4 mx-auto max-w-7xl sm:px-6 lg:px-8`}>
-        <div className="flex justify-center items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
           {services.map((service, index) => (
             <ServiceButton
               key={index}
