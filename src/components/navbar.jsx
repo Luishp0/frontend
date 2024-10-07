@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../img/logotra.png";
 import { AuthContext } from './AuthContext';
@@ -9,7 +9,7 @@ const Navbar = () => {
   const { darkMode, toggleDarkMode, isAuthenticated, userName } = useContext(AuthContext);
 
   return (
-    <nav className={`navbar fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out flex items-center justify-between ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <nav className={`navbar fixed top-0 w-full py-4 z-50 transition duration-300 ease-in-out flex items-center justify-between ${darkMode ? 'bg-gray-800 text-gray-200 shadow-lg' : 'bg-white text-gray-800 shadow-md'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="logo-acuacode-container flex items-center text-lg font-semibold">
           <div className="logo">
@@ -94,23 +94,23 @@ const Navbar = () => {
 
         {/* Enlaces de navegación normales para pantallas grandes */}
         <div className="hidden lg:flex space-x-8 items-center">
-          <button onClick={toggleDarkMode} className="text-sm font-medium hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md">
+          <button onClick={toggleDarkMode} className="text-sm font-medium hover:bg-opacity-50 px-3 py-2 rounded-md">
             {darkMode ? <SunIcon className="w-6 h-6" /> : <MoonIcon className="w-6 h-6" />}
           </button>
-          <Link to="/inicio" className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</Link>
-          <Link to="/infoma" className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Información</Link>
+          <Link to="/inicio" className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</Link>
+          <Link to="/infoma" className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Información</Link>
           {isAuthenticated ? (
             <>
-              <span className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">{userName}</span>
-              <button onClick={() => { localStorage.removeItem('user'); window.location.reload(); }} className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Cerrar Sesión</button>
+              <span className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">{userName}</span>
+              <button onClick={() => { localStorage.removeItem('user'); window.location.reload(); }} className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Cerrar Sesión</button>
             </>
           ) : (
             <>
-              <Link to="/Login" className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</Link>
-              <Link to="/registro" className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Registrarse</Link>
+              <Link to="/Login" className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</Link>
+              <Link to="/registro" className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Registrarse</Link>
             </>
           )}
-          <Link to="/Compras" className="nav-item hover:bg-customCyan hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Comprar</Link>
+          <Link to="/Compras" className="nav-item hover:bg-opacity-50 px-3 py-2 rounded-md text-sm font-medium">Comprar</Link>
         </div>
       </div>
     </nav>

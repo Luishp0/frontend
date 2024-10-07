@@ -16,7 +16,7 @@ import Nextcompra from './components/nextcompra.jsx';
 import Secondcompra from './components/secondcompra.jsx'; 
 import Respaldo from './components/respaldo.jsx';
 import Todasgraficas from './components/todasgraficas.jsx';
-import Graficastodas from './components/graficastodas.jsx';
+
 import FavoritasGraficas from './components/favoritasGraficas.jsx';
 import Registro from './components/registro.jsx';
 import Recuperacion from './components/enviarCorreoRecuperacion.jsx';
@@ -54,7 +54,7 @@ function App() {
             <Route path='/tablausuarios' element={<TablaUsuarios />} />  
             <Route path='/respaldo' element={<Respaldo />} />
             <Route path='/graficasfavoritas' element={<FavoritasGraficas />} />
-            <Route path='/graficastodas' element={<Graficastodas />} />
+            
             <Route path='/tablapeceras' element={<TablaPeceras />} />
             <Route path='/recuperacion' element={<Recuperacion />} />
             <Route path='/codigo' element={<CodigoVerificacion />} />
