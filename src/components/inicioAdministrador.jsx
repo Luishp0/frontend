@@ -18,14 +18,20 @@ const InicioAdministrador = () => {
                     <Buscador />
                 </div>
                 <div className="flex flex-col flex-grow p-4">
+                    {/* Contenedor de las tarjetas */}
                     <div className={`rounded-lg shadow-md p-4 mb-4 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`} style={{ marginTop: '2px' }}>
                         <Tarjetas />
                     </div>
-                    <div className="flex space-x-6 mb-4">  {/* Agregué `space-x-6` para agregar un espacio entre las gráficas */}
-                        <div className="w-1/2"> {/* Cada gráfica ocupará el 50% del ancho */}
+
+                    {/* Contenedor de las gráficas */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4"> 
+                        {/* Gráfica 1 */}
+                        <div className="w-full">
                             <Graficauno />
                         </div>
-                        <div className="w-1/2">
+                        
+                        {/* Gráfica 2 */}
+                        <div className="w-full">
                             <Graficaph />
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faFish, faThermometer, faDownload } from '@fortawesome/free-solid-svg-icons';
-import { AuthContext } from './AuthContext'; // Importa el AuthContext
+import { AuthContext } from './AuthContext';
 
 const iconColors = {
   usuarios: 'text-green-500',
@@ -11,10 +11,10 @@ const iconColors = {
 };
 
 const Tarjetas = () => {
-  const [usuarios, setUsuarios] = useState(0); // Inicializar como número
-  const [peces, setPeces] = useState(0); // Inicializar como número
-  const [sensores, setSensores] = useState(0); // Inicializar como número
-  const { darkMode } = useContext(AuthContext); // Obtén el estado de dark mode del contexto
+  const [usuarios, setUsuarios] = useState(0);
+  const [peces, setPeces] = useState(0);
+  const [sensores, setSensores] = useState(0);
+  const { darkMode } = useContext(AuthContext);
 
   useEffect(() => {
     fetchUsuarios();
@@ -26,7 +26,7 @@ const Tarjetas = () => {
     try {
       const response = await fetch('http://localhost:8000/usuario/contador');
       const data = await response.json();
-      setUsuarios(data.totalUsuarios); // Asigna el valor de totalUsuarios al estado
+      setUsuarios(data.totalUsuarios);
     } catch (error) {
       console.error('Error fetching users:', error);
     }
@@ -36,7 +36,7 @@ const Tarjetas = () => {
     try {
       const response = await fetch('http://localhost:8000/peces/contador');
       const data = await response.json();
-      setPeces(data.totalPeces); // Asigna el valor de totalPeces al estado
+      setPeces(data.totalPeces);
     } catch (error) {
       console.error('Error fetching fish:', error);
     }
@@ -46,7 +46,7 @@ const Tarjetas = () => {
     try {
       const response = await fetch('http://localhost:8000/sensores/contador');
       const data = await response.json();
-      setSensores(data.totalSensores); // Asigna el valor de totalSensores al estado
+      setSensores(data.totalSensores);
     } catch (error) {
       console.error('Error fetching sensors:', error);
     }
@@ -55,26 +55,26 @@ const Tarjetas = () => {
   return (
     <div className="flex flex-col items-center mt-8">
       {/* Contenido de tarjetas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <Tarjeta
           icono={<FontAwesomeIcon icon={faUsers} className={iconColors.usuarios} />}
           texto="Usuarios"
           link="/tablausuarios"
-          total={usuarios} // Usando el valor dinámico
-          darkMode={darkMode} // Pasando el estado de darkMode a los componentes hijos
+          total={usuarios}
+          darkMode={darkMode}
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faFish} className={iconColors.peceras} />}
           texto="Peces"
           link="/tablapeceras"
-          total={peces} // Usando el valor dinámico
+          total={peces}
           darkMode={darkMode}
         />
         <Tarjeta
           icono={<FontAwesomeIcon icon={faThermometer} className={iconColors.sensores} />}
           texto="Sensores"
           link="/sensores"
-          total={sensores} // Usando el valor dinámico
+          total={sensores}
           darkMode={darkMode}
         />
         <Tarjeta
@@ -90,7 +90,6 @@ const Tarjetas = () => {
 };
 
 const Tarjeta = ({ icono, texto, link, total, darkMode }) => {
-  // Establece los colores de fondo para las tarjetas según el estado darkMode
   const bgColor = darkMode ? 'bg-gray-700' : 'bg-white';
   const textColor = darkMode ? 'text-white' : 'text-gray-700';
 
