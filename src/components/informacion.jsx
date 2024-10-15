@@ -4,8 +4,9 @@ const Card = () => {
   return (
     <div className="flex items-center justify-center" style={{ marginTop: '3cm' }}>
       <section className="bg-grayLight pt-20 dark:bg-grayDark lg:pt-[120px]">
-        <div className="container">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="container mx-auto px-4">
+          {/* Ajustar el grid para pantallas pequeñas */}
+          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-start">
             <SingleCard
               image={require("../img/peceramader.jpg")}
               CardTitle="Diseño y mantenimiento de paisajismo acuático"
@@ -41,25 +42,29 @@ const SingleCard = ({
   btnHref,
 }) => {
   return (
-    <div className="mb-10 overflow-hidden rounded-lg bg-white shadow-lg duration-300 hover:shadow-xl dark:bg-grayDark dark:shadow-none">
-      <img
-        src={image}
-        alt={CardTitle}
-        className="w-full h-auto object-cover rounded-lg"
-      />
-      <div className="p-8 text-center sm:p-9 md:p-7 xl:p-9">
-        <h3>
-          <a
-            href={titleHref ? titleHref : "/#"}
-            className="mb-4 block text-xl font-semibold text-dark hover:text-primary dark:text-grayLight sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"
-          >
-            {CardTitle}
-          </a>
-        </h3>
-        <p className="mb-7 text-base leading-relaxed text-body-color dark:text-grayLight text-justify">
-          {CardDescription}
-        </p>
-
+    <div className="mb-10 overflow-hidden rounded-lg bg-white shadow-lg duration-300 hover:shadow-xl dark:bg-grayDark dark:shadow-none flex flex-col h-full">
+      {/* Ajustar la imagen para que se mantenga en el mismo nivel */}
+      <div className="h-64">
+        <img
+          src={image}
+          alt={CardTitle}
+          className="w-full h-full object-cover rounded-t-lg"
+        />
+      </div>
+      <div className="p-8 flex-1 flex flex-col justify-between text-center">
+        <div>
+          <h3>
+            <a
+              href={titleHref ? titleHref : "/#"}
+              className="mb-4 block text-xl font-semibold text-dark hover:text-primary dark:text-grayLight"
+            >
+              {CardTitle}
+            </a>
+          </h3>
+          <p className="mb-7 text-base leading-relaxed text-body-color dark:text-grayLight text-justify">
+            {CardDescription}
+          </p>
+        </div>
         {Button && (
           <a
             href={btnHref ? btnHref : "#"}

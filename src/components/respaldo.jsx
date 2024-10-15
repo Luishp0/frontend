@@ -95,7 +95,6 @@ const Respaldo = () => {
   }, []);
 
   const handleFolderClick = () => {
-    // Aquí puedes manejar la lógica al hacer clic en el ícono de la carpeta
     console.log('Ícono de carpeta clicado');
   };
 
@@ -107,14 +106,14 @@ const Respaldo = () => {
           <Buscador />
         </div>
         <div className="flex-1 p-4 bg-gray-100 dark:bg-gray-900 overflow-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-              <h1 className="text-2xl mb-4 text-gray-900 dark:text-gray-100">Respaldo de Base de Datos</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <h1 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Respaldo de Base de Datos</h1>
               <div className="mb-4">
                 <label htmlFor="backupTime" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Hora del Respaldo:
                 </label>
-                <div className="flex items-center">
+                <div className="flex items-center mt-1">
                   <input
                     type="time"
                     id="backupTime"
@@ -141,12 +140,12 @@ const Respaldo = () => {
                     onClick={handleFolderClick}
                     className="ml-10 cursor-pointer"
                   >
-                    <FaFolder className="text-5xl text-gray-500 dark:text-gray-400" />
+                    <FaFolder className="text-5xl text-gray-500 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 overflow-y-auto" style={{ maxHeight: '400px' }}>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 overflow-y-auto" style={{ maxHeight: '400px' }}>
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Historial de Respaldos</h2>
               <ul className="text-sm list-disc list-inside text-gray-800 dark:text-gray-300">
                 {backupHistory.map((backup, index) => (
@@ -156,7 +155,7 @@ const Respaldo = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 flex flex-col justify-center items-center col-span-1 md:col-span-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex flex-col justify-center items-center col-span-1 md:col-span-2">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">Tiempo Restante para el Respaldo</h2>
               <p className="text-gray-800 dark:text-gray-300">
                 {`${Math.floor(timeLeft / (1000 * 60 * 60))} horas ${Math.floor((timeLeft / (1000 * 60)) % 60)} minutos ${Math.floor((timeLeft / 1000) % 60)} segundos`}

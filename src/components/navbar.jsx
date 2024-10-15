@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* Barra lateral para dispositivos móviles */}
         <div
-          className={`fixed top-0 left-0 h-full w-64 bg-gray-800 z-40 transform ${
+          className={`fixed top-0 left-0 h-full w-64 bg-gray-800 bg-opacity-70 backdrop-filter backdrop-blur-md z-40 transform ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out lg:hidden`}
         >

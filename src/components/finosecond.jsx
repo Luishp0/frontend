@@ -76,8 +76,8 @@ const Finosecond = () => {
   return (
     <div className={`flex flex-wrap justify-center ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
       {fishData.map((fish, index) => (
-        <div key={index} className={`max-w-md mx-auto rounded-md shadow-md overflow-hidden md:max-w-2xl mb-8 border border-gray-300 border-opacity-30 ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-black'}`}>
-          <div className="md:flex">
+        <div key={index} className={`w-full max-w-md lg:max-w-2xl mx-auto rounded-md shadow-md overflow-hidden mb-8 border border-gray-300 border-opacity-30 ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-black'}`}>
+          <div className="flex flex-col md:flex-row">
             <div className="md:shrink-0">
               <img
                 className="h-48 w-full object-cover md:h-full md:w-48"
@@ -85,16 +85,16 @@ const Finosecond = () => {
                 alt={fish.name}
               />
             </div>
-            <div className={`p-8 ${darkMode ? 'text-blue-300' : 'text-black'}`}>
+            <div className={`p-8 ${darkMode ? 'text-blue-300' : 'text-black'} flex flex-col items-center md:items-start`}>
               <a
                 href="#"
                 className={`block mt-1 text-lg leading-tight font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`}
               >
                 {fish.name}
               </a>
-              <ul className={`mt-2 list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              <ul className={`mt-2 list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-700'} text-justify`}>
                 {fish.info.map((line, i) => (
-                  <li key={i}>{line}</li>
+                  <li key={i} className="text-justify">{line}</li>
                 ))}
               </ul>
             </div>
