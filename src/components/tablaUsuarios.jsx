@@ -55,19 +55,10 @@ const TablaUsuarios = () => {
 
         setUsuarios(usuarios.filter(usuario => usuario._id !== userId));
 
-        Swal.fire(
-          '¡Eliminado!',
-          'El usuario ha sido eliminado.',
-          'success'
-        );
+        Swal.fire('¡Eliminado!', 'El usuario ha sido eliminado.', 'success');
       } catch (error) {
         console.error('Error deleting user:', error);
-
-        Swal.fire(
-          'Error',
-          'Hubo un problema al eliminar el usuario.',
-          'error'
-        );
+        Swal.fire('Error', 'Hubo un problema al eliminar el usuario.', 'error');
       }
     }
   };
@@ -78,30 +69,17 @@ const TablaUsuarios = () => {
       <div className="flex-1 flex flex-col">
         <Buscador />
         <div className={`flex-1 overflow-y-auto container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`} style={{ marginTop: '1cm' }}>
-          <h1 className="mb-4 text-2xl font-semibold">
-            Lista de Usuarios
-          </h1>
+          <h1 className="mb-4 text-3xl font-bold">Lista de Usuarios</h1>
           <div className="overflow-x-auto">
-            {/* Estructura de tabla normal en pantallas grandes */}
-            <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg hidden md:block`}>
+            <div className={`shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
               <table className={`min-w-full ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
-                <thead className={darkMode ? 'bg-gray-600' : 'bg-gray-50'}>
+                <thead className={darkMode ? 'bg-gray-800 text-black' : 'bg-blue-100 text-black'}>
                   <tr>
-                    <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                      Nombre
-                    </th>
-                    <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                      Email
-                    </th>
-                    <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                      Fecha de Nacimiento
-                    </th>
-                    <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                      Teléfono
-                    </th>
-                    <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
-                      Acciones
-                    </th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">Nombre</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">Email</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">Fecha de Nacimiento</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">Teléfono</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">Acciones</th>
                   </tr>
                 </thead>
                 <tbody className={darkMode ? 'bg-gray-700 divide-y divide-gray-600' : 'bg-white divide-y divide-gray-200'}>
@@ -112,16 +90,10 @@ const TablaUsuarios = () => {
                       <td className="px-6 py-4 text-sm">{formatDate(usuario.fechaNacimiento)}</td>
                       <td className="px-6 py-4 text-sm">{usuario.telefono}</td>
                       <td className="px-6 py-4 text-sm font-medium">
-                        <button
-                          className="text-blue-600 hover:text-blue-900 mr-4"
-                          onClick={() => handleUpdate(usuario._id)}
-                        >
+                        <button className="text-blue-600 hover:text-blue-900 mr-4" onClick={() => handleUpdate(usuario._id)}>
                           <PencilIcon className="h-5 w-5 inline" /> Actualizar
                         </button>
-                        <button
-                          className="text-red-600 hover:text-red-900"
-                          onClick={() => handleDelete(usuario._id)}
-                        >
+                        <button className="text-red-600 hover:text-red-900" onClick={() => handleDelete(usuario._id)}>
                           <TrashIcon className="h-5 w-5 inline" /> Eliminar
                         </button>
                       </td>
@@ -130,8 +102,6 @@ const TablaUsuarios = () => {
                 </tbody>
               </table>
             </div>
-
-            {/* Estructura responsiva en pantallas pequeñas */}
             <div className="md:hidden">
               {usuarios.map((usuario) => (
                 <div key={usuario._id} className={`mb-4 p-4 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-700'}`}>
@@ -140,16 +110,10 @@ const TablaUsuarios = () => {
                   <p><strong>Fecha de Nacimiento:</strong> {formatDate(usuario.fechaNacimiento)}</p>
                   <p><strong>Teléfono:</strong> {usuario.telefono}</p>
                   <div className="flex justify-end space-x-4 mt-4">
-                    <button
-                      className="text-blue-600 hover:text-blue-900 flex items-center"
-                      onClick={() => handleUpdate(usuario._id)}
-                    >
+                    <button className="text-blue-600 hover:text-blue-900 flex items-center" onClick={() => handleUpdate(usuario._id)}>
                       <PencilIcon className="h-5 w-5 mr-1" /> Actualizar
                     </button>
-                    <button
-                      className="text-red-600 hover:text-red-900 flex items-center"
-                      onClick={() => handleDelete(usuario._id)}
-                    >
+                    <button className="text-red-600 hover:text-red-900 flex items-center" onClick={() => handleDelete(usuario._id)}>
                       <TrashIcon className="h-5 w-5 mr-1" /> Eliminar
                     </button>
                   </div>

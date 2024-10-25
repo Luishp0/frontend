@@ -3,7 +3,7 @@ import React from "react";
 const Card = () => {
   return (
     <div className="flex items-center justify-center" style={{ marginTop: '3cm' }}>
-      <section className="bg-grayLight pt-20 dark:bg-grayDark lg:pt-[120px]">
+      <section className="pt-20 lg:pt-[120px]">
         <div className="container mx-auto px-4">
           {/* Ajustar el grid para pantallas pequeñas */}
           <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-start">
@@ -42,7 +42,7 @@ const SingleCard = ({
   btnHref,
 }) => {
   return (
-    <div className="mb-10 overflow-hidden rounded-lg bg-white shadow-lg duration-300 hover:shadow-xl dark:bg-grayDark dark:shadow-none flex flex-col h-full">
+    <div className="mb-10 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-900 shadow-lg duration-300 hover:shadow-xl flex flex-col h-full">
       {/* Ajustar la imagen para que se mantenga en el mismo nivel */}
       <div className="h-64">
         <img
@@ -56,19 +56,19 @@ const SingleCard = ({
           <h3>
             <a
               href={titleHref ? titleHref : "/#"}
-              className="mb-4 block text-xl font-semibold text-dark hover:text-primary dark:text-grayLight"
+              className="mb-4 block text-xl font-semibold text-dark hover:text-primary dark:text-gray-100"
             >
               {CardTitle}
             </a>
           </h3>
-          <p className="mb-7 text-base leading-relaxed text-body-color dark:text-grayLight text-justify">
+          <p className="mb-7 text-base leading-relaxed text-body-color dark:text-gray-300 text-justify">
             {CardDescription}
           </p>
         </div>
         {Button && (
           <a
             href={btnHref ? btnHref : "#"}
-            className="inline-block rounded-full border border-gray-300 px-7 py-2 text-base font-medium text-body-color transition hover:border-primary hover:bg-primary hover:text-white dark:border-grayLight dark:text-grayLight"
+            className="inline-block rounded-full border border-gray-300 px-7 py-2 text-base font-medium text-body-color transition hover:border-primary hover:bg-primary hover:text-white dark:border-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 dark:text-gray-100"
           >
             {Button}
           </a>
