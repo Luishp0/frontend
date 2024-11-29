@@ -27,27 +27,27 @@ const TablaPeceras = () => {
       <div className="flex-1 flex flex-col">
         <Buscador />
         <div className={`flex-1 overflow-y-auto container mx-auto px-4 py-8 ${darkMode ? 'text-white' : 'text-gray-700'}`} style={{ marginTop: '1cm' }}>
-          <h1 className="mb-4 text-2xl font-semibold">
+          <h1 className="mb-4 text-3xl font-bold">
             Peces
           </h1>
           <div className={`overflow-x-auto shadow overflow-hidden border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} sm:rounded-lg`}>
-            <table className={`min-w-full ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
-              <thead className={darkMode ? 'bg-gray-600' : 'bg-gray-50'}>
+            <table className={`min-w-full ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+              <thead className={darkMode ? 'bg-gray-800 text-black' : 'bg-blue-100 text-black'}>
                 <tr>
-                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                     Tipo
                   </th>
-                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                     Alimentación
                   </th>
-                  <th className="px-6 py-3 border-b text-left text-xs font-medium uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                     Parámetros
                   </th>
                 </tr>
               </thead>
-              <tbody className={darkMode ? 'bg-gray-700 divide-y divide-gray-600' : 'bg-white divide-y divide-gray-200'}>
+              <tbody className={darkMode ? 'bg-gray-800 divide-y divide-gray-700' : 'bg-white divide-y divide-gray-200'}>
                 {peces.map((pez, index) => (
-                  <tr key={index} className={`hover:${darkMode ? 'bg-gray-600' : 'bg-gray-100'} transition duration-200`}>
+                  <tr key={index} className={`hover:${darkMode ? 'bg-gray-700' : 'bg-gray-100'} transition duration-200`}>
                     <td className="px-6 py-4 text-sm">{pez.tipo}</td>
                     <td className="px-6 py-4 text-sm">
                       {pez.alimentacion.map((alimento, i) => (

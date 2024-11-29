@@ -1,10 +1,35 @@
 import React, { useContext } from 'react';
 import img1 from "../img/peceramadera.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import Swal from 'sweetalert2';
 import { AuthContext } from './AuthContext'; // Asegúrate de importar el contexto correcto
 
 export default function Example() {
   const { darkMode } = useContext(AuthContext); // Obtener el estado de darkMode desde el contexto
+  const navigate = useNavigate(); // Hook para redirigir a otra página
+
+  const handleCancelPurchase = () => {
+    Swal.fire({
+      title: '¿Estás seguro de cancelar la compra?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cancelar compra',
+      cancelButtonText: 'No, continuar con la compra',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Compra cancelada',
+          'Has cancelado la compra.',
+          'success'
+        ).then(() => {
+          navigate('/compras'); // Redirigir a la página "Compras"
+        });
+      }
+    });
+  };
 
   return (
     <div className={`relative ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} py-20`}>
@@ -43,10 +68,20 @@ export default function Example() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8">
-                <Link to="/secondcompra">
-                  <button className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-semibold ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-500' : 'bg-gray-800 text-white hover:bg-gray-700 focus:ring-indigo-500'}`}>Aceptar</button>
+              {/* Contenedor de los botones en una fila */}
+              <div className="flex space-x-4 mt-8">
+                <Link to="/secondcompra" className="w-full">
+                  <button className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-semibold ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600 focus:ring-gray-500' : 'bg-gray-800 text-white hover:bg-gray-700 focus:ring-indigo-500'}`}>
+                    Aceptar Compra
+                  </button>
                 </Link>
+                <button
+                  type="button"
+                  onClick={handleCancelPurchase}
+                  className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-semibold ${darkMode ? 'bg-red-600 text-white hover:bg-red-500' : 'bg-red-500 text-white hover:bg-red-400'}`}
+                >
+                  Cancelar Compra
+                </button>
               </div>
             </form>
           </div>

@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
+import { AuthContext } from './AuthContext'; // Importar el contexto de autenticación
 import sensor1 from "../img/sensor1.jpg";
 import sensor2 from "../img/sensorph.jpg";
 import sensor3 from "../img/sensor3.jpg";
@@ -6,30 +7,15 @@ import sensor4 from "../img/sensor4.jpg";
 import sensor5 from "../img/sensor5.jpg";
 import sensor6 from "../img/sensordeluz.jpg";
 
-// Definimos el estado inicial
-const initialState = {
-  darkMode: false, // Estado inicial para el modo oscuro
-};
-
-// Reducer para manejar el estado
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "TOGGLE_DARK_MODE":
-      return { ...state, darkMode: !state.darkMode };
-    default:
-      return state;
-  }
-};
-
 const Finosecond = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { darkMode } = state; // Obtenemos el estado de darkMode
+  const { darkMode } = useContext(AuthContext); // Usar el contexto de AuthContext para obtener el estado del modo oscuro
 
+  // Clases dinámicas para los componentes en función del modo oscuro
   const cardClasses = `max-w-md mx-auto rounded-md shadow-md overflow-hidden md:max-w-2xl mb-8 border ${darkMode ? 'border-gray-600 bg-gray-700' : 'border-gray-300 border-opacity-30 bg-white'}`;
   const textClasses = `${darkMode ? 'text-gray-300' : 'text-black'} text-center`;
   const linkClasses = `block mt-1 text-lg leading-tight font-medium hover:underline ${darkMode ? 'text-white' : 'text-black'}`;
   const descriptionClasses = `mt-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'} text-justify`;
-  const containerClasses = `flex flex-wrap justify-center ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`;
+  const containerClasses = 'flex flex-wrap justify-center'; // No aplica bg en el contenedor general
 
   return (
     <div className={containerClasses}>
