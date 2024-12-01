@@ -8,44 +8,43 @@ export const Pricing = () => {
   const navigate = useNavigate();
   const packages = [
     {
-      title: 'Paquete Básico',
-      description: 'Cuidado esencial para peceras pequeñas.',
-      price: '$339.99 MXN/mes',
+      title: '1.Paquete Básico ',
+      description: 'Ideal para usuarios principiantes que buscan un monitoreo básico de sus acuarios.',
+      price: '$2,700 MXN',
       imgSrc: imgBasico, // Usa la imagen importada
       buttonText: 'Compra Básica',
       features: [
-        'Filtro básico',
-        'Sensor de temperatura',
-        'Luz LED blanca',
-        'Soporte técnico 24/7',
+        'Módulo de control con Wi-Fi.',
+        'Sensor de temperatura (DS18B20).',
+        'Sensor de nivel de agua (flotador).',
+        'Alimentador automático básico.',
+        'Aplicación móvil con monitoreo en tiempo real y notificaciones básicas.',
       ],
     },
     {
-      title: 'Paquete Avanzado',
-      description: 'Cuidado completo para peceras medianas.',
-      price: '$680.00 MXN/mes',
+      title: '2.Paquete Avanzado ',
+      description: 'Dirigido a usuarios intermedios que requieren un mayor control sobre los parámetros del agua.',
+      price: '$3,600 MXN',
       imgSrc: imgAvanzado, // Usa la imagen importada
       buttonText: 'Compra Avanzada',
       features: [
-        'Filtro avanzado',
-        'Sensor de temperatura y pH',
-        'Luz LED multicolor',
-        'Mantenimiento mensual',
-        'Soporte técnico 24/7',
+        'Módulo de control avanzado con Wi-Fi.',
+        'Sensores de temperatura, nivel de agua y pH.',
+        'Alimentador automático básico.',
+        'Aplicación móvil avanzada con gráficos históricos y alertas configurables.',
       ],
     },
     {
-      title: 'Paquete Pro',
-      description: 'Cuidado para peceras grandes y exóticas.',
-      price: '$1019.99 MXN/mes',
+      title: '3.Paquete Pro',
+      description: 'Orientado a profesionales o entusiastas que buscan control total y automatización completa.',
+      price: '$4,500 MXN',
       imgSrc: imgPro, // Usa la imagen importada
       buttonText: 'Compra Pro',
       features: [
-        'Filtro de alta capacidad',
-        'Sensor de temperatura, pH y calidad del agua',
-        'Luz LED multicolor programable',
-        'Mantenimiento quincenal',
-        'Soporte técnico 24/7',
+        'Módulo de control IoT premium.',
+        'Sensores de temperatura, nivel de agua, pH y turbidez.',
+        'Alimentador automático avanzado (control de porciones).',
+        'Aplicación móvil premium con análisis predictivo y almacenamiento en la nube.',
       ],
     },
   ];

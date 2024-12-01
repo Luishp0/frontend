@@ -25,7 +25,11 @@ const AppSection = () => {
           </button>
 
           {/* Botón para el videojuego */}
-          <button className="bg-gray-100 dark:bg-gray-900 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-300">
+          <a
+            href="https://drive.google.com/file/d/14iG7B6oAVEmmOnHt1qS1SY60yNzRrEzi/view?usp=sharing" // Enlace directo al archivo
+            download
+            className="bg-gray-100 dark:bg-gray-900 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-300"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6 text-gray-800 dark:text-gray-300" viewBox="0 0 512 512">
               <path d="M256 32C132.288 32 32 132.288 32 256s100.288 224 224 224 224-100.288 224-224S379.712 32 256 32zm0 400c-97.046 0-176-78.954-176-176S158.954 80 256 80s176 78.954 176 176-78.954 176-176 176zm-48-264h96v48h-96zm0 80h96v96h-96z"></path>
             </svg>
@@ -33,7 +37,7 @@ const AppSection = () => {
               <span className="text-xs text-gray-600 dark:text-gray-100 mb-1">Disponible ahora</span>
               <span className="title-font font-medium text-gray-900 dark:text-gray-100">Videojuego AcuaCode</span>
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </section>
