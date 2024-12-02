@@ -34,42 +34,42 @@ self.addEventListener('activate', event => {
 });
 
 // eslint-disable-next-line no-restricted-globals
-self.addEventListener('fetch', event => {
-    if (event.request.url.includes('https://pwabackend-3bdn.onrender.com/api/users/create-user')) {
-        event.respondWith(
-            fetch(event.request).catch(() => {
-                if ('SyncManager' in self) {
-                    self.registration.sync.register('sync-usuarios');
-                }
-            })
-        );
-        return;
-    }
+// self.addEventListener('fetch', event => {
+//     if (event.request.url.includes('https://pwabackend-3bdn.onrender.com/api/users/create-user')) {
+//         event.respondWith(
+//             fetch(event.request).catch(() => {
+//                 if ('SyncManager' in self) {
+//                     self.registration.sync.register('sync-usuarios');
+//                 }
+//             })
+//         );
+//         return;
+//     }
 
-    if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
-        return;
-    }
+//     if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
+//         return;
+//     }
 
-    event.respondWith(
-        caches.match(event.request).then(cachedResponse => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(event.request).then(response => {
-                if (!response || response.status !== 200 || response.type !== 'basic') {
-                    return response;
-                }
-                const responseClone = response.clone();
-                caches.open('dinamico').then(cache => {
-                    cache.put(event.request, responseClone);
-                });
-                return response;
-            }).catch(() => {
-                return caches.match('/images/image.png');
-            });
-        })
-    );
-});
+//     event.respondWith(
+//         caches.match(event.request).then(cachedResponse => {
+//             if (cachedResponse) {
+//                 return cachedResponse;
+//             }
+//             return fetch(event.request).then(response => {
+//                 if (!response || response.status !== 200 || response.type !== 'basic') {
+//                     return response;
+//                 }
+//                 const responseClone = response.clone();
+//                 caches.open('dinamico').then(cache => {
+//                     cache.put(event.request, responseClone);
+//                 });
+//                 return response;
+//             }).catch(() => {
+//                 return caches.match('/images/image.png');
+//             });
+//         })
+//     );
+// });
 
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('push', event => {
@@ -114,24 +114,24 @@ function enviarDatosGuardados() {
     };
 }
 
-function procesarRegistros(result) {
-    let transaction = result.transaction('usuarios', 'readonly');
-    let objStore = transaction.objectStore('usuarios');
-    objStore.openCursor().onsuccess = event => {
-        let cursor = event.target.result;
-        if (cursor) {
-            fetch('https://pwabackend-3bdn.onrender.com/api/users/create-user', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(cursor.value)
-            })
-            .then(() => {
-                let deleteTransaction = result.transaction('usuarios', 'readwrite');
-                deleteTransaction.objectStore('usuarios').delete(cursor.key).onsuccess = () => {
-                    procesarRegistros(result);
-                };
-            })
-            .catch(console.error);
-        }
-    };
-}
+// function procesarRegistros(result) {
+//     let transaction = result.transaction('usuarios', 'readonly');
+//     let objStore = transaction.objectStore('usuarios');
+//     objStore.openCursor().onsuccess = event => {
+//         let cursor = event.target.result;
+//         if (cursor) {
+//             fetch('https://pwabackend-3bdn.onrender.com/api/users/create-user', {
+//                 method: 'POST',
+//                 headers: { 'Content-Type': 'application/json' },
+//                 body: JSON.stringify(cursor.value)
+//             })
+//             .then(() => {
+//                 let deleteTransaction = result.transaction('usuarios', 'readwrite');
+//                 deleteTransaction.objectStore('usuarios').delete(cursor.key).onsuccess = () => {
+//                     procesarRegistros(result);
+//                 };
+//             })
+//             .catch(console.error);
+//         }
+//     };
+// }
