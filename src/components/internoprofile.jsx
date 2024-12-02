@@ -74,9 +74,12 @@ const UserProfile = () => {
 
           <div className="border-b mb-8">
             <nav className="flex space-x-6">
-              <a href="#" className={`px-6 py-3 ${darkMode ? 'text-blue-400 border-blue-400' : 'text-blue-500 border-blue-500'} border-b-2`}>
+              <button
+                className={`px-6 py-3 ${darkMode ? 'text-blue-400 border-blue-400' : 'text-blue-500 border-blue-500'} border-b-2`}
+                onClick={() => console.log("Navegación a Configuraciones de la cuenta")}
+              >
                 Configuraciones de la cuenta
-              </a>
+              </button>
             </nav>
           </div>
 
@@ -88,7 +91,7 @@ const UserProfile = () => {
                     {label.charAt(0).toUpperCase() + label.slice(1)}
                   </label>
                   <input
-                    type={label === 'contraseña' ? 'password' : 'text'}
+                    type="text"
                     name={label}
                     className={`mt-1 p-3 block w-full border rounded-md ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-300'}`}
                     placeholder={label.charAt(0).toUpperCase() + label.slice(1)}

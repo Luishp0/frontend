@@ -30,9 +30,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de Temperatura Digital clickeado")}>
               Sensor de Temperatura Digital
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide la temperatura del agua de forma precisa. Compacto y fácil de colocar en la pecera. Algunos modelos pueden mostrar la temperatura en grados Celsius o Fahrenheit. Puede estar conectado a un sistema de monitoreo o alarma para alertar sobre cambios de temperatura significativos.
             </p>
@@ -51,9 +51,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de pH Compacto clickeado")}>
               Sensor de pH Compacto
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide el nivel de pH del agua, indicando su acidez o alcalinidad. Diseño pequeño y discreto para colocarse en la pecera. Algunos sensores pueden ser sumergibles y resistentes al agua. Ayuda a mantener un ambiente acuático estable y saludable para los peces y las plantas.
             </p>
@@ -72,9 +72,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de Conductividad Eléctrica clickeado")}>
               Sensor de Conductividad Eléctrica (EC)
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide la conductividad eléctrica del agua, que está relacionada con la cantidad de sales disueltas. Compacto y fácil de integrar en sistemas de monitoreo. Útil para controlar la salinidad del agua en acuarios marinos o de agua dulce.
             </p>
@@ -93,9 +93,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de Oxígeno Disuelto clickeado")}>
               Sensor de Oxígeno Disuelto (DO)
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide la cantidad de oxígeno disuelto en el agua, crucial para la salud de los peces y otros organismos acuáticos. Diseño pequeño y sumergible para su uso en acuarios. Ayuda a prevenir problemas de falta de oxígeno y a mantener un ambiente acuático bien oxigenado.
             </p>
@@ -114,9 +114,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de Nitratos clickeado")}>
               Sensor de Nitratos y Nitritos
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide los niveles de nitratos y nitritos en el agua, indicadores de la calidad del agua y la eficacia del ciclo del nitrógeno. Compacto y fácil de colocar en la pecera. Ayuda a prevenir problemas de toxicidad por acumulación de desechos orgánicos y exceso de alimentos.
             </p>
@@ -135,9 +135,9 @@ const Finosecond = () => {
             />
           </div>
           <div className={`p-8 ${textClasses}`}>
-            <a href="#" className={linkClasses}>
+            <button className={linkClasses} onClick={() => console.log("Sensor de Luz clickeado")}>
               Sensor de Luz
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Mide la intensidad de la luz en la pecera, importante para el crecimiento de las plantas y el comportamiento de los peces. Diseño pequeño y discreto. Puede estar conectado a sistemas de iluminación automatizados para regular la luz según las necesidades de los organismos acuáticos.
             </p>

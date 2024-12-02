@@ -28,12 +28,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro Interno de Esponja clickeado");
+              }}
             >
               Filtro Interno de Esponja
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Compacto y fácil de instalar en el interior de la pecera. Utiliza una esponja como medio de filtración para atrapar partículas sólidas y residuos. Proporciona una filtración mecánica eficaz. Ideal para peceras pequeñas y nano acuarios.
             </p>
@@ -52,12 +54,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro Colgante clickeado");
+              }}
             >
               Filtro Colgante (Hang-On-Back)
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Se monta en el borde de la pecera, lo que ahorra espacio en el interior. Utiliza un cartucho de filtración que puede contener esponjas, carbón activado y otros medios filtrantes. Proporciona filtración mecánica y química. Adecuado para peceras pequeñas y medianas.
             </p>
@@ -76,12 +80,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro de Esquina clickeado");
+              }}
             >
               Filtro de Esquina
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Diseñado para colocarse en una esquina de la pecera, optimizando el espacio. Utiliza una combinación de medios de filtración, como esponjas y carbón activado. Proporciona filtración mecánica y química. Ideal para peceras de esquina y acuarios de tamaño reducido.
             </p>
@@ -100,12 +106,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro de Cascada Pequeño clickeado");
+              }}
             >
               Filtro de Cascada Pequeño
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Similar al filtro de cascada estándar, pero diseñado en una versión más compacta. Ofrece filtración mecánica y biológica mediante un flujo de agua descendente. Requiere poco espacio y se puede colocar fácilmente en el borde de la pecera. Apto para peceras pequeñas y nano acuarios.
             </p>
@@ -124,12 +132,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro de Esquina de Espuma clickeado");
+              }}
             >
               Filtro de Esquina de Espuma
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Diseñado para encajar en una esquina de la pecera, maximizando el espacio disponible. Utiliza una esponja como medio de filtración para atrapar partículas y residuos. Proporciona filtración mecánica eficiente. Perfecto para peceras de esquina y acuarios de tamaño reducido.
             </p>
@@ -148,12 +158,14 @@ const Filtroinfo = () => {
             />
           </div>
           <div className={`p-8 ${textClasses} flex flex-col items-center`}>
-            <a
-              href="#"
+            <button
               className={titleClasses}
+              onClick={() => {
+                console.log("Filtro Sumergible clickeado");
+              }}
             >
               Filtro Sumergible
-            </a>
+            </button>
             <p className={descriptionClasses}>
               Se coloca completamente dentro de la pecera, ocupando poco espacio. Utiliza un cartucho de filtración interno que puede contener esponjas y carbón activado. Proporciona filtración mecánica y química. Ideal para peceras pequeñas y acuarios de escritorio.
             </p>

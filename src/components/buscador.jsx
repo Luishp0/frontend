@@ -14,10 +14,7 @@ const Buscador = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(`Buscando: ${searchTerm}`);
-  };
+ 
 
   const handleUserProfileClick = () => {
     navigate('/profile'); // Reemplaza '/profile' con la ruta correcta a tu interfaz
