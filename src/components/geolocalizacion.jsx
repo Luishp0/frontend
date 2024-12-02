@@ -15,8 +15,8 @@ const SetViewOnClick = ({ coords }) => {
 const GeolocationMap = () => {
   // Coordenadas de la Universidad Tecnológica de la Zona Metropolitana de Guadalajara
   const utzmgCoords = [20.4830966, -103.5331819];
-  const [location, setLocation] = useState(utzmgCoords);
-  const [error, setError] = useState(null);
+  const [location] = useState(utzmgCoords);
+  const [error] = useState(null);
 
 
 
