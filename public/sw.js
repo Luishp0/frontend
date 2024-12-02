@@ -1,14 +1,18 @@
+const assetsToCache = [
+    '/',
+    '/index.html',
+    '/logo192.png',
+    '/logo512.png',
+    '/src/img/carru.png',
+    '/src/img/carru2.png',
+    '/src/img/carru3.png'
+  ];
+
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open('appShell').then(cache => {
-            return cache.addAll([
-                '/',                        
-                '/index.html',              
-                '/images/image.png',    
-                '/images/img2.ico',
-                '/logo512.png'
-            ]);
+            return cache.addAll(assetsToCache);
         })
     );
     self.skipWaiting();
