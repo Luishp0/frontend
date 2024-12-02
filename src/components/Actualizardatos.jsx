@@ -9,12 +9,14 @@ import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import Navbar from "./navbar";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Registro = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values, { setErrors }) => {
     try {
-      const response = await fetch('http://localhost:8000/usuario', {
+      const response = await fetch(`${apiUrl}/usuario`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faFish, faThermometer, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from './AuthContext';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const iconColors = {
   usuarios: 'text-green-500',
   peceras: 'text-orange-500',
@@ -24,7 +26,7 @@ const Tarjetas = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch('http://localhost:8000/usuario/contador');
+      const response = await fetch(`${apiUrl}/usuario/contador`);
       const data = await response.json();
       setUsuarios(data.totalUsuarios);
     } catch (error) {
@@ -34,7 +36,7 @@ const Tarjetas = () => {
 
   const fetchPeces = async () => {
     try {
-      const response = await fetch('http://localhost:8000/peces/contador');
+      const response = await fetch(`${apiUrl}/peces/contador`);
       const data = await response.json();
       setPeces(data.totalPeces);
     } catch (error) {
@@ -44,7 +46,7 @@ const Tarjetas = () => {
 
   const fetchSensores = async () => {
     try {
-      const response = await fetch('http://localhost:8000/sensores/contador');
+      const response = await fetch(`${apiUrl}/sensores/contador`);
       const data = await response.json();
       setSensores(data.totalSensores);
     } catch (error) {

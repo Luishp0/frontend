@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 import { auth, provider } from '../firebaseConfig'; // Importa Firebase y Google provider
 import { signInWithPopup } from "firebase/auth"; // Importa función para autenticación
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -54,7 +56,7 @@ const Login = () => {
           applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
         });
 
-        await fetch('http://localhost:8000/usuario/suscripciones/subscribe', {
+        await fetch(`${apiUrl}/usuario/suscripciones/subscribe`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -76,7 +78,7 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await fetch('http://localhost:8000/usuario/login', {
+      const response = await fetch(`${apiUrl}/usuario/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

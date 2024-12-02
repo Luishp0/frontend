@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Scatter } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const TemperaturePHChart = () => {
   const [temperatureData, setTemperatureData] = useState([]);
   const [phData, setPhData] = useState([]);
@@ -13,7 +15,7 @@ const TemperaturePHChart = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/sensores');
+      const response = await fetch(`${apiUrl}/sensores`);
       const result = await response.json();
       
       console.log(result);

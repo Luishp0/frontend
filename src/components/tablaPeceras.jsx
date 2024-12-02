@@ -3,6 +3,8 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { AuthContext } from './AuthContext';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const TablaPeceras = () => {
   const { darkMode } = useContext(AuthContext);
   const [peces, setPeces] = useState([]);
@@ -13,7 +15,7 @@ const TablaPeceras = () => {
 
   const fetchPeces = async () => {
     try {
-      const response = await fetch('http://localhost:8000/peces');
+      const response = await fetch(`${apiUrl}/peces`);
       const data = await response.json();
       setPeces(data);
     } catch (error) {

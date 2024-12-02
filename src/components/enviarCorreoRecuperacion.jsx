@@ -6,6 +6,8 @@ import logotra from '../img/logotra.png';
 import {  useNavigate } from 'react-router-dom';
 import Navbar from './navbarRegresar';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const EnviarCorreoRecuperacion = () => {
   const navigate = useNavigate();
   const timerRef = useRef(null);
@@ -13,7 +15,7 @@ const EnviarCorreoRecuperacion = () => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      const response = await fetch('http://localhost:8000/usuario/enviarcorreo', {
+      const response = await fetch(`${apiUrl}/usuario/enviarcorreo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from './AuthContext';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const NotificationView = () => {
   const { darkMode } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
@@ -11,7 +13,7 @@ const NotificationView = () => {
     // Fetch notifications from the API
     const fetchNotifications = async () => {
       try {
-        const response = await fetch('http://localhost:8000/notificacion');
+        const response = await fetch(`${apiUrl}/notificacion`);
         if (!response.ok) {
           throw new Error('Error al obtener las notificaciones');
         }

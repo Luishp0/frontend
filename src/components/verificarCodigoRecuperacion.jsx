@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import logotra from '../img/logotra.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const VerificarCodigoRecuperacion = () => {
   const [verificationCode, setVerificationCode] = useState(['', '', '', '']);
   const [timeRemaining, setTimeRemaining] = useState(120); // Cambiado a 180 segundos (3 minutos)
@@ -61,7 +63,7 @@ const VerificarCodigoRecuperacion = () => {
     const enteredCode = verificationCode.join('');
 
     try {
-      const response = await fetch('http://localhost:8000/usuario/verificarcodigo', {
+      const response = await fetch(`${apiUrl}/usuario/verificarcodigo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +89,7 @@ const VerificarCodigoRecuperacion = () => {
 
   const handleResendCode = async () => {
     try {
-      const response = await fetch('http://localhost:8000/usuario/reenviarcodigo', {
+      const response = await fetch(`${apiUrl}/usuario/reenviarcodigo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

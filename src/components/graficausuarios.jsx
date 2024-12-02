@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 // Función para obtener el nombre del mes a partir de la fecha
 const obtenerNombreDelMes = (fecha) => {
   const partes = fecha.split('-');
@@ -28,7 +30,7 @@ const UsuariosRegistradosChart = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch('http://localhost:8000/usuario');
+      const response = await fetch(`${apiUrl}/usuario`);
       const data = await response.json();
       setUsuarios(data);
     } catch (error) {

@@ -5,6 +5,8 @@ import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2';
 import { AuthContext } from './AuthContext';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const TablaUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const { darkMode } = useContext(AuthContext);
@@ -15,7 +17,7 @@ const TablaUsuarios = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await fetch('http://localhost:8000/usuario');
+      const response = await fetch(`${apiUrl}/usuario`);
       const data = await response.json();
       setUsuarios(data);
     } catch (error) {
@@ -49,7 +51,7 @@ const TablaUsuarios = () => {
 
     if (result.isConfirmed) {
       try {
-        await fetch(`http://localhost:8000/usuario/${userId}`, {
+        await fetch(`${apiUrl}/usuario/${userId}`, {
           method: 'DELETE',
         });
 

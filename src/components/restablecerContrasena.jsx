@@ -5,6 +5,8 @@ import logotra from '../img/logotra.png';
 import { MdLockOutline } from 'react-icons/md';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const RestablecerContrasena = () => {
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState(false); // Estado para la alerta de éxito
@@ -14,7 +16,7 @@ const RestablecerContrasena = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await fetch('http://localhost:8000/usuario/resetcontrasena', {
+      const response = await fetch(`${apiUrl}/usuario/resetcontrasena`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -4,6 +4,8 @@ import BarraLateral from './barraLateral';
 import Buscador from './buscador';
 import { AuthContext } from './AuthContext'; // Importar AuthContext
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Respaldo = () => {
   const [selectedTime, setSelectedTime] = useState('00:00');
   const [backupHistory, setBackupHistory] = useState(() => {
@@ -41,7 +43,7 @@ const Respaldo = () => {
 
   const handleBackup = async () => {
     try {
-      const response = await fetch('http://localhost:8000/respaldo');
+      const response = await fetch(`${apiUrl}/respaldo`);
       const data = await response.json();
 
       if (response.ok) {
@@ -77,7 +79,7 @@ const Respaldo = () => {
   useEffect(() => {
     const fetchBackupHistory = async () => {
       try {
-        const response = await fetch('http://localhost:8000/respaldo/historial');
+        const response = await fetch(`${apiUrl}/respaldo/historial`);
         const data = await response.json();
 
         if (response.ok) {
