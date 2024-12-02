@@ -1,5 +1,4 @@
 import React from "react";
-import empresa from "../img/empresa.jpg";
 
 const Team = () => {
   return (
