@@ -32,6 +32,48 @@ const Login = () => {
     setRememberMe(e.target.checked);
   };
 
+  function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+
+  const subscribeToPushNotifications = async (userId) => {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+      const registration = await navigator.serviceWorker.ready;
+      const VAPID_PUBLIC_KEY = 'BPZ7MqAGZL4YbgcclMA-JA3p0MkmjZVhrhjg-bDyyT6ZHUliM2aQ6ihN24Lhs5g4LI0nvs6YKphi1tEvAfe8co8';
+
+      try {
+        const subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
+        });
+
+        await fetch('http://localhost:8000/usuario/suscripciones/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId: userId,
+            subscription: subscription,
+          }),
+        });
+
+        console.log('Usuario suscrito exitosamente para notificaciones push.');
+      } catch (error) {
+        console.error('Error al suscribir al usuario a notificaciones push:', error);
+      }
+    } else {
+      console.warn('Push notifications no soportadas en este navegador.');
+    }
+  };
+
   const handleSubmit = async (values) => {
     try {
       const response = await fetch('http://localhost:8000/usuario/login', {
@@ -41,7 +83,7 @@ const Login = () => {
         },
         body: JSON.stringify({
           correo: values.email,
-          contrasena: values.password
+          contrasena: values.password,
         }),
       });
 
@@ -55,8 +97,10 @@ const Login = () => {
         }
 
         login(data.result.token, data.result.nombre, data.result.telefono, data.result.correo);
-        console.log(login);
-        
+
+        // Suscribir al usuario a notificaciones push
+        await subscribeToPushNotifications(data.result.id);
+
         Swal.fire({
           title: '¡Bienvenido!',
           text: 'Inicio de sesión exitoso. Redirigiendo...',
