@@ -69,11 +69,25 @@ self.addEventListener('fetch', event => {
 
 // eslint-disable-next-line no-restricted-globals
 self.addEventListener('push', event => {
-    const payload = event.data.json();
+    let payload = {};
+
+    // Verificar si event.data no es null antes de acceder a sus propiedades
+    if (event.data) {
+        try {
+            payload = event.data.json();
+        } catch (err) {
+            console.error('Error al analizar el payload de la notificación:', err);
+        }
+    }
+
+    // Valores predeterminados para la notificación
     const title = payload.title || 'Nueva Notificación';
     const options = {
         body: payload.body || 'Tienes una nueva notificación',
+        icon: payload.icon || '/logo512.png', // Icono predeterminado
     };
+
+    // Mostrar la notificación
     event.waitUntil(
         self.registration.showNotification(title, options)
     );

@@ -20,7 +20,7 @@ const Registro = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          roles_idroles: 1,
+          roles_idroles: 2,
           nombre: values.username,
           fechaNacimiento: values.fechaN,
           correo: values.email,
